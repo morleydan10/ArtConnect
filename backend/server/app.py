@@ -161,6 +161,29 @@ def get_all_requests():
 
     return [r.to_dict() for r in requests], 200
 
+@app.get('/api/requests/<int:id>')
+def get_requests_by_business_id(id):
+
+    business = db.session.get(Business, id)
+
+    if not business:
+        return {'error': 'Request not found'}, 404
+    
+    requests = Request.query.filter(Request.business_id == id).all()
+
+    return [r.to_dict() for r in requests], 200
+
+@app.get('/api/requests/<int:id>')
+def get_requests_by_artist_id(id):
+
+    artist = db.session.get(Artist, id)
+
+    if not artist:
+        return {'error': 'Request not found'}, 404
+    
+    requests = Request.query.filter(Request.artist_id == id).all()
+
+    return [r.to_dict() for r in requests], 200
 
 
 @app.get('/api/requests/<int:id>')
