@@ -1,15 +1,18 @@
 from flask import Flask, make_response, jsonify, request
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from models import db, Artist, Request, Business, Creative_Work
 
 app = Flask(__name__)
+CORS(app)
+# CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.json.compact = False
 
-migrate = Migrate(app, db)
 
+migrate = Migrate(app, db)
 db.init_app(app)
 
 
@@ -21,7 +24,7 @@ def index():
 
 
 # will have to change routes to api most liekly after adding proxy file
-@app.get('/artists/<int:id>')
+@app.get('/api/artists/<int:id>')
 def get_artist_by_id(id):
 
     artist = db.session.get(Artist, id)
@@ -31,7 +34,7 @@ def get_artist_by_id(id):
     
     return artist.to_dict(), 200 
 
-@app.post('/artists')
+@app.post('/api/artists')
 def post_new_artist():
 
     try:
@@ -51,7 +54,7 @@ def post_new_artist():
     
     return new_artist.to_dict(), 201
 
-@app.patch('/artists/<int:id>')
+@app.patch('/api/artists/<int:id>')
 def patch_artist(id):
 
     artist = db.session.get(Artist, id)
@@ -68,7 +71,7 @@ def patch_artist(id):
     except:
         return {"error", "validation errors"}, 400
     
-@app.delete('/artists/<int:id>')
+@app.delete('/api/artists/<int:id>')
 def delete_artist(id):
 
     artist = db.session.get(Artist, id)
@@ -86,7 +89,7 @@ def delete_artist(id):
 
 # ******************BUSINESS ROUTES*************************
 
-@app.get('/businesses/<int:id>')
+@app.get('/api/businesses/<int:id>')
 def get_business_by_id(id):
     business = Business.query.get(id)
 
@@ -95,7 +98,7 @@ def get_business_by_id(id):
 
     return business.to_dict(), 200
 
-@app.post('/businesses')
+@app.post('/api/businesses')
 def post_new_business():
 
     try:
@@ -118,7 +121,7 @@ def post_new_business():
     return new_business.to_dict(), 201
 
 
-@app.patch('/businesses/<int:id>')
+@app.patch('/api/businesses/<int:id>')
 def patch_business(id):
 
     business = db.session.get(Business, id)
@@ -136,7 +139,7 @@ def patch_business(id):
         return {"error", "validation errors"}, 400
 
 
-@app.delete('/businesses/<int:id>')
+@app.delete('/api/businesses/<int:id>')
 def delete_business(id):
 
     business = db.session.get(Business, id)
@@ -151,8 +154,16 @@ def delete_business(id):
 
 
 # *****************REQUEST ROUTES**************************
+@app.get('/api/requests')
+def get_all_requests():
 
-@app.get('/requests/<int:id>')
+    requests = Request.query.all()
+
+    return [r.to_dict() for r in requests], 200
+
+
+
+@app.get('/api/requests/<int:id>')
 def get_request_by_id(id):
     request = Request.query.get(id)
 
@@ -161,7 +172,7 @@ def get_request_by_id(id):
 
     return request.to_dict(), 200
 
-@app.post('/requests')
+@app.post('/api/requests')
 def post_new_request():
 
     try:
@@ -182,7 +193,7 @@ def post_new_request():
     return new_request.to_dict(), 201
 
 
-@app.patch('/requests/<int:id>')
+@app.patch('/api/requests/<int:id>')
 def patch_request(id):
 
     request_item = db.session.get(Request, id)
@@ -200,7 +211,7 @@ def patch_request(id):
         return {"error", "validation errors"}, 400
 
 
-@app.delete('/requests/<int:id>')
+@app.delete('/api/requests/<int:id>')
 def delete_request(id):
 
     request_item = db.session.get(Request, id)
@@ -214,17 +225,29 @@ def delete_request(id):
 
 # ********************************CREATIVE WORKS ROUTES*****************************
 
-@app.get('/creative_works/<int:id>')
-def get_creative_work_by_id(id):
+@app.get('/api/creative_works/<int:id>')
+def get_creative_works_by_artist_id(id):
 
-    creative_work = db.session.get(Artist, id)
+    artist = db.session.get(Artist, id)
 
-    if not creative_work:
-        return {'error': 'Creative work not found'}, 404
+    if not artist:
+        return {'error': 'Artist not found'}, 404
+
+    creative_works = Creative_Work.query.filter(Creative_Work.artist_id == id).all()
+
+    return [cw.to_dict() for cw in creative_works], 200
+
+# @app.get('/api/creative_works/<int:id>')
+# def get_creative_work_by_id(id):
+
+#     creative_work = db.session.get(Creative_Work, id)
+
+#     if not creative_work:
+#         return {'error': 'Creative work not found'}, 404
     
-    return creative_work.to_dict(), 200 
+#     return creative_work.to_dict(), 200 
 
-@app.post('/creative_works')
+@app.post('/api/creative_works')
 def post_new_creative_work():
 
     try:
@@ -244,7 +267,7 @@ def post_new_creative_work():
     
     return new_creative_work.to_dict(), 201
 
-@app.patch('/creative_works/<int:id>')
+@app.patch('/api/creative_works/<int:id>')
 def patch_creative_work(id):
 
     creative_work = db.session.get(Creative_Work, id)
@@ -261,7 +284,7 @@ def patch_creative_work(id):
     except:
         return {"error", "validation errors"}, 400
     
-@app.delete('/creative_works/<int:id>')
+@app.delete('/api/creative_works/<int:id>')
 def delete_creative_work(id):
 
     creative_work = db.session.get(Creative_Work, id)

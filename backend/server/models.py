@@ -58,6 +58,8 @@ class Request(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False)
+    compensation = db.Column(db.Integer)
+    # open = db.Column(db.Integer)
 
     artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"))
     # artist_name = db.Column(db.String, db.ForeignKey("artist_table.name"))

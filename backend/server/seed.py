@@ -71,6 +71,7 @@ if __name__ == "__main__":
             r = Request(
                 description=fake.paragraph(nb_sentences=3),
                 date_created=fake.date_this_year(2023),
+                compensation=fake.pricetag(),
                 artist_id=choice(artist_list).id,
                 business_id=choice(business_list).id,
             )
