@@ -27,8 +27,8 @@ function ArtistProfile () {
             <Header />
             <div className="artist-profile-div">
                 <h1>My Profile</h1>
-                <h2 id='artist-profile-name'></h2>
-                <img id='profile pic'  alt='Profile Picture'></img>
+                <h2 id='artist-profile-name'>{user.name}</h2>
+                <img className='profile-pic'  alt='Profile Picture' src={user.profile_pic_url}></img>
                 {/* src={user.profile_pic_url} */}
             </div>
             <CwTable />

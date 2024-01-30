@@ -43,7 +43,6 @@ function RequestTable () {
                         <th>Date Created</th>
                         <th>Compensation</th>
                         <th>Artist</th>
-                        {/* Use ternary for if artist is present, display artist name, else display None or -  */}
                     </tr>
                 </thead>
                 <tbody>
@@ -54,7 +53,7 @@ function RequestTable () {
                         <td>{request.description}</td>
                         <td>{request.date_created}</td>
                         <td>{request.compensation}</td>
-                        <td>{request.artist.name}</td>
+                        <td>{ request.artist  ? (request.artist.name):('')}</td>
                         {/* <td>{new Date(post.createdAt).toDateString()}</td> */}
                     </tr>
                     ))}

@@ -12,15 +12,19 @@ function BusinessProfile () {
     // Post request for generate request
     function postNewRequest(newRequest) {
 
-        fetch(`/api/requests/${user.id}`, {
+        fetch('/api/requests', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
             },
             body: JSON.stringify(newRequest)
         })
-        .then((res) => res.json())
-        .then((newRequest) => setRequests([...requests, newRequest]))
+        .then((res) => {
+            if (res.ok) {
+                res.json().then((newRequest) => setRequests([...requests, newRequest]))
+            } else {
+                console.log("POST is not working")
+            }})
         }
 
 
@@ -29,8 +33,8 @@ function BusinessProfile () {
             <Header />
             <div className="business-profile-div">
                 <h1>My Profile</h1>
-                <h2 id='business-profile-name'></h2>
-                <img id='profile pic'  alt='Profile Picture'></img>
+                <h2 id='business-profile-name'>{user.name}</h2>
+                <img className='profile-pic'  alt='Profile Picture' src={user.profile_pic_url}></img>
                 {/* src={user.profile_pic_url} */}
             </div>
             {/* requests table */}

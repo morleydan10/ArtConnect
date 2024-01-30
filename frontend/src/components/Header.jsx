@@ -14,6 +14,9 @@ function Header () {
                 <NavLink to='/ArtistProfile'>
                     <button>Profile</button>
                 </NavLink>
+                <NavLink to='/BusinessProfile'>
+                    <button> B Profile</button>
+                </NavLink>
                 <NavLink to='/OpenRequests'>
                     <button>Requests</button>
                 </NavLink>

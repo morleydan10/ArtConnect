@@ -37,7 +37,7 @@ function CwTable() {
                         <td>{work.id}</td>
                         <td>{work.description}</td>
                         <td>
-                            <img src={work.file_url}/>
+                            <img className="cw-image" src={work.file_url}/>
                         </td>
                         {/* <td>{new Date(post.createdAt).toDateString()}</td> */}
                     </tr>

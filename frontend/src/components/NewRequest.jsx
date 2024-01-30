@@ -8,25 +8,43 @@ function NewRequest({ postNewRequest }){
 
     const [description, setDescription] = useState('')
     const [compensation, setCompensation] = useState('')
+    
+
+    
+    function getDate() {
+        const today = new Date();
+        const month = today.getMonth() + 1;
+        const year = today.getFullYear();
+        const date = today.getDate();
+        return `${month}/${date}/${year}`;
+    }
+    
+    const [date_created, setDateCreated] = useState(getDate())
 
     const handleChangeDescription = e => setDescription(e.target.value)
     const handleChangeCompensation = e => setCompensation(e.target.value)
+    
+    const business_id = user.id
 
     const newRequest = {
+        business_id,
         description,
-        compensation
+        compensation,
+        date_created
     };
 
-    function handleNewRequestSubmission(newRequest){
+    function handleNewRequestSubmission(e){
+        e.preventDefault();
         postNewRequest(newRequest)
     };
 
 
     return(
-        <div>
-            <form className="new-request-form">
+        <div className="new-request-form-div">
+            <form className="new-request-form" onSubmit={handleNewRequestSubmission}>
                 <label>Business</label>
                 <p>{user.name}</p>
+                <p>{date_created}</p>
                 <label>Description</label>
                 <input
                     type='text'
@@ -37,13 +55,13 @@ function NewRequest({ postNewRequest }){
                 <label>Compensation</label>
                 <input
                     type='text'
-                    placeholder="Enter a short description"
+                    placeholder="Enter a dollar amount"
                     value={compensation}
                     onChange={handleChangeCompensation}
                 />
                 <p>*Subject to change upon consultation</p>
                 {/* validation on compensation */}
-                <button onClick={handleNewRequestSubmission}>Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
