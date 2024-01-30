@@ -22,10 +22,12 @@ class Artist(db.Model, SerializerMixin):
     serialize_rules = ["-requests.artist", '-creative_works.artist']
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String)
+    phone_number = db.Column(db.String)
     type = db.Column(db.String, )
     # May have to change below to match file type, i.e jpeg, png
     profile_pic_url = db.Column(db.String)
-    location= db.Column(db.String)
+    city= db.Column(db.String)
     date_joined = db.Column(db.DateTime, nullable=False)
     # password_hash = db.Column(db.String)
     requests = db.relationship("Request", back_populates="artist")
@@ -57,11 +59,11 @@ class Request(db.Model, SerializerMixin):
     serialize_rules = ["-artist.requests", "-business.requests"]
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
-    date_created = db.Column(db.DateTime, nullable=False)
+    date_created = db.Column(db.String, nullable=False)
     compensation = db.Column(db.Integer)
     # open = db.Column(db.Integer)
 
-    artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"))
+    artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"), nullable=True)
     # artist_name = db.Column(db.String, db.ForeignKey("artist_table.name"))
 
     business_id = db.Column(db.Integer, db.ForeignKey("business_table.id"))
@@ -77,10 +79,12 @@ class Business(db.Model, SerializerMixin):
     serialize_rules = ["-requests.business"]
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String)
+    phone_number = db.Column(db.String)
     type = db.Column(db.String)
     # May have to change below to match file type, i.e jpeg, png
     profile_pic_url = db.Column(db.String)
-    location= db.Column(db.String)
+    city= db.Column(db.String)
     date_joined = db.Column(db.DateTime, nullable=False)
     # password_hash = db.Column(db.String)
 

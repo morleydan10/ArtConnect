@@ -16,13 +16,14 @@ if __name__ == "__main__":
         Artist.query.delete()
         Business.query.delete()
         Request.query.delete()
+        Creative_Work.query.delete()
 
         # *************************SEED ARTISTS*************************
 
         artist_list = []
         # for artist_data in data["artists"]:
         artist_types = ['Paint-Canvas', 'Paint-Spray', 'Photographer', 'Videographer', 'Sculptor']
-        artist_pics = ['https://pixabay.com/get/g76c22fb674a61cdf1f72a96d5ca092f6610840f4b0f02b66a150a5912f6fde7b9569056a469edf62cb8247f775a3e012_1280.jpg', 'https://pixabay.com/get/g30932b78e6fcf506c8259bcb80bfc4cbcbd63b1e60722697551f48f24ccdc2851d64583ff18ff6ce7ddda676142d05ba_1280.jpg', 'https://pixabay.com/get/g32ef20d15424e18fd3146f63c5b397efb4be944235fdf415bb6a11868f2454442d70994b3e0ba98b262032117a372403_1280.jpg']
+        artist_pics = ['https://images.unsplash.com/photo-1530785602389-07594beb8b73?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
         for _ in range(5):
             # password_hash = bcrypt.generate_password_hash(artist_data.get('name'))
             a = Artist(
@@ -33,7 +34,9 @@ if __name__ == "__main__":
                 # profile_pic_url=artist_data.get("profile_pic_url"),
                 profile_pic_url=choice(artist_pics),
                 # password_hash=password_hash,
-                location = fake.city(),
+                phone_number=fake.phone_number(),
+                email=fake.free_email(),
+                city = fake.city(),
                 date_joined=fake.date_this_year(2023)
             )
             artist_list.append(a)
@@ -43,7 +46,7 @@ if __name__ == "__main__":
         # ******************SEED BUSINESSES***************************
         business_names = ['ABC Cafe', 'XYZ Law Firm', 'QRS Bookstore']
         business_types = ['Restaurant', 'Bookstore', 'Private Practice']
-        business_pics = ['https://pixabay.com/get/g6d9a5c60736444d65b83c4b0baa5b85b0a24859c75c32f6cee87354c5e03365c035f672f333049d2ad4f8efba489a065_1280.jpg', 'https://pixabay.com/get/g015f1abe67b8d56492fe642c7cac3030a228b77bed054fc6cf68753b5bac9e50e6e669424d29991fc3d84e76dd0e5497_1280.png', 'https://pixabay.com/get/g9e7cfd5e508f8f7f48839983d875f6ddbc266efb88a3a00533e6a97048764f6f49bf06465ef6b6b738dc19ac4193a182_1280.png']
+        business_pics = ['https://images.unsplash.com/photo-1508163356824-03f81a9d4e9b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1546617112-b898399103ce?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1517767514384-f57a175f9138?q=80&w=2110&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
 
         business_list = []
 
@@ -56,7 +59,9 @@ if __name__ == "__main__":
                 type=choice(business_types),
                 # profile_pic_url=business_data.get("profile_pic_url"),
                 profile_pic_url=choice(business_pics),
-                location = fake.city(),
+                phone_number=fake.phone_number(),
+                email=fake.free_email(),
+                city = fake.city(),
                 date_joined=fake.date_this_year(2023)
             )
             business_list.append(b)
@@ -83,12 +88,12 @@ if __name__ == "__main__":
 
         creative_work_list = []
 
-        file_list = ['https://pixabay.com/get/g71e178200d2c67e17203fcb881e01693912c41f6383556b252f8766baf1c17784f5b39a839164d041e95da9c39f2dcb4_1280.jpg', 'https://pixabay.com/get/g753ebf85fbe5ab00ba111fa7e1f0664b10faebcfb4b874ed70d56a014d6ce1032e12cb394e76b5ba37024002b9b48c2c_1280.jpg', 'https://pixabay.com/get/g4d912268e4153f4b0ad38a3fc26dc3a58d79012b8beddb4f3faf9580c9c3004ead531512f36705cda9f0575c29df9fd8_1280.png']
+        file_list = ['https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1528217580778-96e570819666?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJhbmRvbSUyMHNjdWxwdHVyZXxlbnwwfHwwfHx8MA%3D%3D']
 
-        for _ in range(3):
+        for _ in range(4):
             cw = Creative_Work(
                 description=fake.sentence(),
-                artist_id= 1,
+                artist_id=choice(artist_list).id,
                 file_url=choice(file_list)
             )
             creative_work_list.append(cw)

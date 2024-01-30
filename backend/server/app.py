@@ -43,8 +43,10 @@ def post_new_artist():
         new_artist= Artist(
             name=data.get('name'),
             type=data.get('type'),
+            email=data.get('email'), 
+            phone_number=data.get('phone_number'),
             profile_pic_url=data.get('profile_pic_url'),
-            location=data.get('location'),
+            city=data.get('city'),
             date_joined=data.get('date_joined')
         )
         db.session.add(new_artist)
@@ -108,7 +110,9 @@ def post_new_business():
             name=data.get('name'),
             type=data.get('type'),
             profile_pic_url=data.get('profile_pic_url'),
-            location=data.get('location'),
+            email=data.get('email'), 
+            phone_number=data.get('phone_number'),
+            city=data.get('city'),
             date_joined=data.get('date_joined')
         )
 
@@ -198,22 +202,27 @@ def get_request_by_id(id):
 @app.post('/api/requests')
 def post_new_request():
 
+
     try:
         data = request.json
+        print('Received data:', data)
 
         new_request = Request(
+            business_id=data.get('business_id'),
             description=data.get('description'),
-            business=data.get('business'),
+            compensation=data.get('compensation'),
             date_created=data.get('date_created')
         )
 
         db.session.add(new_request)
         db.session.commit()
+        print('post successful')
 
     except Exception as e:
         return {'error': str(e)}
-
+    
     return new_request.to_dict(), 201
+
 
 
 @app.patch('/api/requests/<int:id>')
@@ -272,6 +281,7 @@ def get_creative_works_by_artist_id(id):
 
 @app.post('/api/creative_works')
 def post_new_creative_work():
+    # NEEDS TO BE FIXED
 
     try:
         data = request.json
