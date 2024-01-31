@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useTable } from "react-table";
 import { useUser } from "../UserContext";
+import { json } from "react-router-dom";
 
 
-function RequestTable () {
+function RequestTable ({ postNewBid }) {
 
     const {user, setUser} = useUser()
     const [requests, setRequests] = useState([])
+    const [request_id, setRequestId]= useState()
+    
 
     // fetch requests
 
@@ -19,16 +22,22 @@ function RequestTable () {
         })
     }, [])
 
+    const artist_id = user.id
 
+    
+    
+    
+    function handleClickApply(e, requestId){
+        e.preventDefault();
+        setRequestId(requestId);
 
-    // UPDATE TABLE STRUCTURE
-    // const columns = [
-    //     {
-    //         id: 'id',
-    //         Header: 'Request Number'
-    //         Business: ''
-    //     }
-    // ]
+        const newBid = {
+            artist_id,
+            request_id: requestId
+        }
+
+        postNewBid(newBid)
+    };
 
 
     return (
@@ -43,6 +52,7 @@ function RequestTable () {
                         <th>Date Created</th>
                         <th>Compensation</th>
                         <th>Artist</th>
+                        <th>Open/Closed</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,12 +63,16 @@ function RequestTable () {
                         <td>{request.description}</td>
                         <td>{request.date_created}</td>
                         <td>{request.compensation}</td>
+                        {/* To add Navlink to artist's profile, need to solve authentication issues */}
                         <td>{ request.artist  ? (request.artist.name):('')}</td>
-                        {/* <td>{new Date(post.createdAt).toDateString()}</td> */}
+                        <td>{ request.artist ? ('Closed'):(
+                            <button onClick={(e) => {
+                                handleClickApply(e, request.id)}}>Apply</button>
+                        )}</td>
                     </tr>
                     ))}
                 </tbody>
-    </table>
+        </table>
     </div>
     )
 }

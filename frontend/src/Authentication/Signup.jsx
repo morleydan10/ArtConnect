@@ -5,6 +5,8 @@ function Signup() {
 
     // Post Request
 
+    // edit to add select function
+
     return(
         <main>
             <Header />
@@ -19,9 +21,9 @@ function Signup() {
                     <label>Name:</label>
                     <input type='text' placeholder="Enter your full name"></input>
                     <label>Specialty</label>
-                    <input type='text' placeholder="Enter your Specialty"></input>
-                    <label>Location</label>
-                    <input type='text' placeholder="Enter your location"></input>
+                    <input type='select' placeholder="Enter your Specialty"></input>
+                    <label>City</label>
+                    <input type='text' placeholder="Enter your City"></input>
                     {/* use geolocation? */}
                     <label>Create a username</label>
                     <input type='text' placeholder="Create a username"></input>

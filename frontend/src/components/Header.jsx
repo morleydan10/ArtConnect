@@ -18,7 +18,7 @@ function Header () {
                     <button> B Profile</button>
                 </NavLink>
                 <NavLink to='/OpenRequests'>
-                    <button>Requests</button>
+                    <button>Open Requests</button>
                 </NavLink>
                 <NavLink to='/Login'>
                     <button>Logout</button>
