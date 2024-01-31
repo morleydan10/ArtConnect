@@ -36,13 +36,16 @@ function BidsTable ({ yourRequestId }) {
                 </thead>
                 <tbody>
                     {bids.map((bid) => {
+                    console.log(bid.artist);
+                    return (
                         <tr key={bid.id}>
                             <td>{bid.id}</td>
                             {/* Set up link to view profile */}
                             <td>{bid.artist.name}</td>
                             <td>{bid.artist.email}</td>
                             <td>{bid.artist.phone_number}</td>
-                            </tr>
+                        </tr>
+                        );
                     })}
                 </tbody>
             </table>

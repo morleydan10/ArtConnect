@@ -8,24 +8,24 @@ export const UserProvider = ({ children }) => {
 
     
     // fetch artist for testing purposes (artist pages)
-    useEffect(() => {
-
-        fetch('/api/artists/3')
-            .then((res) => res.json())
-            .then((userData) => {
-                setUser(userData);
-            })
-        }, [])
-
-    // fetch business for testing purposes (business pages)
     // useEffect(() => {
 
-    //     fetch('/api/businesses/5')
+    //     fetch('/api/artists/3')
     //         .then((res) => res.json())
     //         .then((userData) => {
     //             setUser(userData);
     //         })
     //     }, [])
+
+    // fetch business for testing purposes (business pages)
+    useEffect(() => {
+
+        fetch('/api/businesses/5')
+            .then((res) => res.json())
+            .then((userData) => {
+                setUser(userData);
+            })
+        }, [])
 
 
 
