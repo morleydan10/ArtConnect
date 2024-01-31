@@ -56,7 +56,7 @@ class Creative_Work(db.Model, SerializerMixin):
 
 class Request(db.Model, SerializerMixin):
     __tablename__ = "request_table"
-    serialize_rules = ["-artist.requests", "-business.requests"]
+    serialize_rules = ["-artist.requests", "-business.requests", "-bids.request"]
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
     date_created = db.Column(db.String, nullable=False)
@@ -72,6 +72,7 @@ class Request(db.Model, SerializerMixin):
 
     artist = db.relationship("Artist", back_populates="requests")
     business = db.relationship("Business", back_populates="requests")
+    bids = db.relationship("Bid", back_populates="request")
 
 
 class Business(db.Model, SerializerMixin):
@@ -92,5 +93,15 @@ class Business(db.Model, SerializerMixin):
 
 
 
+class Bid(db.Model, SerializerMixin):
+    __tablename__="bids_table"
+    serialize_rules = ["-request.bids"]
+
+    id = db.Column(db.Integer, primary_key=True)
+    artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"), nullable=False)
+    request_id = db.Column(db.Integer, db.ForeignKey("request_table.id"), nullable=False)
+    accepted = db.Column(db.Boolean, default=False)
+
+    request = db.relationship("Request", back_populates="bids")
 
 

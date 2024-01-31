@@ -1,5 +1,5 @@
 from app import app
-from models import Artist, Request, Business, Creative_Work, db
+from models import Artist, Request, Business, Creative_Work, Bid, db
 # import json
 # from flask_bcrypt import Bcrypt
 from random import choice
@@ -17,6 +17,7 @@ if __name__ == "__main__":
         Business.query.delete()
         Request.query.delete()
         Creative_Work.query.delete()
+        Bid.query.delete()
 
         # *************************SEED ARTISTS*************************
 

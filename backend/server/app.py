@@ -2,7 +2,7 @@ from flask import Flask, make_response, jsonify, request
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from models import db, Artist, Request, Business, Creative_Work
+from models import db, Artist, Request, Business, Creative_Work, Bid
 
 app = Flask(__name__)
 CORS(app)
@@ -287,11 +287,9 @@ def post_new_creative_work():
         data = request.json
 
         new_creative_work = Creative_Work(
-            name=data.get('name'),
-            type=data.get('type'),
-            profile_pic_url=data.get('profile_pic_url'),
-            location=data.get('location'),
-            date_joined=data.get('date_joined')
+            artist_id=data.get('artist_id'),
+            description=data.get('description'),
+            file_url=data.get('file_url')
         )
         db.session.add(new_creative_work)
         db.session.commit()
@@ -330,6 +328,66 @@ def delete_creative_work(id):
 
     return {"message": "Creative work deleted successfully"}, 200
 
+# ************************BIDS ROUTES **************************
+@app.get('/api/bids')
+def get_all_bids():
+
+    bids = Bid.query.all()
+
+    return [b.to_dict() for b in bids], 200
+
+@app.get('/api/bids/<int:id>')
+def get_bids_by_request_id(id):
+
+    Request = db.session.get(Request, id)
+
+    if not request:
+        return {'error': 'Request not found'}, 404
+    
+    bids = Bid.query.filter(Bid.request_id == id).all()
+
+    return [b.to_dict() for b in bids], 200
+
+@app.post('/api/bids')
+def post_new_bid():
+
+    try:
+        data = request.json
+        print('Received data:', data)
+
+        new_bid = Bid(
+            artist_id=data.get('artist_id'),
+            request_id=data.get('request_id'),
+            accepted=data.get('accepted')
+        )
+
+        db.session.add(new_bid)
+        db.session.commit()
+        print('post successful')
+
+    except Exception as e:
+        return {'error': str(e)}
+    
+    return new_bid.to_dict(), 201
+
+
+# Business will patch the Accepted attribute
+@app.patch('/api/bids/<int:id>')
+def patch_bid(id):
+
+    bid = db.session.get(Bid, id)
+
+    if not bid:
+        return {"error": "Bid not found"}, 404
+    try:
+        data = request.json
+        for key in data:
+            setattr(bid, key, data[key])
+        db.session.add(bid)
+        db.session.commit()
+        return bid.to_dict(), 202
+    except:
+        return {"error": "Validation errors"}, 400
 
 
 
