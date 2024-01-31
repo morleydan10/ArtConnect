@@ -9,6 +9,7 @@ function YourRequestsTable(){
 
     const [yourRequests, setYourRequests] = useState([])
     const [isPopupOpen, setIsPopupOpen] = useState(false)
+    const [yourRequestId, setYourRequestId] = useState(null)
 
     useEffect(() => {
         fetch(`/api/requests/${user.id}`)
@@ -18,8 +19,6 @@ function YourRequestsTable(){
             setYourRequests(data)
         })
     }, [])
-
-    
 
 
 
@@ -50,8 +49,9 @@ function YourRequestsTable(){
                         <td>{ yourRequest.artist  ? (yourRequest.artist.name) : ('')}</td>
                         <td>{ yourRequest.artist ? ('Closed') : (
                             <>
-                                <button onClick={() => setIsPopupOpen(true)}>View Bids</button>
-                                <BidsPopup trigger={isPopupOpen} setTrigger={setIsPopupOpen}/>
+                                <button onClick={() => {
+                                    setIsPopupOpen(true)}}>View Bids</button>
+                                <BidsPopup trigger={isPopupOpen} setTrigger={setIsPopupOpen} yourRequestId={yourRequest.id}/>
                             </>
                         )}</td>
                     </tr>
