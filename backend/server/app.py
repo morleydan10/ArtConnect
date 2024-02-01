@@ -1,24 +1,72 @@
-from flask import Flask, make_response, jsonify, request
+from flask import Flask, request, session
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from flask_bcrypt import Bcrypt
+from dotenv import dotenv_values
 from models import db, Artist, Request, Business, Creative_Work, Bid
 
+config = dotenv_values(".env")
+
 app = Flask(__name__)
+app.secret_key = config['FLASK_SECRET_KEY']
 CORS(app)
 # CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.json.compact = False
-
-
+bcrypt = Bcrypt(app)
 migrate = Migrate(app, db)
+
 db.init_app(app)
 
 
 @app.get("/")
 def index():
     return "ArtConnect is here."
+
+# *****************AUTHENTICATION***********************
+
+@app.get('/api/artist/check_session')
+def check_session():
+    artist = db.session.get(artist, session.get("id"))
+    # print to check the session object
+    print(session)
+
+    if artist:
+        return artist.to_dict(['-password_hash']), 200
+
+    return {}
+
+@app.delete('/api/artist/logout')
+def logout():
+
+    try: 
+        session.pop("id")
+        return {"Message": "Logged out"}, 200
+    
+    except:
+        return {'Message': 'No user logged in'}, 404
+
+
+@app.post('/api/artist/login')
+def login():
+    
+    print("request")
+    data = request.json
+
+    artist = Artist.query.filter(Artist.username == data.get('username')).first()
+    print(data)
+    print(artist)
+    if artist and bcrypt.check_password_hash(artist.password_hash, data.get('password')):
+        session["user_id"] = artist.id
+        print("success")
+
+        return artist.to_dict(rules=['-password_hash']), 200
+    else:
+        return {"error": "Invalid username or password"}, 401
+
+
 
 # *****************ARTIST ROUTES****************************
 
@@ -70,8 +118,9 @@ def patch_artist(id):
         db.session.add(artist)
         db.session.commit()
         return artist.to_dict(), 202
-    except:
-        return {"error", "validation errors"}, 400
+    except Exception as e:
+        print(e)
+        return {"error": "Validation errors"}, 400
     
 @app.delete('/api/artists/<int:id>')
 def delete_artist(id):
@@ -98,7 +147,7 @@ def get_business_by_id(id):
     if not business:
         return {'error': 'Business not found'}, 404
 
-    return business.to_dict(), 200
+    return business.to_dict(rules=['-requests']), 200
 
 @app.post('/api/businesses')
 def post_new_business():
@@ -139,8 +188,9 @@ def patch_business(id):
         db.session.add(business)
         db.session.commit()
         return business.to_dict(), 202
-    except:
-        return {"error", "validation errors"}, 400
+    except Exception as e:
+        print(e)
+        return {"error": "Validation errors"}, 400
 
 
 @app.delete('/api/businesses/<int:id>')
@@ -163,7 +213,7 @@ def get_all_requests():
 
     requests = Request.query.all()
 
-    return [r.to_dict() for r in requests], 200
+    return [r.to_dict(rules=['-artist.bids', 'bids']) for r in requests], 200
 
 @app.get('/api/requests/<int:id>')
 def get_requests_by_business_id(id):
@@ -175,7 +225,7 @@ def get_requests_by_business_id(id):
     
     requests = Request.query.filter(Request.business_id == id).all()
 
-    return [r.to_dict() for r in requests], 200
+    return [r.to_dict(rules=['-business.requests', '-artist', '-bids']) for r in requests], 200
 
 @app.get('/api/requests/<int:id>')
 def get_requests_by_artist_id(id):
@@ -229,18 +279,20 @@ def post_new_request():
 def patch_request(id):
 
     request_item = db.session.get(Request, id)
+    data = request.json
+    print(request.json)
 
     if not request_item:
         return {"error": "Request not found"}, 404
     try:
-        data = request.json
         for key in data:
-            setattr(request, key, data[key])
+            setattr(request_item, key, data[key])
         db.session.add(request_item)
         db.session.commit()
-        return request_item.to_dict(), 202
-    except:
-        return {"error", "validation errors"}, 400
+        return request_item.to_dict(rules=['-artist','-bids','-business']), 202
+    except Exception as e:
+        print(e)
+        return {"error": "validation errors"}, 400
 
 
 @app.delete('/api/requests/<int:id>')
@@ -312,8 +364,9 @@ def patch_creative_work(id):
         db.session.add(creative_work)
         db.session.commit()
         return creative_work.to_dict(), 202
-    except:
-        return {"error", "validation errors"}, 400
+    except Exception as e:
+        print(e)
+        return {"error": "Validation errors"}, 400
     
 @app.delete('/api/creative_works/<int:id>')
 def delete_creative_work(id):
@@ -339,14 +392,15 @@ def get_all_bids():
 @app.get('/api/bids/<int:id>')
 def get_bids_by_request_id(id):
 
-    Request = db.session.get(Request, id)
+    request = db.session.get(Request, id)
 
     if not request:
         return {'error': 'Request not found'}, 404
     
     bids = Bid.query.filter(Bid.request_id == id).all()
 
-    return [b.to_dict() for b in bids], 200
+
+    return [b.to_dict(rules=[ '-artist.bids', '-request','-artist.requests']) for b in bids], 200
 
 @app.post('/api/bids')
 def post_new_bid():
@@ -385,8 +439,9 @@ def patch_bid(id):
             setattr(bid, key, data[key])
         db.session.add(bid)
         db.session.commit()
-        return bid.to_dict(), 202
-    except:
+        return bid.to_dict(rules=['-artist','-request']), 202
+    except Exception as e:
+        print(e)
         return {"error": "Validation errors"}, 400
 
 

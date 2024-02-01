@@ -2,7 +2,6 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
-import datetime
 
 metadata = MetaData(
     naming_convention={
@@ -22,9 +21,11 @@ class Artist(db.Model, SerializerMixin):
     serialize_rules = ["-requests.artist", '-creative_works.artist']
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String)
+    username = db.Column(db.String, unique=True)
+    email = db.Column(db.String, unique=True)
+    password_hash = db.Column(db.String)
     phone_number = db.Column(db.String)
-    type = db.Column(db.String, )
+    type = db.Column(db.String)
     # May have to change below to match file type, i.e jpeg, png
     profile_pic_url = db.Column(db.String)
     city= db.Column(db.String)
@@ -32,7 +33,7 @@ class Artist(db.Model, SerializerMixin):
     # password_hash = db.Column(db.String)
     requests = db.relationship("Request", back_populates="artist")
     creative_works = db.relationship('Creative_Work', back_populates="artist")
-
+    bids = db.relationship("Bid", back_populates="artist")
     # @validates("name")
     # def validate_name(self, key, name):
     #     print(f"key {key} name {name}")
@@ -56,14 +57,14 @@ class Creative_Work(db.Model, SerializerMixin):
 
 class Request(db.Model, SerializerMixin):
     __tablename__ = "request_table"
-    serialize_rules = ["-artist.requests", "-business.requests", "-bids.request"]
+    serialize_rules = ["-artist.requests", "-artist.bids", "-business.requests", "-bids.request",'-bids.artist']
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
     date_created = db.Column(db.String, nullable=False)
     compensation = db.Column(db.Integer)
     # open = db.Column(db.Integer)
 
-    artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"), nullable=True)
+    artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"))
     # artist_name = db.Column(db.String, db.ForeignKey("artist_table.name"))
 
     business_id = db.Column(db.Integer, db.ForeignKey("business_table.id"))
@@ -80,7 +81,9 @@ class Business(db.Model, SerializerMixin):
     serialize_rules = ["-requests.business"]
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String)
+    username = db.Column(db.String, unique=True)
+    email = db.Column(db.String, unique=True)
+    password_hash = db.Column(db.String)
     phone_number = db.Column(db.String)
     type = db.Column(db.String)
     # May have to change below to match file type, i.e jpeg, png
@@ -95,7 +98,7 @@ class Business(db.Model, SerializerMixin):
 
 class Bid(db.Model, SerializerMixin):
     __tablename__="bids_table"
-    serialize_rules = ["-request.bids"]
+    serialize_rules = ["-request.bids", "-artist.bids"]
 
     id = db.Column(db.Integer, primary_key=True)
     artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"), nullable=False)
@@ -103,5 +106,5 @@ class Bid(db.Model, SerializerMixin):
     accepted = db.Column(db.Boolean, default=False)
 
     request = db.relationship("Request", back_populates="bids")
-
+    artist = db.relationship("Artist", back_populates="bids")
 
