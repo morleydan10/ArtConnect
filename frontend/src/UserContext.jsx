@@ -20,12 +20,14 @@ export const UserProvider = ({ children }) => {
     // fetch business for testing purposes (business pages)
     useEffect(() => {
 
-        fetch('/api/businesses/5')
+        fetch('/api/businesses/3')
             .then((res) => res.json())
             .then((userData) => {
                 setUser(userData);
             })
         }, [])
+
+        console.log(user.id)
 
 
 

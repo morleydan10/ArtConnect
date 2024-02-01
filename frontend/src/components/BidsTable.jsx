@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../UserContext";
 
-function BidsTable ({ yourRequestId }) {
+function BidsTable ({ yourRequestId, handleUpdateAccept }) {
 
     const { user } = useUser()
 
@@ -23,6 +23,44 @@ function BidsTable ({ yourRequestId }) {
     }, [yourRequestId])
 
 
+
+    function handleClickAccept(e, bidId, bidArtistId){
+
+        e.preventDefault();
+
+        console.log(bidArtistId)
+
+        const updateYourRequest = {
+            artist_id: bidArtistId,
+        }
+
+
+
+        const updateBid = {
+            accepted: true
+        }
+
+        fetch(`/api/requests/${yourRequestId}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateYourRequest),
+        })
+        .then((res) => res.json())
+        .then(handleUpdateAccept)
+
+        
+        fetch(`/api/bids/${bidId}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateBid),
+        })  
+    };
+
+
     return(
         <div className="bids-table-div">
             <table>
@@ -32,6 +70,7 @@ function BidsTable ({ yourRequestId }) {
                         <th>Artist</th>
                         <th>Email</th>
                         <th>Phone Number</th>
+                        <th>Accept</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +83,12 @@ function BidsTable ({ yourRequestId }) {
                             <td>{bid.artist.name}</td>
                             <td>{bid.artist.email}</td>
                             <td>{bid.artist.phone_number}</td>
+                            <td>
+                                <button onClick={(e) => handleClickAccept(e, bid.id, bid.artist_id)
+                                }>
+                                    Accept
+                                </button>
+                            </td>
                         </tr>
                         );
                     })}

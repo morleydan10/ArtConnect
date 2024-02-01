@@ -9,7 +9,7 @@ function YourRequestsTable(){
 
     const [yourRequests, setYourRequests] = useState([])
     const [isPopupOpen, setIsPopupOpen] = useState(false)
-    const [yourRequestId, setYourRequestId] = useState(null)
+    
 
     useEffect(() => {
         fetch(`/api/requests/${user.id}`)
@@ -19,6 +19,16 @@ function YourRequestsTable(){
             setYourRequests(data)
         })
     }, [])
+
+    
+    // PATCH for when Bid is accepted
+    function handleUpdateRequest(updatedRequest) {
+        const updatedRequests = yourRequests.map((yourRequest) =>
+            yourRequest.id === updatedRequest.id ? updatedRequest : yourRequest
+        );
+    
+        setYourRequests(updatedRequests);
+    }
 
 
 
@@ -51,7 +61,7 @@ function YourRequestsTable(){
                             <>
                                 <button onClick={() => {
                                     setIsPopupOpen(true)}}>View Bids</button>
-                                <BidsPopup trigger={isPopupOpen} setTrigger={setIsPopupOpen} yourRequestId={yourRequest.id}/>
+                                <BidsPopup trigger={isPopupOpen} setTrigger={setIsPopupOpen} yourRequestId={yourRequest.id} handleUpdateRequest={handleUpdateRequest} />
                             </>
                         )}</td>
                     </tr>
