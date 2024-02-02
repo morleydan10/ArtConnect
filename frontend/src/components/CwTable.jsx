@@ -5,11 +5,11 @@ import { useUser } from "../UserContext";
 
 function CwTable() {
 
-    const {user, setUser} = useUser()
+    const { artistUser } = useUser()
     const [works, setWorks] = useState([])
 
     useEffect(() => {
-        fetch(`/api/creative_works/${user.id}`)
+        fetch(`/api/creative_works/${artistUser.id}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
@@ -43,7 +43,7 @@ function CwTable() {
                     </tr>
                     ))}
                 </tbody>
-    </table>
+        </table>
     </div>
         
     )

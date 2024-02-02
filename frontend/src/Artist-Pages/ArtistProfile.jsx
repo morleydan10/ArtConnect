@@ -7,7 +7,7 @@ import CwTable from "../components/CwTable";
 
 function ArtistProfile () {
 
-    const {user, setUser} = useUser()
+    const {artistUser} = useUser()
 
     // const [user, setUser] = useState('')
 
@@ -27,11 +27,11 @@ function ArtistProfile () {
             <Header />
             <div className="artist-profile-div">
                 <h1>My Profile</h1>
-                <h2 id='profile-name'>{user.name}</h2>
-                <img className='profile-pic'  alt='Profile Picture' src={user.profile_pic_url}></img>
-                <h3>{user.city}</h3>
-                <h3>{user.phone_number}</h3>
-                <h3>{user.email}</h3>
+                <h2 id='profile-name'>{artistUser.name}</h2>
+                <img className='profile-pic'  alt='Profile Picture' src={artistUser.profile_pic_url}></img>
+                <h3>{artistUser.city}</h3>
+                <h3>{artistUser.phone_number}</h3>
+                <h3>{artistUser.email}</h3>
                 {/* src={user.profile_pic_url} */}
             </div>
             <CwTable />
