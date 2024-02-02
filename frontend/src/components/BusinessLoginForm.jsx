@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 
-function LoginForm({ attemptLogin}) {
+function BusinessLoginForm({ attemptBusinessLogin }) {
 
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    function handleLoginSubmit(e) {
+    function handleBusinessLoginSubmit(e) {
         e.preventDefault();
 
-        attemptLogin({"username": username, "password": password})
+        attemptBusinessLogin({"username": username, "password": password})
         };
 
         const handleChangeUsername = e => setUsername(e.target.value)
@@ -19,7 +19,7 @@ function LoginForm({ attemptLogin}) {
 
     return(
         <form id='login-form' 
-        onSubmit={handleLoginSubmit}
+        onSubmit={handleBusinessLoginSubmit}
         >
             <label className='login-text'>
             Username:
@@ -46,4 +46,4 @@ function LoginForm({ attemptLogin}) {
     )
     };
 
-export default LoginForm;
+export default BusinessLoginForm;

@@ -3,8 +3,19 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState({})
+    const [artistUser, setArtistUser] = useState({})
+    const [businessUser, setBusinessUser] = useState({})
     const [requests, setRequests] = useState([]) 
+
+    function getDate() {
+        const today = new Date();
+        const month = today.getMonth() + 1;
+        const year = today.getFullYear();
+        const date = today.getDate();
+        return `${month}/${date}/${year}`;
+    }
+    
+    const [date_created, setDateCreated] = useState(getDate())
 
     
     // fetch artist for testing purposes (artist pages)
@@ -13,26 +24,26 @@ export const UserProvider = ({ children }) => {
     //     fetch('/api/artists/3')
     //         .then((res) => res.json())
     //         .then((userData) => {
-    //             setUser(userData);
+    //             setArtistUser(userData);
     //         })
     //     }, [])
 
     // fetch business for testing purposes (business pages)
-    useEffect(() => {
+    // useEffect(() => {
 
-        fetch('/api/businesses/3')
-            .then((res) => res.json())
-            .then((userData) => {
-                setUser(userData);
-            })
-        }, [])
+    //     fetch('/api/businesses/3')
+    //         .then((res) => res.json())
+    //         .then((userData) => {
+    //             setUser(userData);
+    //         })
+    //     }, [])
 
-        console.log(user.id)
+    //     console.log(user.id)
 
 
 
     return (
-        <UserContext.Provider value={{ user, setUser, requests, setRequests }}>
+        <UserContext.Provider value={{ artistUser, setArtistUser, businessUser, setBusinessUser, requests, setRequests, date_created }}>
         {children}
         </UserContext.Provider>
     );

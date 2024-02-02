@@ -4,22 +4,22 @@ import { useUser } from "../UserContext";
 
 function NewRequest({ postNewRequest }){
 
-    const {user, setUser} = useUser()
+    const {BusinessUser, setBusinessUser, date_created} = useUser()
 
     const [description, setDescription] = useState('')
     const [compensation, setCompensation] = useState('')
     
 
     
-    function getDate() {
-        const today = new Date();
-        const month = today.getMonth() + 1;
-        const year = today.getFullYear();
-        const date = today.getDate();
-        return `${month}/${date}/${year}`;
-    }
+    // function getDate() {
+    //     const today = new Date();
+    //     const month = today.getMonth() + 1;
+    //     const year = today.getFullYear();
+    //     const date = today.getDate();
+    //     return `${month}/${date}/${year}`;
+    // }
     
-    const [date_created, setDateCreated] = useState(getDate())
+    // const [date_created, setDateCreated] = useState(getDate())
 
     const handleChangeDescription = e => setDescription(e.target.value)
     const handleChangeCompensation = e => setCompensation(e.target.value)
@@ -43,7 +43,7 @@ function NewRequest({ postNewRequest }){
         <div className="new-request-form-div">
             <form className="new-request-form" onSubmit={handleNewRequestSubmission}>
                 <label>Business</label>
-                <p>{user.name}</p>
+                <p>{BusinessUser.name}</p>
                 <p>{date_created}</p>
                 <label>Description</label>
                 <input
