@@ -4,7 +4,7 @@ import { useUser } from "../UserContext";
 
 function NewRequest({ postNewRequest }){
 
-    const {BusinessUser, setBusinessUser, date_created} = useUser()
+    const {businessUser, date_created} = useUser()
 
     const [description, setDescription] = useState('')
     const [compensation, setCompensation] = useState('')
@@ -24,7 +24,7 @@ function NewRequest({ postNewRequest }){
     const handleChangeDescription = e => setDescription(e.target.value)
     const handleChangeCompensation = e => setCompensation(e.target.value)
     
-    const business_id = user.id
+    const business_id = businessUser.id
 
     const newRequest = {
         business_id,
@@ -43,7 +43,7 @@ function NewRequest({ postNewRequest }){
         <div className="new-request-form-div">
             <form className="new-request-form" onSubmit={handleNewRequestSubmission}>
                 <label>Business</label>
-                <p>{BusinessUser.name}</p>
+                <p>{businessUser.name}</p>
                 <p>{date_created}</p>
                 <label>Description</label>
                 <input

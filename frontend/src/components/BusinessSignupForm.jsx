@@ -9,6 +9,8 @@ function BusinessSignupForm({ attemptBusinessSignup }) {
     const [email, setEmail] = useState('');
     const [city, setCity] = useState('');
     const [phone_number, setPhone_Number] = useState('');
+    const [type, setType] = useState('')
+    const [selectedOption, setSelectedOption] = useState("");
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,6 +18,10 @@ function BusinessSignupForm({ attemptBusinessSignup }) {
     const handleChangeEmail = (e) => setEmail(e.target.value);
     const handleChangeCity = (e) => setCity(e.target.value);
     const handleChangePhoneNumber = (e) => setPhone_Number(e.target.value);
+    const handleChangeType = (e) => {
+        setType(e.target.value);
+        setSelectedOption(e.target.value);
+        };
     const handleChangeUsername = (e) => setUsername(e.target.value);
     const handleChangePassword = (e) => setPassword(e.target.value);
 
@@ -24,6 +30,7 @@ function BusinessSignupForm({ attemptBusinessSignup }) {
             email,
             city,
             phone_number,
+            type,
             username,
             password,
             date_joined: date_created
@@ -75,6 +82,15 @@ function BusinessSignupForm({ attemptBusinessSignup }) {
                     value={city}
                     onChange={handleChangeCity}
                 />
+
+                <label>Type</label>
+                <select id="mySelect" value={selectedOption} onChange={handleChangeType}>
+                    <option value="">Select...</option>
+                    <option value="Restaurant/Cafe">Restaurant</option>
+                    <option value="Private-Practice">Private Practice</option>
+                    <option value="Shop/Store">Shop/Store</option>
+                    <option value="Other">Other</option>
+                </select>
 
                 <label>Username</label>
                 <input

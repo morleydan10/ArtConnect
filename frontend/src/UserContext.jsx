@@ -17,6 +17,8 @@ export const UserProvider = ({ children }) => {
     
     const [date_created, setDateCreated] = useState(getDate())
 
+    const getToken = () => localStorage.getItem('authToken');
+
     
     // fetch artist for testing purposes (artist pages)
     // useEffect(() => {
@@ -43,7 +45,7 @@ export const UserProvider = ({ children }) => {
 
 
     return (
-        <UserContext.Provider value={{ artistUser, setArtistUser, businessUser, setBusinessUser, requests, setRequests, date_created }}>
+        <UserContext.Provider value={{ artistUser, setArtistUser, businessUser, setBusinessUser, requests, setRequests, date_created, getToken }}>
         {children}
         </UserContext.Provider>
     );

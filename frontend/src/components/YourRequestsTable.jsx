@@ -5,14 +5,14 @@ import BidsPopup from "./BidsPopup";
 
 function YourRequestsTable(){
 
-    const { user } = useUser()
+    const { businessUser } = useUser()
 
     const [yourRequests, setYourRequests] = useState([])
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     
 
     useEffect(() => {
-        fetch(`/api/requests/${user.id}`)
+        fetch(`/api/requests/${businessUser.id}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data)

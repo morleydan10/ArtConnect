@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 
 import App from "./App";
+import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 // ***********AUTHENTICATION*********
@@ -22,6 +23,11 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: "/",
+                element: <LandingPage />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "/Home",
                 element: <Home />,
                 errorElement: <ErrorPage />
             },

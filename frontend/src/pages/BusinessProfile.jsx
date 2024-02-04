@@ -8,7 +8,7 @@ import NewRequest from "../components/NewRequest";
 
 function BusinessProfile () {
 
-    const {user, requests, setRequests} = useUser()
+    const {businessUser, requests, setRequests} = useUser()
     const [showForm, setShowForm] = useState(false)
 
     // Post request for generate request
@@ -41,11 +41,11 @@ function BusinessProfile () {
             <Header />
             <div className="business-profile-div">
                 <h1>My Profile</h1>
-                <h2 id='business-profile-name'>{user.name}</h2>
-                <img className='profile-pic'  alt='Profile Picture' src={user.profile_pic_url}></img>
-                <h3>{user.city}</h3>
-                <h3>{user.phone_number}</h3>
-                <h3>{user.email}</h3>
+                <h2 id='business-profile-name'>{businessUser.name}</h2>
+                <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url}></img>
+                <h3>{businessUser.city}</h3>
+                <h3>{businessUser.phone_number}</h3>
+                <h3>{businessUser.email}</h3>
                 {/* src={user.profile_pic_url} */}
             </div>
             {/* requests table */}

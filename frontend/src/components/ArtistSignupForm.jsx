@@ -9,13 +9,21 @@ function ArtistSignupForm({ attemptArtistSignup }) {
     const [email, setEmail] = useState('');
     const [city, setCity] = useState('');
     const [phone_number, setPhone_Number] = useState('');
+    const [type, setType] = useState('')
+    const [selectedOption, setSelectedOption] = useState("");
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+
 
     const handleChangeName = (e) => setName(e.target.value);
     const handleChangeEmail = (e) => setEmail(e.target.value);
     const handleChangeCity = (e) => setCity(e.target.value);
     const handleChangePhoneNumber = (e) => setPhone_Number(e.target.value);
+    const handleChangeType = (e) => {
+        setType(e.target.value);
+        setSelectedOption(e.target.value);
+        };
     const handleChangeUsername = (e) => setUsername(e.target.value);
     const handleChangePassword = (e) => setPassword(e.target.value);
 
@@ -24,6 +32,7 @@ function ArtistSignupForm({ attemptArtistSignup }) {
         email,
         phone_number,
         city,
+        type,
         username,
         password,
         date_joined: date_created
@@ -37,7 +46,6 @@ function ArtistSignupForm({ attemptArtistSignup }) {
 
     return(
         <div className="artist-signup-form-div">
-            {/* ADD SELECT OPTION  */}
             <form 
                 className="signup-form"
                 onSubmit={handleSignupSubmit}
@@ -77,6 +85,17 @@ function ArtistSignupForm({ attemptArtistSignup }) {
                     value={city}
                     onChange={handleChangeCity}
                 />
+                
+                <label>Type</label>
+                <select id="mySelect" value={selectedOption} onChange={handleChangeType}>
+                    <option value="">Select...</option>
+                    <option value="Paint-Mural">Paint-Mural</option>
+                    <option value="Paint-Canvas">Paint-Canvas</option>
+                    <option value="Paint-Spray">Paint-Spray</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Videography">Videography</option>
+                    <option value="Misc">Misc</option>
+                </select>
 
                 <label>Username</label>
                 <input

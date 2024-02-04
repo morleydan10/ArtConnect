@@ -9,6 +9,10 @@ function CwTable() {
     const [works, setWorks] = useState([])
 
     useEffect(() => {
+
+        console.log(artistUser)
+
+
         fetch(`/api/creative_works/${artistUser.id}`)
         .then((res) => res.json())
         .then((data) => {

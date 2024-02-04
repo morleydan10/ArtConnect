@@ -6,7 +6,7 @@ import { json } from "react-router-dom";
 
 function RequestTable ({ postNewBid }) {
 
-    const {user, setUser} = useUser()
+    const {artistUser, businessUser} = useUser()
     const [requests, setRequests] = useState([])
     const [request_id, setRequestId]= useState()
     
@@ -22,7 +22,7 @@ function RequestTable ({ postNewBid }) {
         })
     }, [])
 
-    const artist_id = user.id
+    const artist_id = artistUser.id
 
     
     
