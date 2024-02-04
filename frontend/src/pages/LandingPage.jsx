@@ -27,7 +27,7 @@ function LandingPage() {
 // **************CHECK SESSION************************
 
 useEffect(() => {
-    fetch('/api/artist/check_artist_session')
+    fetch('/api/check_artist_session')
         .then((res) => {
             if (res.ok) {
                 return res.json();
@@ -42,7 +42,7 @@ useEffect(() => {
 }, [navigate, setArtistUser]);
 
 useEffect(() => {
-    fetch('/api/business/check_business_session')
+    fetch('/api/check_business_session')
         .then((res) => {
             if (res.ok) {
                 return res.json();
@@ -77,7 +77,7 @@ useEffect(() => {
         console.log(newBusiness)
         // need to make signup route on backend
 
-            fetch('/api/business/create_new_business', {
+            fetch('/api/create_new_business', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -107,7 +107,7 @@ useEffect(() => {
 
         console.log(userInfo)
 
-            fetch('/api/business/business_login', {
+            fetch('/api/business_login', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -150,7 +150,7 @@ useEffect(() => {
         console.log(newArtist)
     // need to make signup route on backend
 
-            fetch('/api/artist/create_new_artist', {
+            fetch('/api/create_new_artist', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -174,7 +174,7 @@ useEffect(() => {
 
         console.log(userInfo)
 
-            fetch('/api/artist/artist_login', {
+            fetch('/api/artist_login', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

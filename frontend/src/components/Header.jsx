@@ -19,7 +19,7 @@ function Header () {
     // ***********ARTIST LOGOUT**************
 
     function artistLogout() {
-        fetch('/api/artist/artist_logout', {
+        fetch('/api/artist_logout', {
             method: "DELETE"
         })
         .then((res) => {
@@ -39,7 +39,7 @@ function Header () {
 
     // ***********BUSINESS LOGOUT************
     function businessLogout() {
-        fetch('/api/business/business_logout', {
+        fetch('/api/business_logout', {
             method: "DELETE"
         })
         .then((res) => {

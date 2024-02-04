@@ -10,7 +10,7 @@ function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('/api/artist/check_artist_session')
+        fetch('/api/check_artist_session')
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -25,7 +25,7 @@ function Home() {
     }, [navigate, setArtistUser]);
     
     useEffect(() => {
-        fetch('/api/business/check_business_session')
+        fetch('/api/check_business_session')
             .then((res) => {
                 if (res.ok) {
                     return res.json();
