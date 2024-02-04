@@ -5,7 +5,7 @@ import { useUser } from "../UserContext";
 
 function Header () {
 
-    const { artistUser, setArtistUser, businessUser, setBusinessUser} = useUser()
+    const { artistUser, setArtistUser, businessUser, setBusinessUser, signedIn, setSignedIn} = useUser()
     const navigate = useNavigate()
 
     // useEffect(() => {
@@ -26,6 +26,7 @@ function Header () {
             console.log(res);
             if (res.ok) {
                 setArtistUser(null);
+                setSignedIn(false);
             } else {
                 throw new Error("Logout failed");
             }
@@ -46,6 +47,7 @@ function Header () {
             console.log(res);
             if (res.ok) {
                 setBusinessUser(null);
+                setSignedIn(false);
             } else {
                 throw new Error("Logout failed");
             }
@@ -55,37 +57,45 @@ function Header () {
         });
     }
 
-    return (
-        <div className="header-div">
-            <NavLink to= '/Home'>
-                <h1 id='app-title'>ArtConnect</h1>
-            </NavLink>
-            <div className="header-buttons-container">
-                {/* Conditional for either Artist or Buisness when signed in */}
-                { artistUser ? (
-                    <NavLink to='/ArtistProfile'>
-                        <button>Profile</button>
+    return signedIn ? (
+            <div className="header-div">
+                <div className="app-title-div">
+                    <NavLink to="/Home">
+                        <h1 className="app-title">ArtConnect</h1>
                     </NavLink>
-                    ):(
-                    <NavLink to='/BusinessProfile'>
-                        <button>Bus Profile</button>
+                </div>
+                <div className="header-buttons-container">
+                    {/* Conditional for either Artist or Business when signed in */}
+                    {artistUser ? (
+                        <NavLink to="/ArtistProfile">
+                            <button>Profile</button>
+                        </NavLink>
+                    ) : (
+                        <NavLink to="/BusinessProfile">
+                            <button>Bus Profile</button>
+                        </NavLink>
+                    )}
+                    <NavLink to="/OpenRequests">
+                        <button>Open Requests</button>
                     </NavLink>
-                )}
-                <NavLink to='/OpenRequests'>
-                    <button>Open Requests</button>
-                </NavLink>
-                {artistUser ? (
-                    <NavLink to='/'>
-                        <button onClick={artistLogout}>Logout</button>
-                    </NavLink>
-                ):(
-                    <NavLink to='/'>
-                        <button onClick={businessLogout}>Logout</button>
-                    </NavLink>
-                )}
+                    {artistUser ? (
+                        <NavLink to="/">
+                            <button onClick={artistLogout}>Logout</button>
+                        </NavLink>
+                    ) : (
+                        <NavLink to="/">
+                            <button onClick={businessLogout}>Logout</button>
+                        </NavLink>
+                    )}
+                </div>
             </div>
+    ) : (
+        <div className="app-title-div">
+            <NavLink to="/Home">
+                <h1 className="app-title">ArtConnect</h1>
+            </NavLink>
         </div>
-    )
+    );
 }
 
 export default Header;

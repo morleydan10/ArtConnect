@@ -14,7 +14,7 @@ import ArtistLoginForm from "../components/ArtistLoginForm";
 function LandingPage() {
     
     const navigate = useNavigate();
-    const { setArtistUser, setBusinessUser} = useUser()
+    const { setArtistUser, setBusinessUser, setSignedIn} = useUser()
 
     const [showBusinessLogin, setShowBusinessLogin] = useState(false)
     const [showBusinessSignup, setShowBusinessSignup]= useState(false)
@@ -94,6 +94,7 @@ useEffect(() => {
                 console.log(data);
 
                 setBusinessUser(data);
+                setSignedIn(true);
                 navigate('/Home');
             })
             // add navigate logic outside of useEffect
@@ -123,6 +124,7 @@ useEffect(() => {
             .then((data) => {
                 console.log(data);
                 setBusinessUser(data);
+                setSignedIn(true);
                 navigate('/Home');
             })
             // add navigate logic outside of useEffect
@@ -166,6 +168,7 @@ useEffect(() => {
             .then((data) => {
                 console.log(data);
                 setArtistUser(data);
+                setSignedIn(true);
                 navigate('/Home');
             })
             }
@@ -190,6 +193,7 @@ useEffect(() => {
             .then((data) => {
                 console.log(data);
                 setArtistUser(data);
+                setSignedIn(true);
                 navigate('/Home');
             })
             // add navigate logic outside of useEffect
