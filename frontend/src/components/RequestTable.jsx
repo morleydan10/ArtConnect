@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import emailjs from '@emailjs/browser';
 import { useTable } from "react-table";
 import { useUser } from "../UserContext";
 import { json } from "react-router-dom";
@@ -6,7 +7,7 @@ import { json } from "react-router-dom";
 
 function RequestTable ({ postNewBid }) {
 
-    const {artistUser, businessUser} = useUser()
+    const {artistUser, serviceID, templateRecId, publicKey,} = useUser()
     const [requests, setRequests] = useState([])
     const [request_id, setRequestId]= useState()
     
@@ -27,9 +28,15 @@ function RequestTable ({ postNewBid }) {
     
     
     
-    function handleClickApply(e, requestId){
+    function handleClickApply(e, requestId, requestBusinessName){
         e.preventDefault();
         setRequestId(requestId);
+        
+        emailjs.send(serviceID, templateRecId, {
+            business_name: requestBusinessName,
+            artist_name: artistUser.name,
+            }, 
+            publicKey);
 
         const newBid = {
             artist_id,
@@ -67,7 +74,7 @@ function RequestTable ({ postNewBid }) {
                         <td>{ request.artist  ? (request.artist.name):('')}</td>
                         <td>{ request.artist ? ('Closed'):(
                             <button onClick={(e) => {
-                                handleClickApply(e, request.id)}}>Apply</button>
+                                handleClickApply(e, request.id, request.business.name)}}>Apply</button>
                         )}</td>
                     </tr>
                     ))}

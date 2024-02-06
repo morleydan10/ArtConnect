@@ -5,7 +5,8 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [artistUser, setArtistUser] = useState({})
     const [businessUser, setBusinessUser] = useState({})
-    const [requests, setRequests] = useState([]) 
+    const [requests, setRequests] = useState([])
+    const [signedIn, setSignedIn] = useState(false)
 
     function getDate() {
         const today = new Date();
@@ -17,7 +18,10 @@ export const UserProvider = ({ children }) => {
     
     const [date_created, setDateCreated] = useState(getDate())
 
-    const getToken = () => localStorage.getItem('authToken');
+    const serviceID = 'service_4bdftxg'
+    const templateAcceptId = 'template_bid_accept'
+    const templateRecId= 'template_bid_reception'
+    const publicKey = 'j_O8DIiOmsbztu-5b'
 
     
     // fetch artist for testing purposes (artist pages)
@@ -45,7 +49,15 @@ export const UserProvider = ({ children }) => {
 
 
     return (
-        <UserContext.Provider value={{ artistUser, setArtistUser, businessUser, setBusinessUser, requests, setRequests, date_created, getToken }}>
+        <UserContext.Provider value={{ 
+            artistUser, setArtistUser, 
+            businessUser, setBusinessUser, 
+            requests, setRequests, 
+            date_created, 
+            signedIn, setSignedIn,
+            serviceID, 
+            templateAcceptId, templateRecId,
+            publicKey}}>
         {children}
         </UserContext.Provider>
     );
