@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import emailjs from '@emailjs/browser';
 import { NavLink } from "react-router-dom";
 import { useUser } from "../UserContext";
 
 function BidsTable ({ yourRequestId, handleUpdateAccept }) {
 
-    const { user } = useUser()
+    const {  businessUser, serviceID, templateAcceptId, publicKey } = useUser()
 
     const [bids, setBids] = useState([])
     
@@ -22,19 +23,27 @@ function BidsTable ({ yourRequestId, handleUpdateAccept }) {
         .catch((error) => console.error(error));
     }, [yourRequestId])
 
+    // function sendAcceptEmail(e){
+    //     e.preventDefault();
+        
+    // }
 
-
-    function handleClickAccept(e, bidId, bidArtistId){
+    function handleClickAccept(e, bidId, bidArtistId, bidArtistName){
 
         e.preventDefault();
 
-        console.log(bidArtistId)
+        console.log(bidArtistId);
+        console.log(businessUser.name)
 
+        emailjs.send(serviceID, templateAcceptId, {
+            business_name: businessUser.name,
+            artist_name: bidArtistName,
+            },
+            publicKey);
+        
         const updateYourRequest = {
             artist_id: bidArtistId,
         }
-
-
 
         const updateBid = {
             accepted: true
@@ -58,6 +67,7 @@ function BidsTable ({ yourRequestId, handleUpdateAccept }) {
             },
             body: JSON.stringify(updateBid),
         })  
+
     };
 
 
@@ -84,7 +94,7 @@ function BidsTable ({ yourRequestId, handleUpdateAccept }) {
                             <td>{bid.artist.email}</td>
                             <td>{bid.artist.phone_number}</td>
                             <td>
-                                <button onClick={(e) => handleClickAccept(e, bid.id, bid.artist_id)
+                                <button onClick={(e) => handleClickAccept(e, bid.id, bid.artist_id, bid.artist.name)
                                 }>
                                     Accept
                                 </button>

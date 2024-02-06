@@ -6,7 +6,7 @@ import Header from "../components/Header";
 
 function Home() {
 
-    const {artistUser, setArtistUser, businessUser, setBusinessUser, getToken} = useUser()
+    const {setArtistUser, setBusinessUser, signedIn} = useUser()
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -41,7 +41,7 @@ function Home() {
 
 
 
-    return(
+    return signedIn ? (
         <main>
             <Header />
 
@@ -49,6 +49,10 @@ function Home() {
 
 
         </main>
+    ):(
+        useEffect(() => 
+        navigate('/')
+        )
     )
 }
 
