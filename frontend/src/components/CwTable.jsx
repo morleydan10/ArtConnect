@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useTable } from 'react-table';
 import { useUser } from "../UserContext";
+import AddCWForm from "./AddCWForm";
 
 
 function CwTable() {
 
     const { artistUser } = useUser()
     const [works, setWorks] = useState([])
+    const [showAddForm, setShowAddForm] = useState(false)
 
     useEffect(() => {
 
@@ -17,16 +19,33 @@ function CwTable() {
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
-            setWorks(data)
+            setWorks(data);
         })
     }, [])
 
+    function postNewCW(newCW){
+
+        fetch('/api/creative_works', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newCW)
+        })
+        .then((res) => {
+            if (res.ok) {
+                res.json().then((newCW) => setWorks([...works, newCW]))
+            } else {
+                console.log("POST is not working")
+            }})
+    }
 
 
-    return(
-        <div className="portfolio-table">
+    return showAddForm ? (<AddCWForm postNewCW={postNewCW}/>):(
+        <div className="portfolio-table-div">
             <h2>My Portfolio</h2>
-            <table>
+            <button onClick={(e) => setShowAddForm(true)}>Add to Portfolio</button>
+            <table className="portfolio-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -41,15 +60,16 @@ function CwTable() {
                         <td>{work.id}</td>
                         <td>{work.description}</td>
                         <td>
-                            <img className="cw-image" src={work.file_url}/>
+                            {/* need conditional for file type */}
+                            <img className="cw-file" src={work.file} alt={work.description} />
                         </td>
                         {/* <td>{new Date(post.createdAt).toDateString()}</td> */}
                     </tr>
-                    ))}
+                    )
+                    )}
                 </tbody>
         </table>
     </div>
-        
     )
 }
 
