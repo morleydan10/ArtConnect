@@ -17,6 +17,10 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 } */
 
+.card{
+  width: 18rem;
+}
+
 .signup-form {
   display: flex;
   flex-direction: column;

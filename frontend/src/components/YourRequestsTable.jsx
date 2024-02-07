@@ -18,7 +18,7 @@ function YourRequestsTable(){
             console.log(data)
             setYourRequests(data)
         })
-    }, [])
+    },[])
 
     
     // PATCH for when Bid is accepted
@@ -28,6 +28,19 @@ function YourRequestsTable(){
         );
     
         setYourRequests(updatedRequests);
+    }
+
+    function handleDeleteYourRequest(e, yourRequest){
+        e.preventDefault(e);
+
+        fetch(`/api/requests/${yourRequest.id}`, {
+            method: "DELETE",
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            setYourRequests(yourRequests.filter((yr) => yr.id == yourRequest.id))
+        })
     }
 
 
@@ -45,6 +58,7 @@ function YourRequestsTable(){
                         <th>Compensation</th>
                         <th>Artist</th>
                         <th>Open/Closed</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,6 +78,9 @@ function YourRequestsTable(){
                                 <BidsPopup trigger={isPopupOpen} setTrigger={setIsPopupOpen} yourRequestId={yourRequest.id} handleUpdateRequest={handleUpdateRequest} />
                             </>
                         )}</td>
+                        <td>
+                            <button className="delete-button" onClick={(e) => handleDeleteYourRequest(e, yourRequest)}>🗑️</button>
+                        </td>
                     </tr>
                     ))}
                 </tbody>
