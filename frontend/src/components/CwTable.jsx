@@ -40,6 +40,19 @@ function CwTable() {
             }})
     }
 
+    function handleCWDelete(e, work){
+        e.preventDefault(e);
+
+        fetch(`/api/creative_works/${work.id}`, {
+            method: "DELETE",
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            setWorks(works.filter((w) => w.id == work.id))
+        })
+    }
+
 
     return showAddForm ? (<AddCWForm postNewCW={postNewCW}/>):(
         <div className="portfolio-table-div">
@@ -51,7 +64,7 @@ function CwTable() {
                         <th>ID</th>
                         <th>Description</th>
                         <th>Sample</th>
-                        {/* <th>Created At</th> */}
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,7 +76,9 @@ function CwTable() {
                             {/* need conditional for file type */}
                             <img className="cw-file" src={work.file} alt={work.description} />
                         </td>
-                        {/* <td>{new Date(post.createdAt).toDateString()}</td> */}
+                        <td>
+                            <button className='delete-icon' onClick={(e) => handleCWDelete(e, work)}>🗑️</button>
+                        </td>
                     </tr>
                     )
                     )}

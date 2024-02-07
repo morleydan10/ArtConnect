@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUser } from "../UserContext";
+import { Button, Container} from 'react-bootstrap';
 
 
 function Header () {
@@ -58,6 +59,7 @@ function Header () {
     }
 
     return signedIn ? (
+        <Container>
             <div className="header-div">
                 <div className="app-title-div">
                     <NavLink to="/Home">
@@ -84,17 +86,22 @@ function Header () {
                         </NavLink>
                     ) : (
                         <NavLink to="/">
-                            <button onClick={businessLogout}>Logout</button>
+                            <Button onClick={businessLogout}>Logout</Button>
                         </NavLink>
                     )}
                 </div>
             </div>
+        </Container>
+            
     ) : (
-        <div className="app-title-div">
+        <Container>
+            <div className="app-title-div">
             <NavLink to="/Home">
                 <h1 className="app-title">ArtConnect</h1>
             </NavLink>
         </div>
+        </Container>
+        
     );
 }
 
