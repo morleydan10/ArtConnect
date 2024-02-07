@@ -90,6 +90,12 @@ function Header () {
                         </NavLink>
                     )}
                 </div>
+                {/* <div className="searchbar-div">
+                    <form className="search-form">
+                        <input type="search" placeholder="Search users here"></input>
+                        <button type="submit">🔎</button>
+                    </form>
+                </div> */}
             </div>
         </Container>
             
