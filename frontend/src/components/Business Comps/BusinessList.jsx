@@ -4,7 +4,7 @@ import { useUser } from "../../UserContext";
 import { Button, Container, Row} from 'react-bootstrap';
 import BusinessCard from "./BusinessCard";
 
-function BusinessList({ handleViewBusinessProfile }){
+function BusinessList({ viewBusinessProfile }){
 
     const [businesses, setBusinesses] = useState([])
 
@@ -21,7 +21,7 @@ function BusinessList({ handleViewBusinessProfile }){
         <BusinessCard
             key= {business.id}
             business={business}
-            handleViewBusinessProfile={handleViewBusinessProfile}
+            viewBusinessProfile={viewBusinessProfile}
             />))
 
     return (
