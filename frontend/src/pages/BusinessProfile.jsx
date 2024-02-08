@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../UserContext";
-import YourRequestsTable from "../components/YourRequestsTable";
+import YourRequestsTable from "../components/Business Comps/YourRequestsTable";
 
 import Header from "../components/Header";
-import NewRequest from "../components/NewRequest";
+import NewRequest from "../components/Artist Comps/NewRequest";
 
 function BusinessProfile () {
 

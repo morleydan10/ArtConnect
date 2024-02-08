@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useUser } from "../UserContext";
-import BidsPopup from "./BidsPopup";
+import { useUser } from "../../UserContext";
+import BidsPopup from "../Artist Comps/BidsPopup";
 
-function ArtistRequestsTable(){
+function YourRequestsTable(){
 
-    const { artistUser } = useUser()
+    const { businessUser } = useUser()
 
-    const [artistRequests, setArtistRequests] = useState([])
+    const [yourRequests, setYourRequests] = useState([])
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     
 
     useEffect(() => {
-        fetch(`/api/requests/${artistUser.id}`)
+        fetch(`/api/requests/${businessUser.id}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
             setYourRequests(data)
         })
-    }, [])
+    },[])
 
     
     // PATCH for when Bid is accepted
@@ -28,6 +28,19 @@ function ArtistRequestsTable(){
         );
     
         setYourRequests(updatedRequests);
+    }
+
+    function handleDeleteYourRequest(e, yourRequest){
+        e.preventDefault(e);
+
+        fetch(`/api/requests/${yourRequest.id}`, {
+            method: "DELETE",
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            setYourRequests(yourRequests.filter((yr) => yr.id == yourRequest.id))
+        })
     }
 
 
@@ -45,16 +58,17 @@ function ArtistRequestsTable(){
                         <th>Compensation</th>
                         <th>Artist</th>
                         <th>Open/Closed</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {artistRequests.map((artistRequest) => (
-                    <tr key={artistRequest.id}>
-                        <td>{artistRequest.id}</td>
-                        <td>{artistRequest.business.name}</td>
-                        <td>{artistRequest.description}</td>
-                        <td>{artistRequest.date_created}</td>
-                        <td>{artistRequest.compensation}</td>
+                    {yourRequests.map((yourRequest) => (
+                    <tr key={yourRequest.id}>
+                        <td>{yourRequest.id}</td>
+                        <td>{yourRequest.business.name}</td>
+                        <td>{yourRequest.description}</td>
+                        <td>{yourRequest.date_created}</td>
+                        <td>{yourRequest.compensation}</td>
                         {/* To add Navlink to artist's profile, need to solve authentication issues */}
                         <td>{ yourRequest.artist  ? (yourRequest.artist.name) : ('')}</td>
                         <td>{ yourRequest.artist ? ('Closed') : (
@@ -64,6 +78,9 @@ function ArtistRequestsTable(){
                                 <BidsPopup trigger={isPopupOpen} setTrigger={setIsPopupOpen} yourRequestId={yourRequest.id} handleUpdateRequest={handleUpdateRequest} />
                             </>
                         )}</td>
+                        <td>
+                            <button className="delete-button" onClick={(e) => handleDeleteYourRequest(e, yourRequest)}>🗑️</button>
+                        </td>
                     </tr>
                     ))}
                 </tbody>
@@ -72,4 +89,4 @@ function ArtistRequestsTable(){
     )
 }
 
-export default ArtistRequestsTable;
+export default YourRequestsTable;

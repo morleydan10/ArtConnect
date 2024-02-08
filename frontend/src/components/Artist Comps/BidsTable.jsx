@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import emailjs from '@emailjs/browser';
 import { NavLink } from "react-router-dom";
-import { useUser } from "../UserContext";
+import { useUser } from "../../UserContext";
 
 function BidsTable ({ yourRequestId, handleUpdateAccept }) {
 

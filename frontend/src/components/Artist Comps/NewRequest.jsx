@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import BusinessProfile from "../pages/BusinessProfile";
-import { useUser } from "../UserContext";
+import BusinessProfile from "../../pages/BusinessProfile";
+import { useUser } from "../../UserContext";
 
 function NewRequest({ postNewRequest }){
 

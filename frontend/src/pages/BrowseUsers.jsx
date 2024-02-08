@@ -4,10 +4,10 @@ import { useUser } from "../UserContext";
 import { Button, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'react-bootstrap';
 
 import Header from "../components/Header";
-import ArtistList from "../components/ArtistList";
-import BusinessList from "../components/BusinessList";
+import ArtistList from "../components/Artist Comps/ArtistList";
+import BusinessList from "../components/Business Comps/BusinessList";
 
-function BrowseArtists(){
+function BrowseUsers(){
 
     const [viewArtists, setViewArtists] = useState(true)
 
@@ -34,4 +34,4 @@ function BrowseArtists(){
 
 }
 
-export default BrowseArtists;
+export default BrowseUsers;

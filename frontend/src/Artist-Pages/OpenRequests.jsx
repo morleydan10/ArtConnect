@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import RequestTable from "../components/RequestTable";
+import RequestTable from "../components/Business Comps/RequestTable";
 
 function OpenRequests() {
 

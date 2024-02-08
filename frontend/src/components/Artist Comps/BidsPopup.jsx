@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useUser } from "../UserContext";
+import { useUser } from "../../UserContext";
 
 import BidsTable from "./BidsTable";
 

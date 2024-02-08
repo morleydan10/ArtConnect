@@ -3,10 +3,10 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useUser } from "../UserContext";
 
 import Header from "../components/Header";
-import BusinessSignupForm from "../components/BusinessSignupForm";
-import BusinessLoginForm from "../components/BusinessLoginForm";
-import ArtistSignupForm from "../components/ArtistSignupForm";
-import ArtistLoginForm from "../components/ArtistLoginForm";
+import BusinessSignupForm from "../components/Business Comps/BusinessSignupForm";
+import BusinessLoginForm from "../components/Business Comps/BusinessLoginForm";
+import ArtistSignupForm from "../components/Artist Comps/ArtistSignupForm";
+import ArtistLoginForm from "../components/Artist Comps/ArtistLoginForm";
 
 
 
