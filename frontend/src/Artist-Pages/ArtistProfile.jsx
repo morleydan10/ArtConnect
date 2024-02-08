@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useUser } from "../UserContext";
 
 import Header from "../components/Header";
-import CwTable from "../components/CwTable";
+import CwTable from "../components/Artist Comps/CwTable";
 
 function ArtistProfile () {
 

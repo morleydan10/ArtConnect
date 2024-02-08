@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
-import { useUser } from "../UserContext";
+import { useUser } from "../../UserContext";
 import { Button, Card} from 'react-bootstrap';
 
 function ArtistCard ({ artist }) {

@@ -80,6 +80,9 @@ function Header () {
                     <NavLink to="/OpenRequests">
                         <button>Open Requests</button>
                     </NavLink>
+                    <NavLink to='/BrowseUsers'>
+                        <Button>View Users</Button>
+                    </NavLink>
                     {artistUser ? (
                         <NavLink to="/">
                             <button onClick={artistLogout}>Logout</button>

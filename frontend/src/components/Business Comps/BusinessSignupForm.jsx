@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useUser } from "../UserContext";
+import { useUser } from "../../UserContext";
 
 function BusinessSignupForm({ attemptBusinessSignup }) {
 

@@ -6,9 +6,7 @@ import App from "./App";
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
-// ***********AUTHENTICATION*********
-import Login from "./Authentication/Login";
-import Signup from "./Authentication/Signup";
+import BrowseUsers from "./pages/BrowseUsers";
 // *************ARTIST****************
 import ArtistProfile from "./Artist-Pages/ArtistProfile";
 import OpenRequests from "./Artist-Pages/OpenRequests";
@@ -31,15 +29,9 @@ const Routes = createBrowserRouter([
                 element: <Home />,
                 errorElement: <ErrorPage />
             },
-            // ***********AUTHENTICATION*********
             {
-                path: "/Login",
-                element: <Login />,
-                errorElement: <ErrorPage />
-            },
-            {
-                path: '/Signup',
-                element: <Signup />,
+                path: "/BrowseUsers",
+                element: <BrowseUsers />,
                 errorElement: <ErrorPage />
             },
             // ******ARTIST ROUTES**********
