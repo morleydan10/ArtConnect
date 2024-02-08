@@ -4,7 +4,7 @@ import { useUser } from "../../UserContext";
 import { Button, Row, Container} from 'react-bootstrap';
 import ArtistCard from "./ArtistCard";
 
-function ArtistList(){
+function ArtistList({ viewArtistProfile }){
 
     const [artists, setArtists] = useState([])
 
@@ -22,7 +22,12 @@ function ArtistList(){
         
     
 
-    const allArtists = artists.map(artist => <ArtistCard artist={artist}/>)
+    const allArtists = artists.map(artist => 
+        <ArtistCard
+            key={artist.id}
+            artist={artist}
+            viewArtistProfile={viewArtistProfile}
+        />)
 
     return (
         <Container className="artists-container">

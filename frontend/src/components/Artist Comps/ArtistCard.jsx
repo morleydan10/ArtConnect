@@ -3,12 +3,7 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useUser } from "../../UserContext";
 import { Button, Card} from 'react-bootstrap';
 
-function ArtistCard ({ artist }) {
-
-    const navigate = useNavigate()
-    
-    // need to figure out how to view profile
-    // const handleClickArtist = (e) => navigate('')
+function ArtistCard ({ artist, viewArtistProfile }) {
 
 
     return(
@@ -18,10 +13,10 @@ function ArtistCard ({ artist }) {
                     <Card.Title className="card-title">{artist.name}</Card.Title>
                     <Card.Subtitle className="card-subtitle">{artist.city}</Card.Subtitle>
                     {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-                    <Button href="#" className="btn btn-primary">View Profile</Button>
+                    <Button href="#" className="btn btn-primary" onClick={() => viewArtistProfile(artist)}>View Profile</Button>
                 </Card.Body>
         </Card>
     )
 }
 
-export default ArtistCard
+export default ArtistCard;

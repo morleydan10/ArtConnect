@@ -7,12 +7,14 @@ import Header from "../components/Header";
 import ArtistList from "../components/Artist Comps/ArtistList";
 import BusinessList from "../components/Business Comps/BusinessList";
 import ViewBusinessProfile from "../components/ViewBusinessProfile";
+import ViewArtistProfile from "../components/ViewArtistProfile";
 
 function BrowseUsers(){
 
     const [viewArtists, setViewArtists] = useState(true)
 
     const [openBusModal, setOpenBusModal] = useState(false)
+    const [openArtModal, setOpenArtModal] = useState(false)
     const [selectedArtist, setSelectedArtist] = useState(null)
     const [selectedBusiness, setSelectedBusiness] = useState(null)
 
@@ -29,6 +31,17 @@ function BrowseUsers(){
         setOpenBusModal(false)
     }
 
+    function viewArtistProfile(artist){
+        console.log('Clicked');
+        setSelectedArtist(artist);
+        setOpenArtModal(true);
+    }
+
+    function closeArtistProfile(){
+        setSelectedArtist(null);
+        setOpenArtModal(false)
+    }
+
 
     return (
         <main>
@@ -39,7 +52,17 @@ function BrowseUsers(){
                     <BreadcrumbItem onClick={handleViewBusinessesClick}>View Businesses</BreadcrumbItem>
                 </Breadcrumb>
                 {viewArtists ? (
-                    <ArtistList/>
+                    <>
+                    <ArtistList viewArtistProfile={viewArtistProfile}/>
+                    <ViewArtistProfile
+                        trigger={openArtModal}
+                        setTrigger={setOpenArtModal}
+                        artist={selectedArtist}
+                        openArtModal={openArtModal}
+                        closeArtistProfile={closeArtistProfile}
+                    />
+                    </>
+                    
                 ):( 
                 <>
                     <BusinessList viewBusinessProfile={viewBusinessProfile}/>

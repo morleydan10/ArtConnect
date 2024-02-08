@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from "../../UserContext";
 
-function ArtistSignupForm({ attemptArtistSignup }) {
+function ArtistSignupForm({ attemptArtistSignup, cancelArtistSignup }) {
 
     const {date_created} = useUser()
 
@@ -115,6 +115,7 @@ function ArtistSignupForm({ attemptArtistSignup }) {
                     onChange={handleChangePassword}
                 />
                 <button id='signup-submit-button' type='submit'>Submit</button>
+                <button className="cancel-button" onClick={cancelArtistSignup}>Cancel</button>
             </form>
         </div>
     )
