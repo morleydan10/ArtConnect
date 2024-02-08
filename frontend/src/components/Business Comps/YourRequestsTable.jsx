@@ -79,7 +79,9 @@ function YourRequestsTable(){
                             </>
                         )}</td>
                         <td>
-                            <button className="delete-button" onClick={(e) => handleDeleteYourRequest(e, yourRequest)}>🗑️</button>
+                            <button className="delete-button" onClick={(e) => handleDeleteYourRequest(e, yourRequest)}>
+                                
+                            </button>
                         </td>
                     </tr>
                     ))}
