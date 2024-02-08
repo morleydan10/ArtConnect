@@ -6,29 +6,48 @@ import { Button, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'react-bo
 import Header from "../components/Header";
 import ArtistList from "../components/Artist Comps/ArtistList";
 import BusinessList from "../components/Business Comps/BusinessList";
+import ViewBusinessProfile from "../components/ViewBusinessProfile";
 
 function BrowseUsers(){
 
     const [viewArtists, setViewArtists] = useState(true)
 
-    const handleViewArtistClick = (e) => setViewArtists(true)
-    const handleViewBusinessClick = (e) => setViewArtists(false)
+    const [openViewProf, setOpenViewProf] = useState(false)
+    const [selectedBusiness, setSelectedBusiness] = useState(null)
+
+    const handleViewArtistsClick = (e) => setViewArtists(true)
+    const handleViewBusinessesClick = (e) => setViewArtists(false)
+
+    function handleViewBusinessProfile(business){
+
+        setSelectedBusiness(business);
+        setOpenViewProf(true);
+    }
 
     return (
         <main>
             <Header/>
-            <Container className="lists-container">
+            <div className="lists-container">
                 <Breadcrumb>
-                    <BreadcrumbItem onClick={handleViewArtistClick}>View Artists</BreadcrumbItem>
-                    <BreadcrumbItem onClick={handleViewBusinessClick}>View Businesses</BreadcrumbItem>
+                    <BreadcrumbItem onClick={handleViewArtistsClick}>View Artists</BreadcrumbItem>
+                    <BreadcrumbItem onClick={handleViewBusinessesClick}>View Businesses</BreadcrumbItem>
                 </Breadcrumb>
                 {viewArtists ? (
                     <ArtistList/>
-                ):(
-                    <BusinessList/>
+                ):( 
+                <>
+                    <BusinessList handleViewBusinessProfile={handleViewBusinessProfile}/>
+                    <ViewBusinessProfile 
+                        trigger={openViewProf} 
+                        setTrigger={setOpenViewProf}
+                        setOpenViewProf={setOpenViewProf}
+                        business={selectedBusiness}
+                    />
+                </>
                 )
                 }
-            </Container>
+                
+            </div>
         </main>
     )
 

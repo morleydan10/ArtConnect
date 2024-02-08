@@ -4,7 +4,7 @@ import { useUser } from "../../UserContext";
 import { Button, Container, Row} from 'react-bootstrap';
 import BusinessCard from "./BusinessCard";
 
-function BusinessList(){
+function BusinessList({ handleViewBusinessProfile }){
 
     const [businesses, setBusinesses] = useState([])
 
@@ -17,14 +17,17 @@ function BusinessList(){
         })
     }, [])
 
-    const allBusinesses = businesses.map(business => <BusinessCard business={business}/>)
+    const allBusinesses = businesses.map((business) =>( 
+        <BusinessCard
+            key= {business.id}
+            business={business}
+            handleViewBusinessProfile={handleViewBusinessProfile}
+            />))
 
     return (
-        <Container className="businesses-container">
-            <Row>
+        <div className="businesses-container">
                 {allBusinesses}
-            </Row>
-        </Container>
+        </div>
     )
 }
 
