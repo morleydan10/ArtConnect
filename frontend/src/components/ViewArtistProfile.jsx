@@ -1,25 +1,26 @@
 import React, { useState, useEffect} from "react";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { Button, Card, Modal, Container} from 'react-bootstrap';
-import ArtistCard from "./Artist Comps/ArtistCard";
 
-function ViewArtistProfile(){
+function ViewArtistProfile(props){
 
-    return(
-        <Modal 
-            onShow={} 
-            onHide={}
-            dialogClassName="modal-90w"
-            aria-labelledby="example-custom-modal-styling-title"
-        >
-        <Modal.Header closeButton>
-            <Modal.Title id="example-custom-modal-styling-title">
-                {artist.name}
-            </Modal.Title>
-            </Modal.Header>
-            
-        </Modal>
+    const { artist } = props;
+    const { closeArtistProfile} = props;
+    const { openArtModal } = props;
 
+    return( props.trigger ? (
+        <div className="artist-profile-popup">
+            <div className="artist-profile-inner">
+                <button className="close-button" onClick={closeArtistProfile}>❌</button>
+                <h1 className='profile-name'>{artist.name}</h1>
+                <img className='profile-pic' alt='Profile Picture' src={artist.profile_pic_url}></img>
+                <h2>Contact Info:</h2>
+                <h3>{artist.city}</h3>
+                <h3>{artist.phone_number}</h3>
+                <h3>{artist.email}</h3>
+            </div>
+        </div>
+    ):('')
     )
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-function ArtistLoginForm({ attemptArtistLogin }) {
+function ArtistLoginForm({ attemptArtistLogin, cancelArtistLogin }) {
 
 
     const [username, setUsername] = useState('')
@@ -42,6 +42,7 @@ function ArtistLoginForm({ attemptArtistLogin }) {
                 onChange={handleChangePassword}
             />
             <button id='login-submit-button' type='submit'>Submit</button>
+            <button className="cancel-button" onClick={cancelArtistLogin}>Cancel</button>
         </form>
     )
     };

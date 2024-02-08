@@ -16,6 +16,9 @@ function LandingPage() {
     const navigate = useNavigate();
     const { setArtistUser, setBusinessUser, setSignedIn} = useUser()
 
+    const [logginIn, setLoggingIn] = useState(false)
+    const [signingUp, setSigningUp] = useState(false)
+
     const [showBusinessLogin, setShowBusinessLogin] = useState(false)
     const [showBusinessSignup, setShowBusinessSignup]= useState(false)
 
@@ -60,13 +63,27 @@ useEffect(() => {
 
     function handleClickToLoginBusiness(e){
         e.preventDefault();
-        setShowBusinessLogin(!showBusinessLogin)
+        setShowBusinessLogin(!showBusinessLogin);
+        setLoggingIn(true);
     };
+
+    function cancelBusinessLogin(e){
+        e.preventDefault();
+        setShowBusinessLogin(!showBusinessLogin);
+        setLoggingIn(false);
+    }
 
     function handleClickToSignupBusiness(e){
         e.preventDefault();
-        setShowBusinessSignup(!showBusinessSignup)
+        setShowBusinessSignup(!showBusinessSignup);
+        setSigningUp(true);
     };
+
+    function cancelBusinessSignup(e){
+        e.preventDefault();
+        setShowBusinessSignup(!showBusinessSignup);
+        setSigningUp(false);
+    }
 
 // **************BUSINESS AUTHENTICATION*********************
 // ********signup************
@@ -135,13 +152,27 @@ useEffect(() => {
 
     function handleClickToLoginArtist(e){
         e.preventDefault();
-        setShowArtistLogin(!showArtistLogin)
+        setShowArtistLogin(!showArtistLogin);
+        setLoggingIn(true);
     };
+
+    function cancelArtistLogin(e){
+        e.preventDefault();
+        setShowArtistLogin(!showArtistLogin);
+        setLoggingIn(false);
+    }
 
     function handleClickToSignupArtist(e){
         e.preventDefault();
-        setShowArtistSignup(!showArtistSignup)
+        setShowArtistSignup(!showArtistSignup);
+        setSigningUp(true);
     };
+
+    function cancelArtistSignup(e){
+        e.preventDefault();
+        setShowArtistSignup(!showArtistSignup);
+        setSigningUp(false);
+    }
 
 // *****************ARTIST AUTHENTICATION********************
 
@@ -206,28 +237,33 @@ useEffect(() => {
         <main>
             <Header />
             <h1>Welcome to ArtConnect</h1>
-            {showBusinessSignup ? (
-                <BusinessSignupForm attemptBusinessSignup={attemptBusinessSignup} />
+            {logginIn ? "":
+            (
+            showBusinessSignup ? (
+                <BusinessSignupForm cancelBusinessSignup={cancelBusinessSignup} attemptBusinessSignup={attemptBusinessSignup} />
             ) : showArtistSignup ? (
-                <ArtistSignupForm attemptArtistSignup={attemptArtistSignup} />
+                <ArtistSignupForm cancelArtistSignup={cancelArtistSignup} attemptArtistSignup={attemptArtistSignup} />
             ) : (
                 <div className="sign-up-div">
                 <h2>New to ArtConnect? Sign up here</h2>
                 <button onClick={handleClickToSignupBusiness}>Signup as a Business</button>
                 <button onClick={handleClickToSignupArtist}>Signup as an Artist</button>
                 </div>
+            )
             )}
 
-            {showBusinessLogin ? (
-                <BusinessLoginForm attemptBusinessLogin={attemptBusinessLogin} />
+            {signingUp ? "" :(
+            showBusinessLogin ? (
+                <BusinessLoginForm cancelBusinessLogin={cancelBusinessLogin} attemptBusinessLogin={attemptBusinessLogin} />
             ) : showArtistLogin ? (
-                <ArtistLoginForm attemptArtistLogin={attemptArtistLogin} />
+                <ArtistLoginForm cancelArtistLogin={cancelArtistLogin} attemptArtistLogin={attemptArtistLogin} />
             ) : (
                 <div className="login-div">
                 <h2>Have an account? Login Here</h2>
                 <button onClick={handleClickToLoginBusiness}>Business Login</button>
                 <button onClick={handleClickToLoginArtist}>Artist Login</button>
                 </div>
+            )
             )}
         </main>
         );

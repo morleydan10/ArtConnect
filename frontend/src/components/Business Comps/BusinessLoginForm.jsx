@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-function BusinessLoginForm({ attemptBusinessLogin }) {
+function BusinessLoginForm({ attemptBusinessLogin, cancelBusinessLogin }) {
 
 
     const [username, setUsername] = useState('')
@@ -42,6 +42,7 @@ function BusinessLoginForm({ attemptBusinessLogin }) {
                 onChange={handleChangePassword}
             />
             <button id='login-submit-button' type='submit'>Submit</button>
+            <button className="cancel-button" onClick={cancelBusinessLogin}>Cancel</button>
         </form>
     )
     };
