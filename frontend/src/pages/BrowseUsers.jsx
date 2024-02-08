@@ -12,17 +12,23 @@ function BrowseUsers(){
 
     const [viewArtists, setViewArtists] = useState(true)
 
-    const [openViewProf, setOpenViewProf] = useState(false)
+    const [openBusModal, setOpenBusModal] = useState(false)
+    const [selectedArtist, setSelectedArtist] = useState(null)
     const [selectedBusiness, setSelectedBusiness] = useState(null)
 
     const handleViewArtistsClick = (e) => setViewArtists(true)
     const handleViewBusinessesClick = (e) => setViewArtists(false)
 
-    function handleViewBusinessProfile(business){
-
+    function viewBusinessProfile(business){
         setSelectedBusiness(business);
-        setOpenViewProf(true);
+        setOpenBusModal(true);
     }
+
+    function closeBusinessProfile(){
+        setSelectedBusiness(null);
+        setOpenBusModal(false)
+    }
+
 
     return (
         <main>
@@ -36,12 +42,12 @@ function BrowseUsers(){
                     <ArtistList/>
                 ):( 
                 <>
-                    <BusinessList handleViewBusinessProfile={handleViewBusinessProfile}/>
+                    <BusinessList viewBusinessProfile={viewBusinessProfile}/>
                     <ViewBusinessProfile 
-                        trigger={openViewProf} 
-                        setTrigger={setOpenViewProf}
-                        setOpenViewProf={setOpenViewProf}
+                        trigger={openBusModal} 
+                        setTrigger={setOpenBusModal}
                         business={selectedBusiness}
+                        closeBusinessProfile={closeBusinessProfile}
                     />
                 </>
                 )

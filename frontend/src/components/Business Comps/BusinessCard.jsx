@@ -3,7 +3,7 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useUser } from "../../UserContext";
 
 
-function BusinessCard ({ business, handleViewBusinessProfile }) {
+function BusinessCard ({ business, viewBusinessProfile }) {
 
     
 
@@ -18,7 +18,7 @@ function BusinessCard ({ business, handleViewBusinessProfile }) {
         <div class="card-body">
             <h5 class="card-title">{business.name}</h5>
             <div class="container">
-                <button onClick={() => handleViewBusinessProfile(business)}>View Profile</button>
+                <button onClick={() => viewBusinessProfile(business)}>View Profile</button>
                 </div>
             </div>
         </div>
