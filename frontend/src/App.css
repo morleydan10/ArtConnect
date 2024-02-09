@@ -1,7 +1,17 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url('https://fonts.google.com/specimen/Raleway/download?format=woff2') format('woff2');
+}
+
 #root {
-  margin: 0 auto;
-  padding: 2rem;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   text-align: center;
+  justify-content: space-between;
 }
 
 /* .logo {
@@ -17,14 +27,79 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 } */
 
-.card{
-  width: 18rem;
+
+/* ********login forms********** */
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  /* margin: 0 auto;
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
 }
 
+.login-text{
+  font-weight: bold;
+}
+
+.username-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: baseline;
+  align-items: center;
+  gap: 30px;
+  padding: 10px;
+}
+
+.password-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: baseline;
+  align-items: center;
+  gap: 30px;
+  padding: 10px;
+}
+
+.submit-button-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  place-items: center;
+  align-items: baseline;
+  padding: 15px;
+  gap: 30px;
+}
+
+.form-input{
+  border-radius: .50rem;
+  border-color: #294157;
+}
+.form-input:hover{
+  border-color: #42ddda;
+}
+.form-input:focus {
+  border-color: #42ddda;
+  outline: none; /* Remove the default outline on focus if you don't want it */
+}
+
+
+
+
+
+/* ************signup css*********** */
 .signup-form {
   display: flex;
   flex-direction: column;
 }
+
 .new-request-form {
   display: flex;
   flex-direction: column;
@@ -38,10 +113,48 @@
 
 /* ******************** HEADER****************** */
 
-.header-div{
+.navbar-div {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+  -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+  position: fixed;
+  background-color: white;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.welcome-text{
+  font-size: 3.2em;
+  font-weight: 1.5em;
+}
+
+
+.header-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.app-title-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 0px 30px;
+}
+
+@media (max-width: 768px) {
+  .header-div {
+    flex-direction: column;
+  }
+
+  .header-buttons-container {
+    flex-direction: column;
+  }
 }
 
 
@@ -103,6 +216,7 @@
   flex-basis: calc(33.33% - 10px); /* Adjust the percentage and margin as needed */
   margin-bottom: 20px; /* Add margin between cards */
   border-radius: 5px;
+  width: 18rem;
 }
 
 /* Responsive styling */
