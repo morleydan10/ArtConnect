@@ -18,31 +18,38 @@ function ArtistLoginForm({ attemptArtistLogin, cancelArtistLogin }) {
     
 
     return(
-        <form id='login-form' 
+        <form className='login-form' 
         onSubmit={handleArtistLoginSubmit}
         >
-            <label className='login-text'>
-            Username:
-            </label>
-            <input
-                type='text'
-                placeholder="Enter your username"
-                className='login-input'
-                value={username}
-                onChange={handleChangeUsername}
-            />
-            <label className='login-text'>
-            Password:
-            </label>
-            <input
-                type='password'
-                placeholder="Enter your password"
-                className='login-input'
-                value={password}
-                onChange={handleChangePassword}
-            />
-            <button id='login-submit-button' type='submit'>Submit</button>
-            <button className="cancel-button" onClick={cancelArtistLogin}>Cancel</button>
+            <div className="username-div">
+                <label className='login-text'>
+                Username:
+                </label>
+                <input
+                    type='text'
+                    placeholder="Enter your username"
+                    className='form-input'
+                    value={username}
+                    onChange={handleChangeUsername}
+                />
+            </div>
+            <div className="password-div">
+                <label className='login-text'>
+                Password:
+                </label>
+                <input
+                    type='password'
+                    placeholder="Enter your password"
+                    className='form-input'
+                    value={password}
+                    onChange={handleChangePassword}
+                />
+            </div>
+            <div className="submit-button-div">
+                <button id='login-submit-button' type='submit'>Submit</button>
+                <br/>
+                <button className="cancel-button" onClick={cancelArtistLogin}>Cancel</button>
+            </div>
         </form>
     )
     };

@@ -236,7 +236,8 @@ useEffect(() => {
     return (
         <main>
             <Header />
-            <h1>Welcome to ArtConnect</h1>
+            <h1 className='welcome-text'>Welcome</h1>
+            <br/>
             {logginIn ? "":
             (
             showBusinessSignup ? (
@@ -259,6 +260,7 @@ useEffect(() => {
                 <ArtistLoginForm cancelArtistLogin={cancelArtistLogin} attemptArtistLogin={attemptArtistLogin} />
             ) : (
                 <div className="login-div">
+                <br/>
                 <h2>Have an account? Login Here</h2>
                 <button onClick={handleClickToLoginBusiness}>Business Login</button>
                 <button onClick={handleClickToLoginArtist}>Artist Login</button>

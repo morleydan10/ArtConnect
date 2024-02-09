@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../../UserContext";
 
+
 function BusinessSignupForm({ attemptBusinessSignup, cancelBusinessSignup }) {
 
     const {date_created} = useUser()
