@@ -3,24 +3,30 @@ import { NavLink } from "react-router-dom";
 import { useUser } from "../UserContext";
 
 import Header from "../components/Header";
-import CwTable from "../components/Artist Comps/CwTable";
+import CWList from "../components/Artist Comps/CWList";
+import AddCWForm from "../components/Artist Comps/AddCWForm";
 
 function ArtistProfile () {
 
     const {artistUser} = useUser()
+    const [showAddForm, setShowAddForm] = useState(false)
 
-    // const [user, setUser] = useState('')
+    function postNewCW(newCW){
 
-    // useEffect(() => {
-    //     fetch(`http://127.0.0.1:5555/api/creative_works/${id}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         setUser(data)
-    //     })
-    // }, [])
-
-    
+        fetch('/api/creative_works', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newCW)
+        })
+        .then((res) => {
+            if (res.ok) {
+                res.json().then((newCW) => setWorks([...works, newCW]))
+            } else {
+                console.log("POST is not working")
+            }})
+    }
 
     return (
         <main>
@@ -28,13 +34,19 @@ function ArtistProfile () {
             <div className="artist-profile-div">
                 <h1>My Profile</h1>
                 <h2 id='profile-name'>{artistUser.name}</h2>
-                <img className='profile-pic'  alt='Profile Picture' src={artistUser.profile_pic_url}></img>
+                <img className='profile-pic'  alt='Profile Picture' src={artistUser.profile_pic_url}/>
                 <h3>{artistUser.city}</h3>
                 <h3>{artistUser.phone_number}</h3>
                 <h3>{artistUser.email}</h3>
                 {/* src={user.profile_pic_url} */}
             </div>
-            <CwTable />
+            <h2 className="portfolio-header">Your Portfolio</h2>
+            <button onClick={(e) => setShowAddForm(true)}>Add to Portfolio</button>
+            {showAddForm ? (
+            <AddCWForm postNewCW={postNewCW}/>
+            ):(
+            <CWList />
+            )}
         </main>
     )
 }
