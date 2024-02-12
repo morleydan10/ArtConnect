@@ -47,7 +47,7 @@ function YourRequestsTable(){
 
     return(
         <div className="your-requests-table">
-            <h2> Your Requests</h2>
+            <h2 className="portfolio-header"> Your Requests</h2>
             <table>
                 <thead>
                     <tr>

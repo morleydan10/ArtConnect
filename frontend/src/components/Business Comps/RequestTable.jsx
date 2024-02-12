@@ -49,7 +49,7 @@ function RequestTable ({ postNewBid }) {
 
     return (
         <div className="requests-table-div">
-            <h2>Requests</h2>
+            <h2 className="requests-table-header">Requests</h2>
             <table>
                 <thead>
                     <tr>
