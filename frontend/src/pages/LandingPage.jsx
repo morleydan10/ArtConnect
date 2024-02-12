@@ -258,7 +258,7 @@ useEffect(() => {
                 <ArtistSignupForm cancelArtistSignup={cancelArtistSignup} attemptArtistSignup={attemptArtistSignup} />
             ) : (
                 <div className="sign-up-div">
-                <h2>New to ArtConnect? Sign up here</h2>
+                <h2>New to ArtConnect? Sign up for free</h2>
                     <div className="lp-buttons-div">
                         <button onClick={handleClickToSignupBusiness}>Signup as a Business</button>
                         <button onClick={handleClickToSignupArtist}>Signup as an Artist</button>

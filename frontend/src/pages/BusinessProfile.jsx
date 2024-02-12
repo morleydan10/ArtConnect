@@ -39,14 +39,24 @@ function BusinessProfile () {
     return (
         <main>
             <Header />
-            <div className="business-profile-div">
-                <h1>My Profile</h1>
-                <h2 id='business-profile-name'>{businessUser.name}</h2>
-                <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url}></img>
-                <h3>{businessUser.city}</h3>
-                <h3>{businessUser.phone_number}</h3>
-                <h3>{businessUser.email}</h3>
-                {/* src={user.profile_pic_url} */}
+            <div className="profile-div">
+                <h1 className="profile-header">Your Profile</h1>
+                <div className="profile-body">
+                    <div className='profile-name-image-div'>
+                        <div className="profile-pic-div">
+                            <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url ? businessUser.profile_picture_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
+                        </div>
+                        <h2 className='profile-name'>{businessUser.name}</h2>
+                        <h3>Date Joined: {businessUser.date_joined}</h3>
+                    </div>
+                    <div className="contact-info-div">
+                    <h2 className="contact-info-header">Contact Information</h2>
+                        <h3>{businessUser.city}</h3>
+                        <h3>{businessUser.type}</h3>
+                        <h3>{businessUser.phone_number}</h3>
+                        <h3>{businessUser.email}</h3>
+                    </div>
+                </div>
             </div>
             {/* requests table */}
             <button onClick={handleShowForm}>{ showForm ? ('Cancel') : ('Create New Request')}</button>

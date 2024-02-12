@@ -43,7 +43,7 @@ function CWList(){
 
     return(
         <div className="cws-container">
-            {works.length > 0 ? allCreativeWorks: (<p>'You have nothing in your porfolio at this time'</p>)}
+            {works.length > 0 ? allCreativeWorks: (<p>You have nothing in your porfolio at this time</p>)}
         </div>
     )
 }

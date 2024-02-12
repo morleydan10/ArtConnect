@@ -31,22 +31,35 @@ function ArtistProfile () {
     return (
         <main>
             <Header />
-            <div className="artist-profile-div">
-                <h1>My Profile</h1>
-                <h2 id='profile-name'>{artistUser.name}</h2>
-                <img className='profile-pic'  alt='Profile Picture' src={artistUser.profile_pic_url}/>
-                <h3>{artistUser.city}</h3>
-                <h3>{artistUser.phone_number}</h3>
-                <h3>{artistUser.email}</h3>
-                {/* src={user.profile_pic_url} */}
+            <div className="profile-div">
+                <h1 className="profile-header">Your Profile</h1>
+                <div className="profile-body">
+                    <div className='profile-name-image-div'>
+                        <div className="profile-pic-div">
+                            <img className='profile-pic' alt='Profile Picture' src={artistUser.profile_pic_url ? (artistUser.profile_pic_url):('https://m.media-amazon.com/images/I/81fd1B3HUWL.jpg')}/>
+                        </div>
+                        <h2 className='profile-name'>{artistUser.name}</h2>
+                        <h3>Date Joined: {artistUser.date_joined}</h3>
+                    </div>
+                    <div className="contact-info-div">
+                        <h2 className="contact-info-header">Contact Information</h2>
+                        <h3>{artistUser.city}</h3>
+                        <h3>{artistUser.type}</h3>
+                        <h3>{artistUser.phone_number}</h3>
+                        <h3>{artistUser.email}</h3>
+                    </div> 
+                    {/* src={user.profile_pic_url} */}
+                </div>
             </div>
-            <h2 className="portfolio-header">Your Portfolio</h2>
-            <button onClick={(e) => setShowAddForm(true)}>Add to Portfolio</button>
-            {showAddForm ? (
-            <AddCWForm postNewCW={postNewCW}/>
-            ):(
-            <CWList />
-            )}
+            <div className="your-portfolio-div">
+                <h2 className="portfolio-header">Your Portfolio</h2>
+                <button onClick={(e) => setShowAddForm(true)}>Add to Portfolio</button>
+                {showAddForm ? (
+                <AddCWForm postNewCW={postNewCW}/>
+                ):(
+                <CWList />
+                )}
+            </div>
         </main>
     )
 }

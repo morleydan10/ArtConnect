@@ -28,9 +28,7 @@ function OpenRequests() {
     return (
         <main>
             <Header />
-            <div className="request-table-div">
-                <RequestTable postNewBid={postNewBid} />
-            </div>
+            <RequestTable postNewBid={postNewBid} />
         </main>
     )
 }
