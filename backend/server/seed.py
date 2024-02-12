@@ -1,7 +1,7 @@
 from app import app
 from models import Artist, Request, Business, Creative_Work, Bid, db
 # import json
-# from flask_bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt
 from random import choice
 from faker import Faker
 
@@ -95,7 +95,7 @@ if __name__ == "__main__":
             cw = Creative_Work(
                 description=fake.sentence(),
                 artist_id=choice(artist_list).id,
-                file_url=choice(file_list)
+                file=choice(file_list)
             )
             creative_work_list.append(cw)
         db.session.add_all(creative_work_list)
