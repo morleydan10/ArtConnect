@@ -112,6 +112,9 @@ useEffect(() => {
 
                 setBusinessUser(data);
                 setSignedIn(true);
+                setTimeout(() => {
+                    alert(`Welcome!`);
+                }, 600);
                 navigate('/Home');
             })
             // add navigate logic outside of useEffect
@@ -142,6 +145,9 @@ useEffect(() => {
                 console.log(data);
                 setBusinessUser(data);
                 setSignedIn(true);
+                setTimeout(() => {
+                    alert(`Login Successful`);
+                }, 600);
                 navigate('/Home');
             })
             // add navigate logic outside of useEffect
@@ -200,6 +206,9 @@ useEffect(() => {
                 console.log(data);
                 setArtistUser(data);
                 setSignedIn(true);
+                setTimeout(() => {
+                    alert(`Welcome!`);
+                }, 600);
                 navigate('/Home');
             })
             }
@@ -225,6 +234,9 @@ useEffect(() => {
                 console.log(data);
                 setArtistUser(data);
                 setSignedIn(true);
+                setTimeout(() => {
+                    alert(`Login Successful`);
+                }, 600);
                 navigate('/Home');
             })
             // add navigate logic outside of useEffect
@@ -247,8 +259,10 @@ useEffect(() => {
             ) : (
                 <div className="sign-up-div">
                 <h2>New to ArtConnect? Sign up here</h2>
-                <button onClick={handleClickToSignupBusiness}>Signup as a Business</button>
-                <button onClick={handleClickToSignupArtist}>Signup as an Artist</button>
+                    <div className="lp-buttons-div">
+                        <button onClick={handleClickToSignupBusiness}>Signup as a Business</button>
+                        <button onClick={handleClickToSignupArtist}>Signup as an Artist</button>
+                    </div>
                 </div>
             )
             )}
@@ -262,8 +276,10 @@ useEffect(() => {
                 <div className="login-div">
                 <br/>
                 <h2>Have an account? Login Here</h2>
-                <button onClick={handleClickToLoginBusiness}>Business Login</button>
-                <button onClick={handleClickToLoginArtist}>Artist Login</button>
+                    <div className="lp-buttons-div">
+                        <button onClick={handleClickToLoginBusiness}>Business Login</button>
+                        <button onClick={handleClickToLoginArtist}>Artist Login</button>
+                    </div>
                 </div>
             )
             )}

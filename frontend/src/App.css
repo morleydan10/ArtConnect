@@ -30,6 +30,18 @@
 
 /* ********login forms********** */
 
+.login-div{
+  display: flex;
+  flex-direction: column;
+}
+.lp-buttons-div{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+}
+
 .login-form{
   display: flex;
   flex-direction: column;
@@ -80,35 +92,53 @@
 
 .form-input{
   border-radius: .50rem;
+  border-width: .20em;
   border-color: #294157;
+  text-align:center ;
 }
 .form-input:hover{
   border-color: #42ddda;
 }
 .form-input:focus {
   border-color: #42ddda;
-  outline: none; /* Remove the default outline on focus if you don't want it */
+  outline: none;
 }
-
-
-
 
 
 /* ************signup css*********** */
+
+.signup-div{
+  display: flex;
+  flex-direction: column;
+}
+
 .signup-form {
   display: flex;
   flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 5px;
 }
 
-.new-request-form {
+.info-div{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 5px;
 }
 
-.profile-pic {
-  max-width: 300px;
-  max-height: 300px;
-  border-radius: 50%;
+.type-select {
+  border-radius: .50rem;
+  border-width: .20em;
+  border-color: #294157;
+}
+
+.type-select:hover{
+  border-color: #42ddda;
+}
+.type-select:focus{
+  border-color: #42ddda;
 }
 
 /* ******************** HEADER****************** */
@@ -130,6 +160,9 @@
 .welcome-text{
   font-size: 3.2em;
   font-weight: 1.5em;
+  font-size: 3.0em;
+  font-weight: 400;
+  color: #42ddda;
 }
 
 
@@ -145,6 +178,14 @@
   align-items: center;
   flex: 0 0 auto;
   padding: 0px 30px;
+  
+}
+
+.app-title{
+  font-size: 3.5em;
+  will-change: filter;
+  transition: filter 300ms;
+  
 }
 
 @media (max-width: 768px) {
@@ -158,15 +199,6 @@
 }
 
 
-.cw-image{
-  max-width: 200px;
-  max-height: 200px;
-  border-radius: 15px;
-}
-
-.new-request-form-div{
-  border: black;
-}
 
 /* ***************CW TABLE************ */
 
@@ -188,8 +220,28 @@
   border-radius: 12px;
   padding: 5px;
 }
+.cw-image{
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 15px;
+}
 
 /* *************business cards**************** */
+
+.new-request-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-request-form-div{
+  border: black;
+}
+
+.profile-pic {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 50%;
+}
 
 .lists-container{
   width: 100%;

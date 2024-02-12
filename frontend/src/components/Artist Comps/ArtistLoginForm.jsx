@@ -23,7 +23,7 @@ function ArtistLoginForm({ attemptArtistLogin, cancelArtistLogin }) {
         >
             <div className="username-div">
                 <label className='login-text'>
-                Username:
+                Username
                 </label>
                 <input
                     type='text'
@@ -35,7 +35,7 @@ function ArtistLoginForm({ attemptArtistLogin, cancelArtistLogin }) {
             </div>
             <div className="password-div">
                 <label className='login-text'>
-                Password:
+                Password
                 </label>
                 <input
                     type='password'
