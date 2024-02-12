@@ -30,11 +30,9 @@ function ArtistList({ viewArtistProfile }){
         />)
 
     return (
-        <Container className="artists-container">
-            <Row>
-                {allArtists}
-            </Row>
-        </Container>
+        <div className="artists-container">
+            {allArtists}
+        </div>
 
     )
 }
