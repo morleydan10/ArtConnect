@@ -7,12 +7,14 @@ function ArtistCard ({ artist, viewArtistProfile }) {
 
     return(
         <div className="card">
-                <img src={artist.profile_pic_url} className="card-img" alt="Artist Picture"/>
+                <div className='card-img-div'>
+                    <img src={artist.profile_pic_url} className="card-img" alt="Artist Picture"/>
+                </div>
                 <div className="card-body">
-                    <h3 className="card-title">{artist.name}</h3>
+                    <h2 className="card-title">{artist.name}</h2>
                     <h4 className="card-subtitle">{artist.city}</h4>
-                    {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-                    <button onClick={() => viewArtistProfile(artist)}>View Profile</button>
+                    <h4 className="card-subtitle">{artist.type}</h4>
+                    <button className="view-button" onClick={() => viewArtistProfile(artist)}>View Profile</button>
                 </div>
         </div>
     )
