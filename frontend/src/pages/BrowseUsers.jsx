@@ -46,11 +46,12 @@ function BrowseUsers(){
     return (
         <main>
             <Header/>
-            <div className="lists-container">
-                <Breadcrumb>
-                    <BreadcrumbItem onClick={handleViewArtistsClick}>View Artists</BreadcrumbItem>
-                    <BreadcrumbItem onClick={handleViewBusinessesClick}>View Businesses</BreadcrumbItem>
-                </Breadcrumb>
+                <div className="view-tabs-div">
+                    <a className="tabs-text" onClick={handleViewArtistsClick}>View Artists</a>
+                    <p className="tabs-text">/</p>
+                    <a className="tabs-text" onClick={handleViewBusinessesClick}>View Businesses</a>
+                </div>
+                <div className="lists-container">
                 {viewArtists ? (
                     <>
                     <ArtistList viewArtistProfile={viewArtistProfile}/>
