@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useUser } from "../UserContext";
-import { Button, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'react-bootstrap';
 
 import Header from "../components/Header";
 import ArtistList from "../components/Artist Comps/ArtistList";
@@ -11,10 +10,10 @@ import ViewArtistProfile from "../components/ViewArtistProfile";
 
 function BrowseUsers(){
 
+    const navigate = useNavigate();
+
     const [viewArtists, setViewArtists] = useState(true)
 
-    const [openBusModal, setOpenBusModal] = useState(false)
-    const [openArtModal, setOpenArtModal] = useState(false)
     const [selectedArtist, setSelectedArtist] = useState(null)
     const [selectedBusiness, setSelectedBusiness] = useState(null)
 
@@ -23,24 +22,16 @@ function BrowseUsers(){
 
     function viewBusinessProfile(business){
         setSelectedBusiness(business);
-        setOpenBusModal(true);
+        navigate(`/ViewBusinessProfile/${business.id}}`)
     }
 
-    function closeBusinessProfile(){
-        setSelectedBusiness(null);
-        setOpenBusModal(false)
-    }
 
     function viewArtistProfile(artist){
         console.log('Clicked');
         setSelectedArtist(artist);
-        setOpenArtModal(true);
+        navigate(`/ViewArtistProfile/${artist.id}}`)
     }
 
-    function closeArtistProfile(){
-        setSelectedArtist(null);
-        setOpenArtModal(false)
-    }
 
 
     return (
@@ -53,27 +44,9 @@ function BrowseUsers(){
                 </div>
                 <div className="lists-container">
                 {viewArtists ? (
-                    <>
                     <ArtistList viewArtistProfile={viewArtistProfile}/>
-                    <ViewArtistProfile
-                        trigger={openArtModal}
-                        setTrigger={setOpenArtModal}
-                        artist={selectedArtist}
-                        openArtModal={openArtModal}
-                        closeArtistProfile={closeArtistProfile}
-                    />
-                    </>
-                    
-                ):( 
-                <>
+                ):(
                     <BusinessList viewBusinessProfile={viewBusinessProfile}/>
-                    <ViewBusinessProfile 
-                        trigger={openBusModal} 
-                        setTrigger={setOpenBusModal}
-                        business={selectedBusiness}
-                        closeBusinessProfile={closeBusinessProfile}
-                    />
-                </>
                 )
                 }
                 

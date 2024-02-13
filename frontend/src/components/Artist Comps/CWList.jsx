@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useTable } from 'react-table';
 import { useUser } from "../../UserContext";
 import CWCard from "./CWCard";
 
