@@ -18,7 +18,7 @@ db = SQLAlchemy(metadata=metadata)
 
 class Artist(db.Model, SerializerMixin):
     __tablename__ = "artist_table"
-    serialize_rules = ["-requests.artist", '-creative_works.artist', '-bids.artist', '-password_hash']
+    serialize_rules = ["-requests.artist", '-creative_works.artist', '-bids.artist', '-password_hash', '-username']
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     username = db.Column(db.String, unique=True)
@@ -43,7 +43,7 @@ class Artist(db.Model, SerializerMixin):
 
 class Creative_Work(db.Model, SerializerMixin):
     __tablename__ = "creative_works_table"
-    serialize_rules = ['-artist.creative_works', '-artist.password_hash']
+    serialize_rules = ['-artist.creative_works', '-artist.password_hash', '-artist.username']
 
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
@@ -57,7 +57,7 @@ class Creative_Work(db.Model, SerializerMixin):
 
 class Request(db.Model, SerializerMixin):
     __tablename__ = "request_table"
-    serialize_rules = ["-artist.requests", "-artist.bids", "-artist.password_hash", "-business.requests", 'business.password_hash', "-bids.request",'-bids.artist']
+    serialize_rules = ["-artist.requests", "-artist.bids", "-artist.password_hash", "-artist.username", "-business.requests", 'business.password_hash', 'business.username', "-bids.request",'-bids.artist']
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
     date_created = db.Column(db.String, nullable=False)
@@ -78,7 +78,7 @@ class Request(db.Model, SerializerMixin):
 
 class Business(db.Model, SerializerMixin):
     __tablename__ = "business_table"
-    serialize_rules = ["-requests.business", '-password_hash']
+    serialize_rules = ["-requests.business", '-password_hash', '-username']
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     username = db.Column(db.String, unique=True)
@@ -98,7 +98,7 @@ class Business(db.Model, SerializerMixin):
 
 class Bid(db.Model, SerializerMixin):
     __tablename__="bids_table"
-    serialize_rules = ["-request.bids", "-artist.bids", "-artist.password_hash", "-request.business.password_hash"]
+    serialize_rules = ["-request.bids", "-artist.bids", "-artist.password_hash", "-artist.username", "-request.business.password_hash", "-request.business.username"]
 
     id = db.Column(db.Integer, primary_key=True)
     artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"), unique=True, nullable=False)

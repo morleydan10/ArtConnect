@@ -223,15 +223,15 @@ def get_all_artists():
 
     return [artist.to_dict(rules=['-bids', '-requests', '-creative_works']) for artist in artists], 200
 
-@app.get('/api/artists/<int:id>')
-def get_artist_by_id(id):
+@app.get('/api/artists/<int:id>/profile')
+def view_artist_profile(id):
 
     artist = db.session.get(Artist, id)
 
     if not artist:
         return {'error' : 'Artist not found'}, 404
     
-    return artist.to_dict(), 200 
+    return artist.to_dict(rules=['-password_hash', '-bids', '-requests', '-creative_works']), 200 
 
 @app.post('/api/artists')
 def post_new_artist():
@@ -295,14 +295,14 @@ def get_all_businesses():
 
     return [business.to_dict(rules=['-requests']) for business in businesses], 200
 
-@app.get('/api/businesses/<int:id>')
-def get_business_by_id(id):
+@app.get('/api/businesses/<int:id>/profile')
+def view_business_profile(id):
     business = Business.query.get(id)
 
     if not business:
         return {'error': 'Business not found'}, 404
 
-    return business.to_dict(rules=['-requests']), 200
+    return business.to_dict(rules=['-password_hash','-requests','-username']), 200
 
 @app.post('/api/businesses')
 def post_new_business():
