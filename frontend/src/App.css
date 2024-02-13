@@ -141,6 +141,43 @@
   border-color: #42ddda;
 }
 
+/* ******************LANDING PAGE***************** */
+.background-div {
+  /* background-image: url(''); */
+  background-size: cover; /* or use 'contain' depending on your preference */
+  background-position: center center; /* or adjust as needed */
+  background-repeat: no-repeat;
+  /* Add more background properties if necessary */
+  width: 100%;
+  height: 100%; /* Set a height for the div, adjust as needed */
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-card-div{
+  background-color: white;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
+  -moz-box-shadow: rgba(0,0,0,0.3) 0 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  max-width: max-content;
+  margin: auto;
+}
+
+.welcome-text{
+  font-size: 3.2em;
+  font-weight: 1.5em;
+  font-size: 3.0em;
+  font-weight: 400;
+  color: #42ddda;
+}
+
 /* ******************** HEADER****************** */
 
 .navbar-div {
@@ -155,16 +192,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
+  z-index: 900;
 }
 
-.welcome-text{
-  font-size: 3.2em;
-  font-weight: 1.5em;
-  font-size: 3.0em;
-  font-weight: 400;
-  color: #42ddda;
-}
 
 .header-buttons-container {
   display: flex;
@@ -219,6 +249,7 @@
 .cw-card {
   flex-basis: calc(33.33% - 20px); /* Adjust the percentage and margin as needed */
   margin: 10px; /* Add margin between cards */
+  width: auto;
   border-radius: 12px;
   max-height: 400px;
   max-width: 700px;
@@ -234,20 +265,23 @@
   transition: all 500ms;
 }
 
-.cw-card-img-div{
+.cw-card-img-div {
   width: 100%;
-  height: 80%; /* Adjust the percentage as needed */
-  align-items: center;
-  place-items: center;
+  height: 0; /* Set initial height to 0 to maintain aspect ratio */
+  padding-bottom: 60%; /* Set the desired aspect ratio (60% is just an example) */
+  position: relative;
   overflow: hidden;
 }
 
 .cw-file {
-  max-height: 300px;
-  max-width: 700px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
   border-radius: 12px 12px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .cw-card-body {
@@ -262,23 +296,8 @@
   margin: auto;
   padding: 7px;
 }
-
-
-
-.portfolio-table {
-  width: 100%;
-  margin: 0 auto;
-  border-collapse: collapse;
-}
-
-.portfolio-table th,
-.portfolio-table td {
-  border: 1px solid gray;
-  border-radius: 12px;
-  padding: 5px;
-}
 .cw-image{
-  max-width: 200px;
+  max-width: 100%;
   max-height: 200px;
   border-radius: 15px;
 }
@@ -484,7 +503,6 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  gap: 15px;
   border-radius: 12px;
   /* -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
   -moz-box-shadow: rgba(0,0,0,0.3) 0 2px 4px;
@@ -493,8 +511,8 @@
 
 .profile-header{
   margin-left: 50px;
-  margin-top: 0;
-  margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 30px;
   text-align: left;
 }
 
@@ -527,23 +545,66 @@
   margin-bottom: auto;
 }
 
-/* **************TABLE*************** */
+/* **************TABLES*************** */
 
-.requests-table-div{
-  margin: auto;
+.your-requests-table{
+  margin: 0 auto;
+  margin-bottom: 7%;
+  margin-left: 7%;
+  margin-right: 7%;
+  padding: 10px;
+  border-radius: 10px;
+}
+.your-requests-table-header-div{
+  margin-right: auto;
+  margin-left: 50px;
+  margin-top: 0;
+  padding: 0;
+  width: fit-content;
 }
 
-.requets-table-header{
-  
+.requests-table-header-div{
+  margin-right: auto;
+  margin-left: 35px;
+  margin-top: 0;
+  padding: 0;
+  width: fit-content;
+}
+
+.requests-table-header{
+  font-size: 40px;
+}
+
+.requests-table-div{
+  margin: 0 auto;
+  margin-bottom: 7%;
+  margin-left: 7%;
+  margin-right: 7%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.table-container{
+  padding: 3px;
+  background-color: #294157;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
+  -moz-box-shadow: rgba(0,0,0,0.3) 0 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
 }
 
 table {
+  background-color: white;
+  margin-bottom: auto;
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
-  border: 3px solid #294157;
-  border-radius: 10px 10px 10px 10px;
+  border: .2px solid #294157;
+  /* border-top-right-radius: 10px;
+  border-top-left-radius: 10px; */
+  z-index: 100;
 }
+
 
 thead th:nth-child(1) {
   width: 5%;
@@ -566,6 +627,18 @@ thead th:nth-child(6) {
 thead th:nth-child(7) {
   width: 20%;
 }
+thead th:nth-child(8) {
+  width: 15%;
+}
+
+td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+
+td:last-child {
+  border-bottom-right-radius: 10px;
+}
 
 tbody tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.05);
@@ -576,6 +649,10 @@ td {
   padding: 20px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 450;
+}
+
+td{
+  padding: 5px;
 }
 
 th{
