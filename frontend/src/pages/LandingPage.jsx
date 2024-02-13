@@ -248,41 +248,45 @@ useEffect(() => {
     return (
         <main>
             <Header />
-            <h1 className='welcome-text'>Welcome</h1>
-            <br/>
-            {logginIn ? "":
-            (
-            showBusinessSignup ? (
-                <BusinessSignupForm cancelBusinessSignup={cancelBusinessSignup} attemptBusinessSignup={attemptBusinessSignup} />
-            ) : showArtistSignup ? (
-                <ArtistSignupForm cancelArtistSignup={cancelArtistSignup} attemptArtistSignup={attemptArtistSignup} />
-            ) : (
-                <div className="sign-up-div">
-                <h2>New to ArtConnect? Sign up for free</h2>
-                    <div className="lp-buttons-div">
-                        <button onClick={handleClickToSignupBusiness}>Signup as a Business</button>
-                        <button onClick={handleClickToSignupArtist}>Signup as an Artist</button>
-                    </div>
-                </div>
-            )
-            )}
+            <div className="background-div">
+                <div className="background-card-div">
+                    <h1 className='welcome-text'>Welcome</h1>
+                    <br/>
+                    {logginIn ? "":
+                    (
+                    showBusinessSignup ? (
+                        <BusinessSignupForm cancelBusinessSignup={cancelBusinessSignup} attemptBusinessSignup={attemptBusinessSignup} />
+                    ) : showArtistSignup ? (
+                        <ArtistSignupForm cancelArtistSignup={cancelArtistSignup} attemptArtistSignup={attemptArtistSignup} />
+                    ) : (
+                        <div className="sign-up-div">
+                        <h2>New to ArtConnect? Sign up for free</h2>
+                            <div className="lp-buttons-div">
+                                <button onClick={handleClickToSignupBusiness}>Signup as a Business</button>
+                                <button onClick={handleClickToSignupArtist}>Signup as an Artist</button>
+                            </div>
+                        </div>
+                    )
+                    )}
 
-            {signingUp ? "" :(
-            showBusinessLogin ? (
-                <BusinessLoginForm cancelBusinessLogin={cancelBusinessLogin} attemptBusinessLogin={attemptBusinessLogin} />
-            ) : showArtistLogin ? (
-                <ArtistLoginForm cancelArtistLogin={cancelArtistLogin} attemptArtistLogin={attemptArtistLogin} />
-            ) : (
-                <div className="login-div">
-                <br/>
-                <h2>Have an account? Login Here</h2>
-                    <div className="lp-buttons-div">
-                        <button onClick={handleClickToLoginBusiness}>Business Login</button>
-                        <button onClick={handleClickToLoginArtist}>Artist Login</button>
-                    </div>
+                    {signingUp ? "" :(
+                    showBusinessLogin ? (
+                        <BusinessLoginForm cancelBusinessLogin={cancelBusinessLogin} attemptBusinessLogin={attemptBusinessLogin} />
+                    ) : showArtistLogin ? (
+                        <ArtistLoginForm cancelArtistLogin={cancelArtistLogin} attemptArtistLogin={attemptArtistLogin} />
+                    ) : (
+                        <div className="login-div">
+                        <br/>
+                        <h2>Have an account? Login Here</h2>
+                            <div className="lp-buttons-div">
+                                <button onClick={handleClickToLoginBusiness}>Business Login</button>
+                                <button onClick={handleClickToLoginArtist}>Artist Login</button>
+                            </div>
+                        </div>
+                    )
+                    )}
                 </div>
-            )
-            )}
+            </div>
         </main>
         );
 }

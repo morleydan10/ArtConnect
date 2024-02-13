@@ -50,7 +50,7 @@ function BusinessProfile () {
                         <h3>Date Joined: {businessUser.date_joined}</h3>
                     </div>
                     <div className="contact-info-div">
-                    <h2 className="contact-info-header">Contact Information</h2>
+                        <h2 className="contact-info-header">Contact Information</h2>
                         <h3>{businessUser.city}</h3>
                         <h3>{businessUser.type}</h3>
                         <h3>{businessUser.phone_number}</h3>
@@ -58,14 +58,17 @@ function BusinessProfile () {
                     </div>
                 </div>
             </div>
-            {/* requests table */}
-            <button onClick={handleShowForm}>{ showForm ? ('Cancel') : ('Create New Request')}</button>
-            { showForm ? (
-            <NewRequest postNewRequest={postNewRequest} />
-            ) : (
-            <YourRequestsTable />
-            )}
-            
+            <div className="your-request-div">
+                <div className="your-requests-table-header-div">
+                    <h2 className="requests-table-header">Requests</h2>
+                </div>
+                <button className="new-request-button" onClick={handleShowForm}>{ showForm ? ('Cancel') : ('Create New Request')}</button>
+                { showForm ? (
+                <NewRequest postNewRequest={postNewRequest} />
+                ) : (
+                <YourRequestsTable />
+                )}
+            </div>
         </main>
     )
 };

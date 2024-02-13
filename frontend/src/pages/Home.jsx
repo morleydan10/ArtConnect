@@ -42,6 +42,7 @@ function Home() {
 
 
     return signedIn ? (
+        // ternary to if artist or if business
         <main>
             <Header />
 

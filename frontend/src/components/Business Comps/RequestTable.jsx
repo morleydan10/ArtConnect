@@ -47,37 +47,38 @@ function RequestTable ({ postNewBid }) {
 
     return (
         <div className="requests-table-div">
-            <h2 className="requests-table-header">Requests</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Request Number</th>
-                        <th>Business</th>
-                        <th>Description</th>
-                        <th>Date Created</th>
-                        <th>Compensation</th>
-                        <th>Artist</th>
-                        <th>Open/Closed</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {requests.map((request) => (
-                    <tr key={request.id}>
-                        <td>{request.id}</td>
-                        <td>{request.business.name}</td>
-                        <td>{request.description}</td>
-                        <td>{request.date_created}</td>
-                        <td>{request.compensation}</td>
-                        {/* To add Navlink to artist's profile, need to solve authentication issues */}
-                        <td>{ request.artist  ? (request.artist.name):('')}</td>
-                        <td>{ request.artist ? ('Closed'):(
-                            <button onClick={(e) => {
-                                handleClickApply(e, request.id, request.business.name)}}>Apply</button>
-                        )}</td>
-                    </tr>
-                    ))}
-                </tbody>
-        </table>
+            <div className="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request Number</th>
+                            <th>Business</th>
+                            <th>Description</th>
+                            <th>Date Created</th>
+                            <th>Compensation</th>
+                            <th>Artist</th>
+                            <th>Open/Closed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {requests.map((request) => (
+                        <tr key={request.id}>
+                            <td>{request.id}</td>
+                            <td>{request.business.name}</td>
+                            <td>{request.description}</td>
+                            <td>{request.date_created}</td>
+                            <td>{request.compensation}</td>
+                            {/* To add Navlink to artist's profile, need to solve authentication issues */}
+                            <td>{ request.artist  ? (request.artist.name):('')}</td>
+                            <td>{ request.artist ? ('Closed'):(
+                                <button onClick={(e) => {
+                                    handleClickApply(e, request.id, request.business.name)}}>Apply</button>
+                            )}</td>
+                        </tr>
+                        ))}
+                    </tbody>
+            </table>
+        </div>
     </div>
     )
 }
