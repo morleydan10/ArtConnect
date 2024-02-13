@@ -26,8 +26,6 @@ function RequestTable ({ postNewBid }) {
     const artist_id = artistUser.id
 
     
-    
-    
     function handleClickApply(e, requestId, requestBusinessName){
         e.preventDefault();
         setRequestId(requestId);
