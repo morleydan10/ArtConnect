@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from dotenv import dotenv_values
-# from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, unset_jwt_cookies
+
 from models import db, Artist, Request, Business, Creative_Work, Bid
 import datetime
 import base64
@@ -13,14 +13,14 @@ config = dotenv_values(".env")
 
 app = Flask(__name__)
 app.secret_key = config['FLASK_SECRET_KEY']
-# app.jwt_secret_key = config['JWT_SECRET_KEY']
+
 CORS(app)
 # CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(hours=2)
+app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(hours=1)
 app.json.compact = False
-# jwt = JWTManager(app)
+
 bcrypt = Bcrypt(app)
 migrate = Migrate(app, db)
 
@@ -87,7 +87,7 @@ def check_artist_session():
         from sys import getsizeof
         print('artist bytes')
         print(getsizeof(artist.to_dict(rules=['-password_hash', '-creative_works'])))
-        return artist.to_dict(rules=['-password_hash', '-creative_works']), 200
+        return artist.to_dict(rules=['-password_hash', '-creative_works','-bids','-requests']), 200
     else:
         return {'Message': 'No user logged in'}, 404
 
@@ -96,7 +96,6 @@ def check_artist_session():
 def logout_artist():
 
     try: 
-        # unset_jwt_cookies()
         session.pop("artist_id")
         return {"Message": "Logged out"}, 200
     
@@ -118,13 +117,11 @@ def login_artist():
         session["artist_id"] = artist.id
         session["user_type"] = "artist"
         session.permanent = True
-        # access_token = create_access_token(identity=artist.id)
 
         print(session['artist_id'])
         print(session['user_type'])
         print("success")
-        return artist.to_dict(rules=['-password_hash', '-creative_works']), 200
-        # return {'access_token': access_token, 'artist': artist.to_dict(rules=['-password_hash'])}, 200
+        return artist.to_dict(rules=['-password_hash', '-creative_works','-bids']), 200
     else:
         return {"error": "Invalid username or password"}, 401
 
@@ -155,21 +152,18 @@ def create_new_business():
         session['user_type'] = "business"
         session.permanent = True
         print("success")
-        # access_token = create_access_token(identity=newBusiness.id)
     
     except Exception as e:
         print(e)
         return {'Error': str(e)}, 400
     
     return newBusiness.to_dict(rules=['-password_hash']), 200
-    # return {'access_token': access_token, 'business': newBusiness.to_dict(rules=['-password_hash'])}, 200
 
 
 @app.get('/api/check_business_session')
 # @jwt_required()
 def check_business_session():
 
-    # current_user_id = get_jwt_identity()
     # business = Business.query.get(current_user_id)
     # business = db.session.get(Business, 6)
     business = db.session.get(Business, session.get("business_id"))
@@ -386,7 +380,7 @@ def get_requests_by_business_id(id):
     
     requests = Request.query.filter(Request.business_id == id).all()
 
-    return [r.to_dict(rules=['-business.requests', '-business.password_hash', '-artist', '-bids']) for r in requests], 200
+    return [r.to_dict(rules=['-business.requests', '-business.password_hash', '-artist.email.','-artist.bids', '-artist.creative_works', '-artist.username', '-artist.password_hash', '-artist.type', '-artist.profile_pic_url', '-artist.city', '-artist.phone_number','-artist.date_joined', '-bids']) for r in requests], 200
 
 @app.get('/api/requests/<int:id>')
 def get_requests_by_artist_id(id):
@@ -481,7 +475,7 @@ def get_creative_works_by_artist_id(id):
 
     creative_works = Creative_Work.query.filter(Creative_Work.artist_id == id).all()
 
-    return [{'file': base64.b64decode(cw.file), **cw.to_dict()} for cw in creative_works], 200
+    return [{'file': base64.b64decode(cw.file), **cw.to_dict(rules=['-artist'])} for cw in creative_works], 200
 
 # @app.get('/api/creative_works/<int:id>')
 # def get_creative_work_by_id(id):
