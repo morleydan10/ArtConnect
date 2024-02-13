@@ -1,6 +1,4 @@
 import React, { useState, useEffect} from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
-import { useUser } from "../../UserContext";
 
 function ArtistCard ({ artist, viewArtistProfile }) {
 

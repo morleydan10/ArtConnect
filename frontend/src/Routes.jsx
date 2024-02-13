@@ -12,6 +12,9 @@ import ArtistProfile from "./Artist-Pages/ArtistProfile";
 import OpenRequests from "./Artist-Pages/OpenRequests";
 // ***********BUSINESS****************
 import BusinessProfile from "./pages/BusinessProfile";
+// ***********VIEW PROFILES**************
+import ViewBusinessProfile from "./components/ViewBusinessProfile";
+import ViewArtistProfile from "./components/ViewArtistProfile";
 
 const Routes = createBrowserRouter([
     {
@@ -50,6 +53,17 @@ const Routes = createBrowserRouter([
             {
                 path: '/BusinessProfile',
                 element: <BusinessProfile />,
+                errorElement: <ErrorPage />
+            },
+            // ************VIEW PROFILES**********
+            {
+                path: '/ViewBusinessProfile/:id',
+                element: <ViewBusinessProfile />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: '/ViewArtistProfile/:id',
+                element: <ViewArtistProfile />,
                 errorElement: <ErrorPage />
             },
         ]
