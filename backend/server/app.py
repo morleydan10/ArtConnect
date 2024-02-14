@@ -394,7 +394,7 @@ def get_requests_by_artist_id(id):
     
     requests = Request.query.filter(Request.artist_id == id).all()
 
-    return [r.to_dict(rules=['-artist.bids', '-business', 'bids']) for r in requests], 200
+    return [r.to_dict(rules=['-artist.bids', 'bids', '-business.password_hash', '-business.username', '-business.requests' 'artist.password_hash', 'artist.username', '-artist.creative_works']) for r in requests], 200
 
 
 @app.get('/api/requests/<int:id>')

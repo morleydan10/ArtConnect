@@ -57,7 +57,7 @@ class Creative_Work(db.Model, SerializerMixin):
 
 class Request(db.Model, SerializerMixin):
     __tablename__ = "request_table"
-    serialize_rules = ["-artist.requests", "-artist.bids", "-artist.password_hash", "-artist.username", "-business.requests", 'business.password_hash', 'business.username', "-bids.request",'-bids.artist']
+    serialize_rules = ["-artist.requests", "-artist.bids", "-artist.password_hash", "-artist.username", "-business.requests", '-business.password_hash', '-business.username', "-bids.request",'-bids.artist']
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, nullable=False)
     date_created = db.Column(db.String, nullable=False)
