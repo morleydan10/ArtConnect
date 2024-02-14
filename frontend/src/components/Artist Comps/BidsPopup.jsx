@@ -13,7 +13,7 @@ function BidsPopup(props) {
     console.log(yourRequestId)
 
     return( (props.trigger) ? (
-        <div className="bids-popup">
+        <div className="popup">
             <div className="inner-bids-popup">
                 <button className="close-button" onClick={() => props.setTrigger(false)}>Close</button>
                 { props.children }

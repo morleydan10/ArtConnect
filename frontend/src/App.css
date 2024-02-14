@@ -170,7 +170,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 900;
   width: 100%
 }
 
@@ -255,15 +254,33 @@
     margin: 15px 50px 
 }
 
+.cw-card-anchor {
+  text-decoration: none;
+  display: contents;
+}
+
 .cw-card {
-  flex-basis: calc(33.33% - 20px); /* Adjust the percentage and margin as needed */
-  margin: 10px; /* Add margin between cards */
+  flex-basis: calc(33.33% - 20px);
+  margin: 10px;
   height: 500px;
   width: auto;
   border-radius: 12px;
   max-height: 400px;
   max-width: 700px;
-  overflow: hidden; /* Ensure content doesn't overflow the rounded corners */
+  overflow: hidden;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
+  -moz-box-shadow: rgba(0,0,0,0.3) 0 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
+  transition: all 500ms;
+}
+
+.cw-card-anchor .cw-card {
+  height: 500px;
+  width: auto;
+  border-radius: 12px;
+  max-height: 400px;
+  max-width: 700px;
+  overflow: hidden;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
   -moz-box-shadow: rgba(0,0,0,0.3) 0 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
@@ -425,9 +442,9 @@
     flex-basis: calc(100% - 10px); /* Adjust for even smaller screens */
   }
 }
-/* *******BIDS POPUP CSS************* */
+/* ******* POPUPs************* */
 
-.bids-popup {
+.popup{
   position: fixed;
   top: 0;
   left: 0;
@@ -446,6 +463,21 @@
   width: 100%;
   max-width: 640px;
   background-color: white;
+  border-radius: 12px;
+  z-index: 1000;
+}
+
+.image-popup-inner{
+  position: relative;
+  padding: 30px 30px;
+  width: 100%;
+  max-width: 640px;
+  background-color: white;
+  border-radius: 12px;
+  z-index: 1000;
+}
+
+.cw-popup-image{
   border-radius: 12px;
 }
 
@@ -496,10 +528,19 @@
   text-align: left;
 }
 
+.profile-pic-div{
+
+}
+
 .profile-pic {
-  max-width: 350px;
-  max-height: 350px;
+  width: 100%; /* Set width to 100% */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 15%;
+  min-width: 350px; /* Minimum width */
+  max-width: 450px; /* Maximum width */
+  min-height: 350px; /* Minimum height */
+  max-height: 450px; /* Maximum height */
+  object-fit: cover;
 }
 
 .profile-body{
@@ -563,7 +604,9 @@
   color: #42ddda;
   font-size: 35px;
   padding: 5px;
-  margin: 0
+  margin: 0;
+  text-wrap: wrap;
+  text-align: start;
 }
 
 .artist-requests-div{

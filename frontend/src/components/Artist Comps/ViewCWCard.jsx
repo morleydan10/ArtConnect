@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import ImagePopup from "./ImagePopup";
 
 
 function ViewCWCard({ work }){
 
+    const [isPopupVisible, setPopupVisible] = useState(false);
+
+    const handleCardClick = () => {
+        setPopupVisible(true);
+    };
+
 
     return(
-        <div className='cw-card'>
-            <div className='cw-card-img-div'>
-                <img className="cw-file" src={work.file} alt={work.description} />
-            </div>
-            <div className="cw-card-body">
-                <h4 className="card-subtitle">{work.description}</h4>
-            </div>
-        </div>
+        <>
+            <a className="cw-card-anchor" href="#" onClick={handleCardClick}>
+                <div className='cw-card'>
+                    <div className='cw-card-img-div'>
+                        <img className="cw-file" src={work.file} alt={work.description} />
+                    </div>
+                    <div className="cw-card-body">
+                        <h4 className="card-subtitle">{work.description}</h4>
+                    </div>
+                </div>
+            </a>
+        <ImagePopup trigger={isPopupVisible} setTrigger={setPopupVisible} file={work.file} />
+    </>
     )
 }
 
