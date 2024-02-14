@@ -46,9 +46,35 @@ function Home() {
         <main>
             <Header />
 
-            <h1>This is the Homepage</h1>
+            <div className="hero-section">
+                <h1 className="homepage-title">ArtConnect</h1>
+                <p>Welcome to our platform for connecting artists and businesses!</p>
+                <a to="/browse" className="cta-button">
+                Get Started
+                </a>
+            </div>
 
-
+            <div className="features-section">
+                <div className="feature">
+                    <h2 className="homepage-feature-header">Find Artists</h2>
+                    <p>Discover talented artists right in your neighborhood.</p>
+                </div>
+                <div className="feature">
+                    <h2 className="homepage-feature-header">Post Requests</h2>
+                    <p>Businesses can post creative work requests.</p>
+                </div>
+                <div className="feature">
+                    <h2 className="homepage-feature-header">Connect and Collaborate</h2>
+                    <p>Connect with artists and start creative collaborations.</p>
+                </div>
+            </div>
+            <div className="testimonial-section">
+                <h2 className="homepage-feature-header">What Our Users Say</h2>
+                <p className="quote-person">Donna, Owner of ABC Cafe:</p>
+                <i className="testimonial-quote">"I wanted a mural painted for my new cafe.  ArtConnect helped me find an artist 5 miuntes away! Now my cafe looks great and I have a new customer!"</i>
+                <p className="quote-person">Hector, photographer: </p>
+                <i className="testimonial-quote">I was having a difficult time finding work in the immediate area, but now with ArtConnect, I've found work as close as down the block!</i>
+            </div>
         </main>
     ):(
         useEffect(() => 

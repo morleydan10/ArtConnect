@@ -46,7 +46,7 @@ function BusinessLoginForm({ attemptBusinessLogin, cancelBusinessLogin }) {
                 />
             </div>
             <div className="submit-button-div">
-                <button id='login-submit-button' type='submit'>Submit</button>
+                <button className='submit-button' type='submit'>Submit</button>
                 <br/>
                 <button className="cancel-button" onClick={cancelBusinessLogin}>Cancel</button>
             </div>

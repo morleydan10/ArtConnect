@@ -5,11 +5,14 @@ import { useUser } from "../UserContext";
 import Header from "../components/Header";
 import CWList from "../components/Artist Comps/CWList";
 import AddCWForm from "../components/Artist Comps/AddCWForm";
+import BioInput from "../components/Artist Comps/BioInput";
 
 function ArtistProfile () {
 
     const {artistUser} = useUser()
+    const [showBio, setShowBio] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
+    const [updatedUser, setUpdatedUser] = useState(null)
 
     function postNewCW(newCW){
 
@@ -27,6 +30,16 @@ function ArtistProfile () {
                 console.log("POST is not working")
             }})
     }
+
+    function handleUpdateBio(updatedBio) {
+        // Assuming you have a state variable to store artistUser in your component
+        setUpdatedUser((prevUser) => ({
+        ...prevUser,
+        bio: updatedBio.bio,
+        }));
+        setShowBio(false); // Close the BioInput form after successful update
+    }
+
 
     return (
         <main>
@@ -47,8 +60,24 @@ function ArtistProfile () {
                         <h3>{artistUser.type}</h3>
                         <h3>{artistUser.phone_number}</h3>
                         <h3>{artistUser.email}</h3>
-                    </div> 
-                    {/* src={user.profile_pic_url} */}
+                    </div>
+                    <div className='bio-div'>
+                        <h2 className="contact-info-header">Bio</h2>
+                        {showBio ? (
+                        <BioInput setShowBio={setShowBio} handleUpdateBio={handleUpdateBio} />
+                        ) : (
+                            <p>
+                            {artistUser.bio ? (
+                                artistUser.bio
+                            ) : (
+                                <>
+                                    <p>Edit your bio here</p>
+                                    <button onClick={() => setShowBio(true)}>Edit Bio</button>
+                                </>
+                            )}
+                            </p>
+                        )}
+                    </div>
                 </div>
             </div>
             <div className="your-portfolio-div">

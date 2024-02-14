@@ -46,7 +46,7 @@ function ArtistLoginForm({ attemptArtistLogin, cancelArtistLogin }) {
                 />
             </div>
             <div className="submit-button-div">
-                <button id='login-submit-button' type='submit'>Submit</button>
+                <button className='submit-button' type='submit'>Submit</button>
                 <br/>
                 <button className="cancel-button" onClick={cancelArtistLogin}>Cancel</button>
             </div>
