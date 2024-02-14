@@ -90,8 +90,9 @@ if __name__ == "__main__":
         creative_work_list = []
 
         file_list = ['https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1528217580778-96e570819666?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJhbmRvbSUyMHNjdWxwdHVyZXxlbnwwfHwwfHx8MA%3D%3D']
+        
 
-        for _ in range(4):
+        for _ in range(5):
             cw = Creative_Work(
                 description=fake.sentence(),
                 artist_id=choice(artist_list).id,
