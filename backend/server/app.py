@@ -49,6 +49,7 @@ def create_new_artist():
             type=data.get('type'),
             username=data.get('username'),
             date_joined=data.get('date_joined'),
+            bio=data.get('bio'),
             password_hash= password_hash
         )
 
@@ -246,7 +247,8 @@ def post_new_artist():
             phone_number=data.get('phone_number'),
             profile_pic_url=data.get('profile_pic_url'),
             city=data.get('city'),
-            date_joined=data.get('date_joined')
+            date_joined=data.get('date_joined'),
+            bio=data.get('bio')
         )
         db.session.add(new_artist)
         db.session.commit()
@@ -268,7 +270,7 @@ def patch_artist(id):
             setattr(artist, key, data[key])
         db.session.add(artist)
         db.session.commit()
-        return artist.to_dict(), 202
+        return artist.to_dict(rules=['-password_hash', '-bids', '-requests', '-creative_works']), 202
     except Exception as e:
         print(e)
         return {"error": "Validation errors"}, 400

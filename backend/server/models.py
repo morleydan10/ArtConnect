@@ -28,9 +28,9 @@ class Artist(db.Model, SerializerMixin):
     type = db.Column(db.String)
     # May have to change below to match file type, i.e jpeg, png
     profile_pic_url = db.Column(db.String)
-    city= db.Column(db.String)
+    city = db.Column(db.String)
     date_joined = db.Column(db.String, nullable=False)
-    # password_hash = db.Column(db.String)
+    bio = db.Column(db.String)
     requests = db.relationship("Request", back_populates="artist")
     creative_works = db.relationship('Creative_Work', back_populates="artist")
     bids = db.relationship("Bid", back_populates="artist")
