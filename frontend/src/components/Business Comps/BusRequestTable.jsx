@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
-import emailjs from '@emailjs/browser';
-import { useTable } from "react-table";
-import { useUser } from "../../UserContext";
-import { json } from "react-router-dom";
 
 
-function RequestTable ({ postNewBid, showApply }) {
+function BusRequestTable () {
 
-    const {artistUser, serviceID, templateRecId, publicKey,} = useUser()
     const [requests, setRequests] = useState([])
     const [request_id, setRequestId]= useState()
-
-    
     
 
     // fetch requests
@@ -25,27 +18,6 @@ function RequestTable ({ postNewBid, showApply }) {
         })
     }, [])
 
-    const artist_id = artistUser.id
-
-    
-    function handleClickApply(e, requestId, requestBusinessName){
-        e.preventDefault();
-        setRequestId(requestId);
-        
-        emailjs.send(serviceID, templateRecId, {
-            business_name: requestBusinessName,
-            artist_name: artistUser.name,
-            }, 
-            publicKey);
-
-        const newBid = {
-            artist_id,
-            request_id: requestId
-        }
-
-        postNewBid(newBid)
-
-    };
 
 
     return (
@@ -71,15 +43,8 @@ function RequestTable ({ postNewBid, showApply }) {
                             <td>{request.description}</td>
                             <td>{request.date_created}</td>
                             <td>{request.compensation}</td>
-                            {/* To add Navlink to artist's profile, need to solve authentication issues */}
                             <td>{ request.artist  ? (request.artist.name):('')}</td>
-                            <td>
-                                {request.artist
-                                ? 'Closed'
-                                : showApply
-                                ? <button onClick={(e) => handleClickApply(e, request.id, request.business.name)}>Apply</button>
-                                : 'Applied'}
-                            </td>
+                            <td>{ request.artist ? ('Closed'):('Open')}</td>
                         </tr>
                         ))}
                     </tbody>
@@ -89,4 +54,4 @@ function RequestTable ({ postNewBid, showApply }) {
     )
 }
 
-export default RequestTable;
+export default BusRequestTable;

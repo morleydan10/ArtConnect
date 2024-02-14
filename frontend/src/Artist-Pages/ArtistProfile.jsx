@@ -13,6 +13,7 @@ function ArtistProfile () {
     const [showBio, setShowBio] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
     const [updatedUser, setUpdatedUser] = useState(null)
+    const [works, setWorks] = useState([])
 
     function postNewCW(newCW){
 
@@ -32,12 +33,11 @@ function ArtistProfile () {
     }
 
     function handleUpdateBio(updatedBio) {
-        // Assuming you have a state variable to store artistUser in your component
         setUpdatedUser((prevUser) => ({
         ...prevUser,
         bio: updatedBio.bio,
         }));
-        setShowBio(false); // Close the BioInput form after successful update
+        setShowBio(false);
     }
 
 
@@ -64,11 +64,14 @@ function ArtistProfile () {
                     <div className='bio-div'>
                         <h2 className="contact-info-header">Bio</h2>
                         {showBio ? (
-                        <BioInput setShowBio={setShowBio} handleUpdateBio={handleUpdateBio} />
+                            <BioInput setShowBio={setShowBio} handleUpdateBio={handleUpdateBio} />
                         ) : (
                             <p>
                             {artistUser.bio ? (
-                                artistUser.bio
+                                <>
+                                    <p className="bio-text">{artistUser.bio}</p>
+                                    <button onClick={() => setShowBio(true)}>Edit Bio</button>
+                                </>
                             ) : (
                                 <>
                                     <p>Edit your bio here</p>
@@ -82,11 +85,13 @@ function ArtistProfile () {
             </div>
             <div className="your-portfolio-div">
                 <h2 className="portfolio-header">Your Portfolio</h2>
-                <button onClick={(e) => setShowAddForm(true)}>Add to Portfolio</button>
                 {showAddForm ? (
-                <AddCWForm postNewCW={postNewCW}/>
+                        <AddCWForm postNewCW={postNewCW} setShowAddForm={setShowAddForm}/>
                 ):(
-                <CWList />
+                    <>
+                        <button onClick={(e) => setShowAddForm(true)}>Add to Portfolio</button>
+                        <CWList />
+                    </>
                 )}
             </div>
         </main>

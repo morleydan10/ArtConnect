@@ -41,9 +41,11 @@ function BioInput({ setShowBio, handleUpdateBio }){
 
     return(
             <form className='bio-form'>
-                <input type="text" placeholder="Add your bio here" value={bio} onChange={handleChangeBio}/>
-                <button className="submit-button" onClick={handleBioSubmit}>Add</button>
-                <button className='cancel-button' onClick={(e) => setShowBio(false)}>Cancel</button>
+                <textarea className='bio-input' type="text" placeholder="Add your bio here" value={bio} onChange={handleChangeBio}/>
+                <div className="submit-button-div">
+                    <button className="submit-button" onClick={handleBioSubmit}>Add</button>
+                    <button className='cancel-button' onClick={(e) => setShowBio(false)}>Cancel</button>
+                </div>
             </form>
 )
 }

@@ -42,6 +42,7 @@ main {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  height: fit-content;
 }
 
 body {

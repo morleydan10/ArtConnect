@@ -62,11 +62,13 @@ function BusinessProfile () {
                 <div className="your-requests-table-header-div">
                     <h2 className="requests-table-header">Requests</h2>
                 </div>
-                <button className="new-request-button" onClick={handleShowForm}>{ showForm ? ('Cancel') : ('Create New Request')}</button>
                 { showForm ? (
-                <NewRequest postNewRequest={postNewRequest} />
+                <NewRequest postNewRequest={postNewRequest} setShowForm={setShowForm} />
                 ) : (
-                <YourRequestsTable />
+                    <>
+                        <button className="new-request-button" onClick={handleShowForm}>Create New Request</button>
+                        <YourRequestsTable />
+                    </>
                 )}
             </div>
         </main>

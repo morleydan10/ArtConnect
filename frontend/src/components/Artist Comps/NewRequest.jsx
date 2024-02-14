@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BusinessProfile from "../../pages/BusinessProfile";
 import { useUser } from "../../UserContext";
 
-function NewRequest({ postNewRequest }){
+function NewRequest({ postNewRequest, setShowForm }){
 
     const {businessUser, date_created} = useUser()
 
@@ -36,32 +36,43 @@ function NewRequest({ postNewRequest }){
     function handleNewRequestSubmission(e){
         e.preventDefault();
         postNewRequest(newRequest)
+        setShowForm(false);
     };
+
+    function handleHideForm(e){
+        e.preventDefault();
+        setShowForm(false);
+    }
 
 
     return(
         <div className="new-request-form-div">
             <form className="new-request-form" onSubmit={handleNewRequestSubmission}>
-                <label>Business</label>
-                <p>{businessUser.name}</p>
-                <p>{date_created}</p>
-                <label>Description</label>
+                <label className='login-text'>Business</label>
+                <p className="form-text">{businessUser.name}</p>
+                <label className='login-text'>Date Created</label>
+                <p className="form-text">{date_created}</p>
+                <label className='login-text'>Description</label>
                 <input
                     type='text'
                     placeholder="Enter a short description"
+                    className='form-input'
                     value={description}
                     onChange={handleChangeDescription}
                 />
-                <label>Compensation</label>
+                <label className='login-text'>Compensation</label>
                 <input
                     type='text'
                     placeholder="Enter a dollar amount"
+                    className='form-input'
                     value={compensation}
                     onChange={handleChangeCompensation}
                 />
                 <p>*Subject to change upon consultation</p>
-                {/* validation on compensation */}
-                <button type="submit">Submit</button>
+                <div className="submit-button-div">
+                    <button type="submit" className="submit-button">Submit</button>
+                    <button className="cancel-button" onClick={handleHideForm}>Cancel</button>
+                </div>
             </form>
         </div>
     )
