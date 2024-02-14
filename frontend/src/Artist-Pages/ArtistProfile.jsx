@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import CWList from "../components/Artist Comps/CWList";
 import AddCWForm from "../components/Artist Comps/AddCWForm";
 import BioInput from "../components/Artist Comps/BioInput";
+import ArtistRequestsTable from "../components/Artist Comps/ArtistRequestsTable";
 
 function ArtistProfile () {
 
@@ -61,25 +62,34 @@ function ArtistProfile () {
                         <h3>{artistUser.phone_number}</h3>
                         <h3>{artistUser.email}</h3>
                     </div>
-                    <div className='bio-div'>
-                        <h2 className="contact-info-header">Bio</h2>
-                        {showBio ? (
-                            <BioInput setShowBio={setShowBio} handleUpdateBio={handleUpdateBio} />
-                        ) : (
-                            <p>
-                            {artistUser.bio ? (
-                                <>
-                                    <p className="bio-text">{artistUser.bio}</p>
-                                    <button onClick={() => setShowBio(true)}>Edit Bio</button>
-                                </>
+                    <div className="bio-and-requests-div">
+                        <div className='bio-div'>
+                            <h2 className="contact-info-header">Bio</h2>
+                            {showBio ? (
+                                <BioInput setShowBio={setShowBio} handleUpdateBio={handleUpdateBio} />
                             ) : (
-                                <>
-                                    <p>Edit your bio here</p>
-                                    <button onClick={() => setShowBio(true)}>Edit Bio</button>
-                                </>
+                                <p>
+                                {artistUser.bio ? (
+                                    <>
+                                        <p className="bio-text">{artistUser.bio}</p>
+                                        <button onClick={() => setShowBio(true)}>Edit Bio</button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <p>Edit your bio here</p>
+                                        <button onClick={() => setShowBio(true)}>Edit Bio</button>
+                                    </>
+                                )}
+                                </p>
                             )}
-                            </p>
-                        )}
+                        </div>
+                        <div className="artist-requests-div">
+                            <div className="contact-info-header">
+                                <h2 className="requests-table-header">Your Requests</h2>
+                            </div>
+                            <ArtistRequestsTable />
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -519,11 +519,17 @@
   font-size: 20px;
 }
 
+.bio-and-requests-div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 800px;
+}
+
 .bio-div{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin:0 100px;
   width: 400px;
 }
 
@@ -558,6 +564,21 @@
   font-size: 35px;
   padding: 5px;
   margin: 0
+}
+
+.artist-requests-div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.artist-requests-table{
+  margin: 0 auto;
+  /* margin-bottom: 7%; */
+  /* margin-left: 7%; */
+  margin-right: 7%;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .portfolio-header{
