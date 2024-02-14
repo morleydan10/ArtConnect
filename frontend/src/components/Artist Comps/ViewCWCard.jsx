@@ -1,8 +1,8 @@
 import React from "react";
 
-function CWCard({ work, handleCWDelete }){
 
-    
+function ViewCWCard({ work }){
+
 
     return(
         <div className='cw-card'>
@@ -11,10 +11,9 @@ function CWCard({ work, handleCWDelete }){
             </div>
             <div className="cw-card-body">
                 <h4 className="card-subtitle">{work.description}</h4>
-                <button className='delete-button' onClick={(e) => handleCWDelete(e, work)}>Delete</button>
             </div>
         </div>
     )
 }
 
-export default CWCard;
+export default ViewCWCard;
