@@ -152,8 +152,8 @@ if __name__ == "__main__":
 
 
         photographs = ["https://lik.com/cdn/shop/products/Peter-Lik-Brooklyn-Magic-Framed-Recess-Mount_1800x.jpg?v=1585069986", "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"]
-        paint_spray_list = ["C:\Users\morle\OneDrive\Pictures\ArtConnect Images\Spray-Paint-Murals 1.jpg", "C:\Users\morle\OneDrive\Pictures\ArtConnect Images\Spray-Paint-Murals 2.jpg", "C:\Users\morle\OneDrive\Pictures\ArtConnect Images\Spray-Paint-Murals 3.jpg"]
-        paint_canvs_list = ["C:\Users\morle\OneDrive\Pictures\ArtConnect Images\Paint-canvas 3.jpg", "C:\Users\morle\OneDrive\Pictures\ArtConnect Images\Paint-canvas 2.jpg", "C:\Users\morle\OneDrive\Pictures\ArtConnect Images\Paint-canvas 1.jpg"]
+        paint_spray_list = ["https://images.squarespace-cdn.com/content/v1/5bbe4c28b2cf7956099dd6fe/0e9f8fc8-5ee2-478b-b293-3904a0d4fd15/IMG_2204.JPEG?format=750w", "https://images.squarespace-cdn.com/content/v1/5bbe4c28b2cf7956099dd6fe/1703745268454-36R2TA59DR73MUN03BH5/FullSizeRender.jpg?format=750w", "https://images.squarespace-cdn.com/content/v1/5bbe4c28b2cf7956099dd6fe/1641199402298-Y0D52HPBRFI1GU6KS7NI/aquatic+dimensions+.jpg?format=750w"]
+        paint_canvs_list = ["https://i5.walmartimages.com/seo/Orange-Autumn-Landscape-With-Little-Road-III-12-in-x-8-in-Painting-Canvas-Art-Print-by-Designart_647ee38b-9dcd-4b6d-960b-267198bc9b5d.65008a584b456d94b26f627f7c68e359.jpeg", "https://assets.wfcdn.com/im/87378868/resize-h445%5Ecompr-r85/2383/238395851/Colorful+Montreal+City+III+On+Canvas+Print.jpg"]
 
         for _ in range(3):
             cw = Creative_Work(
