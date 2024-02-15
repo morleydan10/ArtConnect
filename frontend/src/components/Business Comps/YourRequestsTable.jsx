@@ -39,7 +39,7 @@ function YourRequestsTable(){
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
-            setYourRequests(yourRequests.filter((yr) => yr.id == yourRequest.id))
+            setYourRequests(yourRequests.filter((yr) => yr.id !== yourRequest.id))
         })
     }
 
@@ -75,13 +75,16 @@ function YourRequestsTable(){
                                 <>
                                     <button onClick={() => {
                                         setIsPopupOpen(true)}}>View Bids</button>
-                                    <BidsPopup trigger={isPopupOpen} setTrigger={setIsPopupOpen} yourRequestId={yourRequest.id} handleUpdateRequest={handleUpdateRequest} />
+                                    <BidsPopup trigger={isPopupOpen} setIsPopupOpen={setIsPopupOpen} yourRequestId={yourRequest.id} handleUpdateRequest={handleUpdateRequest} />
                                 </>
                             )}</td>
-                            <td>
+                            <td>{yourRequest.artist ? (
+                                '--'
+                                ):(
                                 <button className="delete-button" onClick={(e) => handleDeleteYourRequest(e, yourRequest)}>
-                                Delete
+                                    Delete
                                 </button>
+                                )}
                             </td>
                         </tr>
                         ))}

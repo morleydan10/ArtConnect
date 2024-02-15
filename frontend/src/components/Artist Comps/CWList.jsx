@@ -29,7 +29,7 @@ function CWList(){
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
-            setWorks(works.filter((w) => w.id == work.id))
+            setWorks(works.filter((w) => w.id !== work.id))
         })
     }
 

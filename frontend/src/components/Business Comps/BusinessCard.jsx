@@ -7,7 +7,7 @@ function BusinessCard ({ business, viewBusinessProfile }) {
     return(
         <div className="card">
             <div className='card-img-div'>
-                <img src={business.profile_pic_url} className="card-img" alt="Business Picture"/>
+                <img src={business.profile_pic_url ? business.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')} className="card-img" alt="Business Picture"/>
             </div>
         <div className="card-body">
                 <h2 className="card-title">{business.name}</h2>

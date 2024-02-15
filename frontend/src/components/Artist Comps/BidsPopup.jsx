@@ -9,15 +9,16 @@ function BidsPopup(props) {
 
     const { yourRequestId } = props;
     const { handleUpdateRequest } = props;
+    const {setIsPopupOpen} = props;
 
     console.log(yourRequestId)
 
     return( (props.trigger) ? (
         <div className="popup">
             <div className="inner-bids-popup">
-                <button className="close-button" onClick={() => props.setTrigger(false)}>Close</button>
+                <button className="close-button" onClick={() => setIsPopupOpen(false)}>Close</button>
                 { props.children }
-                <BidsTable yourRequestId={yourRequestId} handleUpdateRequest={handleUpdateRequest} />
+                <BidsTable yourRequestId={yourRequestId} handleUpdateRequest={handleUpdateRequest} setIsPopupOpen={setIsPopupOpen} />
             </div>
         </div>
     ): 

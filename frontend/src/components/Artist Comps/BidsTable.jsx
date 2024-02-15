@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser';
 import { NavLink } from "react-router-dom";
 import { useUser } from "../../UserContext";
 
-function BidsTable ({ yourRequestId, handleUpdateAccept }) {
+function BidsTable ({ yourRequestId, handleUpdateAccept, setIsPopupOpen }) {
 
     const {  businessUser, serviceID, templateAcceptId, publicKey } = useUser()
 
@@ -23,10 +23,11 @@ function BidsTable ({ yourRequestId, handleUpdateAccept }) {
         .catch((error) => console.error(error));
     }, [yourRequestId])
 
-    // function sendAcceptEmail(e){
-    //     e.preventDefault();
-        
-    // }
+    function handleUpdateBids(updatedBid){
+        const updatedBids = bids.map((bid) =>
+            bid.id === updatedBid.id ? updatedBid : bid);
+        setBids(updatedBids);
+    }
 
     function handleClickAccept(e, bidId, bidArtistId, bidArtistName){
 
@@ -66,13 +67,17 @@ function BidsTable ({ yourRequestId, handleUpdateAccept }) {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(updateBid),
-        })  
-
+        })
+        .then(res => res.json())
+        .then(() => {
+            handleUpdateBids(updateBid);
+            setIsPopupOpen(false);
+        })
     };
-
 
     return(
         <div className="bids-table-div">
+            <div className="table-container">
             <table>
                 <thead>
                     <tr>
@@ -104,6 +109,8 @@ function BidsTable ({ yourRequestId, handleUpdateAccept }) {
                     })}
                 </tbody>
             </table>
+            </div>
+            
         </div>
     )
 }

@@ -459,7 +459,7 @@
 
 .inner-bids-popup{
   position: relative;
-  padding: 30px;
+  padding: 100px;
   width: 100%;
   max-width: 640px;
   background-color: white;
@@ -469,8 +469,8 @@
 
 .image-popup-inner{
   position: relative;
-  padding: 30px 30px;
-  width: 100%;
+  padding: 50px 50px;
+  width: 60%;
   max-width: 640px;
   background-color: white;
   border-radius: 12px;
@@ -479,6 +479,7 @@
 
 .cw-popup-image{
   border-radius: 12px;
+  max-width: 640px;
 }
 
 .close-button{
@@ -528,9 +529,6 @@
   text-align: left;
 }
 
-.profile-pic-div{
-
-}
 
 .profile-pic {
   width: 100%; /* Set width to 100% */

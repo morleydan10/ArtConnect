@@ -10,7 +10,7 @@ import ArtistRequestsTable from "../components/Artist Comps/ArtistRequestsTable"
 
 function ArtistProfile () {
 
-    const {artistUser} = useUser()
+    const {artistUser, setArtistUser} = useUser()
     const [showBio, setShowBio] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
     const [updatedUser, setUpdatedUser] = useState(null)
@@ -39,8 +39,12 @@ function ArtistProfile () {
         bio: updatedBio.bio,
         }));
         setShowBio(false);
-    }
 
+        setArtistUser((prevUser) => ({
+            ...prevUser,
+            bio: updatedBio.bio,
+        }));
+    }
 
     return (
         <main>

@@ -44,7 +44,7 @@ function BusinessProfile () {
                 <div className="profile-body">
                     <div className='profile-name-image-div'>
                         <div className="profile-pic-div">
-                            <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url ? businessUser.profile_picture_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
+                            <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url ? businessUser.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
                         </div>
                         <h2 className='profile-name'>{businessUser.name}</h2>
                         <h3>Date Joined: {businessUser.date_joined}</h3>

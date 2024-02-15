@@ -10,17 +10,6 @@ function NewRequest({ postNewRequest, setShowForm }){
     const [compensation, setCompensation] = useState('')
     
 
-    
-    // function getDate() {
-    //     const today = new Date();
-    //     const month = today.getMonth() + 1;
-    //     const year = today.getFullYear();
-    //     const date = today.getDate();
-    //     return `${month}/${date}/${year}`;
-    // }
-    
-    // const [date_created, setDateCreated] = useState(getDate())
-
     const handleChangeDescription = e => setDescription(e.target.value)
     const handleChangeCompensation = e => setCompensation(e.target.value)
     
@@ -37,6 +26,9 @@ function NewRequest({ postNewRequest, setShowForm }){
         e.preventDefault();
         postNewRequest(newRequest)
         setShowForm(false);
+        setTimeout(() => {
+            alert(`Request Submitted`);
+        }, 600);
     };
 
     function handleHideForm(e){

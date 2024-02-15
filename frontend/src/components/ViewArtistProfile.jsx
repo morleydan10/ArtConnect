@@ -53,7 +53,7 @@ function ViewArtistProfile(){
                         <h2 className="contact-info-header">Bio</h2>
                             <p>
                                 {artist.bio ? (
-                                        <p className="bio-text">{artistUser.bio}</p>
+                                        <p className="bio-text">{artist.bio}</p>
                                     ) : (
                                         <p className="bio-text">Artist has no bio at this time</p>
                                     )}
