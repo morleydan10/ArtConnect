@@ -1,6 +1,11 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../UserContext";
+import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow } from "@vis.gl/react-google-maps";
+
+
 import YourRequestsTable from "../components/Business Comps/YourRequestsTable";
 
 import Header from "../components/Header";
@@ -33,7 +38,12 @@ function BusinessProfile () {
 
             e.preventDefault();
             setShowForm(!showForm)
-        }
+        };
+
+    const position = { lat: 40.708824030640926,  lng: -73.83027974001327}
+
+
+    console.log(import.meta.env.VITE_BUSINESS_PROFILE_MAP_ID)
 
 
     return (
@@ -56,6 +66,18 @@ function BusinessProfile () {
                         <h3>{businessUser.phone_number}</h3>
                         <h3>{businessUser.email}</h3>
                     </div>
+                    <APIProvider apiKey={import.meta.env.VITE_GOOGLE_API_PUBLIC_KEY}>
+                        <div className="map-div">
+                            <Map zoom={16} center={position} mapID={import.meta.env.VITE_BUSINESS_PROFILE_MAP_ID}>
+                                <AdvancedMarker position={position}>
+                                    <Pin 
+                                        background={"navy blue"}
+                                        borderColor={"teal"}
+                                        glyphColor={"white"}/>
+                                </AdvancedMarker>
+                            </Map>
+                        </div>
+                    </APIProvider>
                 </div>
             </div>
             <div className="your-request-div">

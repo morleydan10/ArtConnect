@@ -49,7 +49,7 @@ class Creative_Work(db.Model, SerializerMixin):
     description = db.Column(db.String, nullable=False)
     artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"))
     # May have to change below to match file type, i.e jpeg, png, or video file
-    file = db.Column(db.String)
+    file = db.Column(db.String, unique=True)
 
 
     artist = db.relationship('Artist', back_populates="creative_works")

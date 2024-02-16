@@ -555,7 +555,7 @@
   width: fit-content;
   flex-direction: column;
   align-items: flex-start;
-  margin:0 200px;
+  margin:0 50px;
   font-size: 20px;
 }
 
@@ -633,6 +633,13 @@
   width: 100%;
   margin-bottom: auto;
   padding: 30px;
+}
+
+.map-div{
+  border-radius: 12px;
+  margin: 10px;
+  height: 500px;
+  width: 500px;
 }
 
 /* **************TABLES*************** */

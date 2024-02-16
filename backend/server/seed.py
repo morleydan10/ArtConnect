@@ -27,7 +27,7 @@ if __name__ == "__main__":
     {
         "name": "Brandon Bishop", 
         "type": "Photographer", 
-        "profile_pic_url": "https://images.unsplash.com/photo-1530785602389-07594beb8b73?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
+        "profile_pic_url": "https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
         "phone_number": "(640) 655-6789", 
         "email": "bbishop@gmail.com", 
         "city": "Astoria, NY", 
@@ -58,7 +58,7 @@ if __name__ == "__main__":
         # for artist_data in data["artists"]:
         # artist_types = ['Paint-Canvas', 'Paint-Spray', 'Photographer', 'Videographer']
         # artist_pics = ['https://images.unsplash.com/photo-1530785602389-07594beb8b73?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
-        for artist in artist_data:
+        for artist_data in artist_data:
             # password_hash = bcrypt.generate_password_hash(artist_data["name"])
             a = Artist(
                 name=artist_data["name"],
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 ]
 
         # for business_data in data["businesses"]:
-        for business in business_data:
+        for business_data in business_data:
             # password_hash = bcrypt.generate_password_hash(artist_data["name"])
             b = Business(
                 name=business_data["name"],
