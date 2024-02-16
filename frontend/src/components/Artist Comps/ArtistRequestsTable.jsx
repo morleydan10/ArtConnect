@@ -20,7 +20,7 @@ function ArtistRequestsTable(){
 
 
 
-    return( artistRequests ? 
+    return( artistRequests.length > 0 ? 
         (
         <div className="artist-requests-table">
             <div className="table-container">

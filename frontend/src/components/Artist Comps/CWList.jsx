@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useUser } from "../../UserContext";
 import CWCard from "./CWCard";
 
-function CWList(){
+function CWList({ works, setWorks}){
 
     const { artistUser } = useUser()
-    const [works, setWorks] = useState([])
+    
 
     useEffect(() => {
 
@@ -17,7 +17,7 @@ function CWList(){
             console.log(data)
             setWorks(data);
         })
-    }, [])
+    }, [setWorks])
 
     
     function handleCWDelete(e, work){

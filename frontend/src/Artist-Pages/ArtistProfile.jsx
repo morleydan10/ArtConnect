@@ -27,7 +27,9 @@ function ArtistProfile () {
         })
         .then((res) => {
             if (res.ok) {
-                res.json().then((newCW) => setWorks([...works, newCW]))
+                res.json().then((newCW) => {
+                    setWorks((works) => [...works, newCW]);
+                })
             } else {
                 console.log("POST is not working")
             }})
@@ -60,7 +62,7 @@ function ArtistProfile () {
                         <h3>Date Joined: {artistUser.date_joined}</h3>
                     </div>
                     <div className="contact-info-div">
-                        <h2 className="contact-info-header">Contact Information</h2>
+                        <h2 className="contact-info-header">Contact Info</h2>
                         <h3>{artistUser.city}</h3>
                         <h3>{artistUser.type}</h3>
                         <h3>{artistUser.phone_number}</h3>
@@ -104,7 +106,7 @@ function ArtistProfile () {
                 ):(
                     <>
                         <button onClick={(e) => setShowAddForm(true)}>Add to Portfolio</button>
-                        <CWList />
+                        <CWList works={works} setWorks={setWorks} />
                     </>
                 )}
             </div>
