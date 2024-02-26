@@ -16,11 +16,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #294157;
+  --secondary-color: #42ddda;
+  --accent: white;
+  --box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px;
+  
 }
 
 a {
   font-weight: 500;
-  color: #294157;
+  color: var(--primary-color);
   text-decoration: inherit;
 }
 a:hover {
@@ -71,8 +77,8 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #42ddda;
-  color: #42ddda;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 button:focus,
 button:focus-visible {
@@ -85,7 +91,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #42ddda;
+    color: var(--secondary-color);
   }
   button {
     background-color: #294157;
