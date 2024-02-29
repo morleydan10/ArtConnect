@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from dotenv import dotenv_values
+from sqlalchemy.orm import joinedload
 
 from models import db, Artist, Request, Business, Creative_Work, Bid
 import datetime
@@ -384,7 +385,7 @@ def get_requests_by_business_id(id):
 
     return [r.to_dict(rules=['-business.requests', '-business.password_hash', '-artist.email.','-artist.bids', '-artist.creative_works', '-artist.username', '-artist.password_hash', '-artist.type', '-artist.profile_pic_url', '-artist.city', '-artist.phone_number','-artist.date_joined', '-bids']) for r in requests], 200
 
-@app.get('/api/requests/<int:id>')
+@app.get('/api/requests/artists/<int:id>')
 def get_requests_by_artist_id(id):
 
     artist = db.session.get(Artist, id)
@@ -392,7 +393,13 @@ def get_requests_by_artist_id(id):
     if not artist:
         return {'error': 'Request not found'}, 404
     
-    requests = Request.query.filter(Request.artist_id == id).all()
+    requests = (
+        Request.query
+        .join(Bid)  # Assuming there's a relationship between Request and Bid
+        .filter(Request.artist_id == id, Bid.accepted == True)  # Filter based on artist ID and accepted bid
+        .options(joinedload(Request.business))  # Optionally load the associated business
+        .all()
+    )
 
     return [r.to_dict(rules=['-artist.bids', 'bids', '-business.password_hash', '-business.username', '-business.requests' 'artist.password_hash', 'artist.username', '-artist.creative_works']) for r in requests], 200
 
