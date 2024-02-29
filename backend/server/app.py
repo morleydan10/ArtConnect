@@ -9,7 +9,7 @@ from models import db, Artist, Request, Business, Creative_Work, Bid
 import datetime
 import base64
 
-config = dotenv_values(".env")
+config = dotenv_values("backend.env")
 
 app = Flask(__name__)
 app.secret_key = config['FLASK_SECRET_KEY']
