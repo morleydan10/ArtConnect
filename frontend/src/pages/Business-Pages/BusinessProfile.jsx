@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useUser } from "../UserContext";
+import { useUser } from "../../UserContext";
 import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow } from "@vis.gl/react-google-maps";
 
 
-import YourRequestsTable from "../components/Business Comps/YourRequestsTable";
+import YourRequestsTable from "../../components/Business Comps/YourRequestsTable";
 
-import Header from "../components/Header";
-import NewRequest from "../components/Artist Comps/NewRequest";
+import Header from "../../components/Header";
+import NewRequest from "../../components/Artist Comps/NewRequest";
 
 function BusinessProfile () {
 

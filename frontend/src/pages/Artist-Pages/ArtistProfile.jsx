@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useUser } from "../UserContext";
+import { useUser } from "../../UserContext"
 
-import Header from "../components/Header";
-import CWList from "../components/Artist Comps/CWList";
-import AddCWForm from "../components/Artist Comps/AddCWForm";
-import BioInput from "../components/Artist Comps/BioInput";
-import ArtistRequestsTable from "../components/Artist Comps/ArtistRequestsTable";
+import Header from "../../components/Header";
+import CWList from "../../components/Artist Comps/CWList";
+import AddCWForm from "../../components/Artist Comps/AddCWForm";
+import BioInput from "../../components/Artist Comps/BioInput";
+import ArtistRequestsTable from "../../components/Artist Comps/ArtistRequestsTable";
 
 function ArtistProfile () {
 

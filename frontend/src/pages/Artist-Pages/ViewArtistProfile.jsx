@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import Header from "./Header";
-import ViewCWList from "./Artist Comps/ViewCWList";
+import Header from "../../components/Header";
+import ViewCWList from "../../components/Artist Comps/ViewCWList";
 
 function ViewArtistProfile(){
 

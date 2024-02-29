@@ -5,8 +5,8 @@ import { useUser } from "../UserContext";
 import Header from "../components/Header";
 import ArtistList from "../components/Artist Comps/ArtistList";
 import BusinessList from "../components/Business Comps/BusinessList";
-import ViewBusinessProfile from "../components/ViewBusinessProfile";
-import ViewArtistProfile from "../components/ViewArtistProfile";
+import ViewBusinessProfile from "./Business-Pages/ViewBusinessProfile";
+import ViewArtistProfile from "./Artist-Pages/ViewArtistProfile";
 
 function BrowseUsers(){
 

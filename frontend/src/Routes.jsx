@@ -8,13 +8,13 @@ import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import BrowseUsers from "./pages/BrowseUsers";
 // *************ARTIST****************
-import ArtistProfile from "./Artist-Pages/ArtistProfile";
-import OpenRequests from "./Artist-Pages/OpenRequests";
+import ArtistProfile from "./pages/Artist-Pages/ArtistProfile";
+import OpenRequests from "./pages/Artist-Pages/OpenRequests";
 // ***********BUSINESS****************
-import BusinessProfile from "./pages/BusinessProfile";
+import BusinessProfile from "./pages/Business-Pages/BusinessProfile";
 // ***********VIEW PROFILES**************
-import ViewBusinessProfile from "./components/ViewBusinessProfile";
-import ViewArtistProfile from "./components/ViewArtistProfile";
+import ViewBusinessProfile from "./pages/Business-Pages/ViewBusinessProfile";
+import ViewArtistProfile from "./pages/Artist-Pages/ViewArtistProfile";
 
 const Routes = createBrowserRouter([
     {

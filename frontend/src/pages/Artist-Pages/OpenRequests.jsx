@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useUser } from "../UserContext";
-import Header from "../components/Header";
-import RequestTable from "../components/Business Comps/RequestTable";
-import BusRequestTable from "../components/Business Comps/BusRequestTable";
+import { useUser } from "../../UserContext";
+import Header from "../../components/Header";
+import RequestTable from "../../components/Business Comps/RequestTable";
+import BusRequestTable from "../../components/Business Comps/BusRequestTable";
 
 
 function OpenRequests() {

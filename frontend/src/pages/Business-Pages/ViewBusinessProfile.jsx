@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import Header from "./Header";
-import ViewBusRequests from './Business Comps/ViewBusRequests';
+import Header from "../../components/Header";
+import ViewBusRequests from "../../components/Business Comps/ViewBusRequests"
 
 
 function ViewBusinessProfile() {

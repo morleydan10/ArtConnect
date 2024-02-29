@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BusinessProfile from "../../pages/BusinessProfile";
+import BusinessProfile from "../../pages/Business-Pages/BusinessProfile";
 import { useUser } from "../../UserContext";
 
 function NewRequest({ postNewRequest, setShowForm }){
