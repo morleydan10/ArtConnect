@@ -10,7 +10,7 @@ function ArtistRequestsTable(){
     
 
     useEffect(() => {
-        fetch(`/api/requests/${artistUser.id}`)
+        fetch(`/api/requests/artists/${artistUser.id}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
