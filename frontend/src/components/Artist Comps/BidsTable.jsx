@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import emailjs from '@emailjs/browser';
-import { NavLink } from "react-router-dom";
 import { useUser } from "../../UserContext";
 
 function BidsTable ({ yourRequestId, handleUpdateAccept, setIsPopupOpen }) {
@@ -8,20 +7,33 @@ function BidsTable ({ yourRequestId, handleUpdateAccept, setIsPopupOpen }) {
     const {  businessUser, serviceID, templateAcceptId, publicKey } = useUser()
 
     const [bids, setBids] = useState([])
+    const[loading, setLoading] = useState(true)
     
     // get bids
     useEffect(() => {
+        setLoading(true); 
+
         fetch(`/api/bids/${yourRequestId}`)
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            } else { 
-                throw new Error('GET request unsuccessful');
-            }
-        })
-        .then((data) => setBids(data))
-        .catch((error) => console.error(error));
-    }, [yourRequestId])
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('GET request unsuccessful');
+                }
+            })
+            .then((data) => {
+                console.log(data);
+                setBids(data);
+            })
+            .catch((error) => console.error(error))
+            .finally(() => {
+                setLoading(false); 
+            });
+    }, [yourRequestId]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
     function handleUpdateBids(updatedBid){
         const updatedBids = bids.map((bid) =>

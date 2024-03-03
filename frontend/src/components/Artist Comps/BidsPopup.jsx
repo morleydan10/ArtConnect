@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useUser } from "../../UserContext";
 
 import BidsTable from "./BidsTable";
 
@@ -11,6 +9,7 @@ function BidsPopup(props) {
     const { handleUpdateRequest } = props;
     const {setIsPopupOpen} = props;
 
+    console.log("Bids Popup is running")
     console.log(yourRequestId)
 
     return( (props.trigger) ? (
