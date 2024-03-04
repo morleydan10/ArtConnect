@@ -30,6 +30,7 @@ function CWList({ works, setWorks}){
         .then((data) => {
             console.log(data)
             setWorks(works.filter((w) => w.id !== work.id))
+            alert("Work successfully deleted.")
         })
     }
 

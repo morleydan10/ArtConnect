@@ -29,6 +29,7 @@ function ArtistProfile () {
             if (res.ok) {
                 res.json().then((newCW) => {
                     setWorks((works) => [...works, newCW]);
+                    alert("Work successfully added.")
                 })
             } else {
                 console.log("POST is not working")
