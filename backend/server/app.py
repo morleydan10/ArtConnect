@@ -153,7 +153,11 @@ def create_new_business():
         session["business_id"] = newBusiness.id
         session['user_type'] = "business"
         session.permanent = True
+
+        print(session["business_id"])
+        print(session["user_type"])
         print("success")
+
     
     except Exception as e:
         print(e)
@@ -175,10 +179,12 @@ def check_business_session():
     # print to check the session object
     # print(current_user_id)
     print(business)
+    print(session["business_id"])
+    print(session["user_type"])
     # print(business.name)
 
     if business and (user_type == 'business'):
-        return business.to_dict(rules=['-password_hash']), 200
+        return business.to_dict(rules=['-password_hash', '-requests']), 200
     else:
         return {'Message': 'No user logged in'}, 404
 
@@ -209,9 +215,11 @@ def login_business():
         session["business_id"] = business.id
         session['user_type'] = "business"
         session.permanent = True
+        print(session["business_id"])
+        print(session["user_type"])
         print("success")
 
-        return business.to_dict(rules=['-password_hash']), 200
+        return business.to_dict(rules=['-password_hash', '-requests']), 200
         # return {'access_token': access_token, 'business': business.to_dict(rules=['-password_hash'])}, 200
     else:
         return {"error": "Invalid username or password"}, 401
