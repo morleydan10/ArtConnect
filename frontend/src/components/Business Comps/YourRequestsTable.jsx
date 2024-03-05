@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useUser } from "../../UserContext";
 import BidsPopup from "../Artist Comps/BidsPopup";
 
@@ -9,16 +8,24 @@ function YourRequestsTable(){
 
     const [yourRequests, setYourRequests] = useState([])
     const [isPopupOpen, setIsPopupOpen] = useState(false)
+    const [selectedRequest, setSelectedRequest] = useState(null)
+    
     
 
+    console.log("YourRequests Table is Running");
+
     useEffect(() => {
-        fetch(`/api/requests/${businessUser.id}`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            setYourRequests(data)
-        })
-    },[])
+        if (!yourRequests.length) {
+            fetch(`/api/requests/${businessUser.id}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    setYourRequests(data);
+                });
+        } else {
+            console.log("Table is already populated.");
+        }
+    }, [yourRequests, businessUser.id]);
 
     
     // PATCH for when Bid is accepted
@@ -74,8 +81,9 @@ function YourRequestsTable(){
                             <td>{ yourRequest.artist ? ('Closed') : (
                                 <>
                                     <button onClick={() => {
+                                        setSelectedRequest(yourRequest.id)
                                         setIsPopupOpen(true)}}>View Bids</button>
-                                    <BidsPopup trigger={isPopupOpen} setIsPopupOpen={setIsPopupOpen} yourRequestId={yourRequest.id} handleUpdateRequest={handleUpdateRequest} />
+                                    <BidsPopup trigger={isPopupOpen} setIsPopupOpen={setIsPopupOpen} yourRequestId={selectedRequest} handleUpdateRequest={handleUpdateRequest} />
                                 </>
                             )}</td>
                             <td>{yourRequest.artist ? (

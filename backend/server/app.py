@@ -570,7 +570,7 @@ def get_bids_by_request_id(id):
     bids = Bid.query.filter(Bid.request_id == id).all()
 
 
-    return [b.to_dict(rules=[ '-artist.bids', '-request','-artist.requests']) for b in bids], 200
+    return [b.to_dict(rules=[ '-artist.bids', '-request','-artist.requests', '-artist.creative_works']) for b in bids], 200
 
 @app.post('/api/bids')
 def post_new_bid():
