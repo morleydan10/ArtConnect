@@ -74,7 +74,10 @@ function LandingPage() {
                 if (res.ok) {
                     return res.json()
                 }
-                throw res;
+                else{
+                    alert("Signup unsuccessful, check for missing information.");
+                    throw res;
+                }
             })
             .then((data) => {
                 console.log(data);
@@ -108,7 +111,10 @@ function LandingPage() {
                 if (res.ok) {
                     return res.json()
                 }
-                throw res;
+                else{
+                    alert("Login unsuccessful, invalid username and/or password.");
+                    throw res;
+                }
             })
             .then((data) => {
                 console.log(data);
@@ -169,7 +175,10 @@ function LandingPage() {
                 if (res.ok) {
                     return res.json()
                 }
-                throw res;
+                else{
+                    alert("Signup unsuccessful, check for missing information.");
+                    throw res;
+                }
             })
             .then((data) => {
                 console.log(data);
@@ -197,7 +206,10 @@ function LandingPage() {
                 if (res.ok){
                     return res.json()
                 }
-                throw res;
+                else{
+                    alert("Login unsuccessful, invalid username and/or password.");
+                    throw res;
+                }
             })
             .then((data) => {
                 console.log(data);
