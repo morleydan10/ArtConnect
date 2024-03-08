@@ -73,6 +73,7 @@ To use ArtConnect, follow these general steps:
 
 ## Built with:
 
+- Node.js
 - React.js
 - Python with Flask
 - SQLite
