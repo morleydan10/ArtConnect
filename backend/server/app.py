@@ -493,7 +493,15 @@ def get_creative_works_by_artist_id(id):
 
     creative_works = Creative_Work.query.filter(Creative_Work.artist_id == id).all()
 
-    return [{'file': base64.b64decode(cw.file), **cw.to_dict(rules=['-artist'])} for cw in creative_works], 200
+    for cw in creative_works:
+        if cw.file.startswith("data:image/jpeg"):
+            {'file': base64.b64decode(cw.file)}
+        if cw.file.startswith("data:image/png") or cw.file.startswith("data:video/mp4"):
+            {'file': base64.urlsafe_b64decode(cw.file)}
+        return [cw.to_dict(rules=['-artist']) for cw in creative_works], 200
+            
+
+    # return [{'file': base64.b64decode(cw.file), **cw.to_dict(rules=['-artist'])} for cw in creative_works], 200
 
 # @app.get('/api/creative_works/<int:id>')
 # def get_creative_work_by_id(id):
