@@ -10,7 +10,7 @@ function OpenRequests() {
     const {artistUser} = useUser();
 
     const [bids, setBids] = useState([])
-    const [showApply, setShowApply] = useState(true)
+    // const [showApply, setShowApply] = useState(true)
 
     function postNewBid(newBid) {
 
@@ -25,10 +25,8 @@ function OpenRequests() {
             if (res.ok) {
                 res.json().then((newBid) => {
                     setBids([...bids, newBid]);
-                    setShowApply(false);
-                    setTimeout(() => {
-                        alert('Application successful');
-                    }, 400);
+                    // setShowApply(false);
+                    alert('Application successful');
                 })
             } else {
                 console.log("POST is not working")
@@ -44,7 +42,7 @@ function OpenRequests() {
                 <h2 className="requests-table-header">Requests</h2>
             </div>
             {artistUser ? (
-                <RequestTable postNewBid={postNewBid} showApply={showApply} />
+                <RequestTable postNewBid={postNewBid} />
             ):(
                 <BusRequestTable/>
             )}

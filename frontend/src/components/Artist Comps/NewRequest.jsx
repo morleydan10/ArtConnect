@@ -26,9 +26,7 @@ function NewRequest({ postNewRequest, setShowForm }){
         e.preventDefault();
         postNewRequest(newRequest)
         setShowForm(false);
-        setTimeout(() => {
-            alert(`Request Submitted`);
-        }, 600);
+        alert(`Request Submitted`);
     };
 
     function handleHideForm(e){

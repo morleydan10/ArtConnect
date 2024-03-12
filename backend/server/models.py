@@ -101,9 +101,11 @@ class Bid(db.Model, SerializerMixin):
     serialize_rules = ["-request.bids", "-artist.bids", "-artist.password_hash", "-artist.username", "-request.business.password_hash", "-request.business.username"]
 
     id = db.Column(db.Integer, primary_key=True)
-    artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"), unique=True, nullable=False)
+    artist_id = db.Column(db.Integer, db.ForeignKey("artist_table.id"), nullable=False)
     request_id = db.Column(db.Integer, db.ForeignKey("request_table.id"), nullable=False)
     accepted = db.Column(db.Boolean, default=False)
+
+    __table_args__ = (db.UniqueConstraint('artist_id', 'request_id', name='unique_artist_request'),)
 
     request = db.relationship("Request", back_populates="bids")
     artist = db.relationship("Artist", back_populates="bids")

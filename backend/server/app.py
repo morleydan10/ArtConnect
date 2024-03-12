@@ -5,6 +5,7 @@ from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from dotenv import dotenv_values
 from sqlalchemy.orm import joinedload
+from sqlalchemy.exc import IntegrityError
 
 from models import db, Artist, Request, Business, Creative_Work, Bid
 import datetime
@@ -525,7 +526,7 @@ def post_new_creative_work():
     except Exception as e:
         return {'error': str(e)}
     
-    return new_creative_work.to_dict(rules=['-file']), 201
+    return new_creative_work.to_dict(), 201
 
 @app.patch('/api/creative_works/<int:id>')
 def patch_creative_work(id):
@@ -586,7 +587,7 @@ def post_new_bid():
     try:
         data = request.json
         print('Received data:', data)
-
+        
         new_bid = Bid(
             artist_id=data.get('artist_id'),
             request_id=data.get('request_id'),
@@ -596,6 +597,10 @@ def post_new_bid():
         db.session.add(new_bid)
         db.session.commit()
         print('post successful')
+
+    except IntegrityError as e:
+        db.session.rollback()
+        return {'error': 'Artist can only submit one bid per request.'}, 400
 
     except Exception as e:
         return {'error': str(e)}

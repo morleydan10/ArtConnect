@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
 import emailjs from '@emailjs/browser';
-import { useTable } from "react-table";
 import { useUser } from "../../UserContext";
-import { json } from "react-router-dom";
 
 
-function RequestTable ({ postNewBid, showApply }) {
+function RequestTable ({ postNewBid }) {
 
     const {artistUser, serviceID, templateRecId, publicKey,} = useUser()
     const [requests, setRequests] = useState([])
-    const [request_id, setRequestId]= useState()
+    const [request_id, setRequestId]= useState('')
 
-    
-    
 
     // fetch requests
 
@@ -21,6 +17,9 @@ function RequestTable ({ postNewBid, showApply }) {
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
+            data.forEach((request) => {
+                request.showApply = true;
+            })
             setRequests(data)
         })
     }, [])
@@ -28,9 +27,10 @@ function RequestTable ({ postNewBid, showApply }) {
     const artist_id = artistUser.id
 
     
-    function handleClickApply(e, requestId, requestBusinessName){
+    function handleClickApply(e, requestId, requestBusinessName, ){
         e.preventDefault();
         setRequestId(requestId);
+        // showApply = false;
         
         emailjs.send(serviceID, templateRecId, {
             business_name: requestBusinessName,
@@ -43,8 +43,20 @@ function RequestTable ({ postNewBid, showApply }) {
             request_id: requestId
         }
 
-        postNewBid(newBid)
+        postNewBid(newBid);
 
+        setRequests((prevRequests) => {
+            const updatedRequests = prevRequests.map((request) =>
+                request.id === requestId ? { ...request, showApply: false } : request
+            );
+
+            updatedRequests.forEach((request) => {
+                console.log(request.id);
+                console.log(request.showApply);
+            });
+
+            return updatedRequests;
+        });
     };
 
 
@@ -76,7 +88,7 @@ function RequestTable ({ postNewBid, showApply }) {
                             <td>
                                 {request.artist
                                 ? 'Closed'
-                                : showApply
+                                : request.showApply === true
                                 ? <button onClick={(e) => handleClickApply(e, request.id, request.business.name)}>Apply</button>
                                 : 'Applied'}
                             </td>
