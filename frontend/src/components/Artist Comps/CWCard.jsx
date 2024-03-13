@@ -7,7 +7,13 @@ function CWCard({ work, handleCWDelete }){
     return(
         <div className='cw-card'>
             <div className='cw-card-img-div'>
-                <img className="cw-file" src={work.file} alt={work.description} />
+                {work.file.startsWith("data:video/mp4") ? 
+                (
+                    <video className="cw-file" src={work.file} alt={work.description} />
+                ):(
+                    <img className="cw-file" src={work.file} alt={work.description} />
+                )
+                }
             </div>
             <div className="cw-card-body">
                 <h4 className="card-subtitle">{work.description}</h4>
