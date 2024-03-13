@@ -465,6 +465,16 @@
 .cw-popup-image{
   border-radius: 12px;
   max-width: 640px;
+  max-height: 400px;
+}
+
+.cw-popup-video{
+  border-radius: 12px;
+  max-width: 640px;
+  max-height: 400px;
+}
+.cw-popup-video:hover{
+  cursor: pointer;
 }
 
 .close-button{
