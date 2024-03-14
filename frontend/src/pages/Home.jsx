@@ -49,6 +49,7 @@ function Home() {
             <div className="hero-section">
                 <h1 className="homepage-title">ArtConnect</h1>
                 <p>Welcome to our platform for connecting artists and businesses!</p>
+                <p>Set up your profile now!</p>
                 <a to="/browse" className="cta-button">
                 Get Started
                 </a>
