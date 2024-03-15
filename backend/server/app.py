@@ -271,11 +271,13 @@ def post_new_artist():
 def patch_artist(id):
 
     artist = db.session.get(Artist, id)
+    data = request.json
+    print(data)
+    
 
     if not artist:
         return {"error": "Artist not found"}, 404
     try:
-        data = request.json
         for key in data:
             setattr(artist, key, data[key])
         db.session.add(artist)
@@ -344,12 +346,13 @@ def post_new_business():
 @app.patch('/api/businesses/<int:id>')
 def patch_business(id):
 
+    data = request.json
+    print(data)
     business = db.session.get(Business, id)
 
     if not business:
         return {"error": "Business not found"}, 404
     try:
-        data = request.json
         for key in data:
             setattr(business, key, data[key])
         db.session.add(business)
