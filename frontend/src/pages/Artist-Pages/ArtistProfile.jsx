@@ -60,12 +60,12 @@ function ArtistProfile () {
                             <img className='profile-pic' alt='Profile Picture' src={artistUser.profile_pic_url ? (artistUser.profile_pic_url):('https://m.media-amazon.com/images/I/81fd1B3HUWL.jpg')}/>
                         </div>
                         <h2 className='profile-name'>{artistUser.name}</h2>
+                        <h3>{artistUser.type}</h3>
                         <h3>Date Joined: {artistUser.date_joined}</h3>
                     </div>
                     <div className="contact-info-div">
                         <h2 className="contact-info-header">Contact Info</h2>
                         <h3>{artistUser.city}</h3>
-                        <h3>{artistUser.type}</h3>
                         <h3>{artistUser.phone_number}</h3>
                         <h3>{artistUser.email}</h3>
                     </div>
