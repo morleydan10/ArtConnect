@@ -523,14 +523,6 @@
   text-align: left;
 }
 
-/* .profile-pic-div{
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: var(--accent);
-} */
-
-
 .profile-pic {
   width: 100%; /* Set width to 100% */
   height: auto; /* Maintain aspect ratio */
@@ -540,6 +532,21 @@
   min-height: 350px; /* Minimum height */
   max-height: 450px; /* Maximum height */
   object-fit: cover;
+}
+
+ /* .pic-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+ }  */
+
+.profile-pic-div:hover .pic-overlay{
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .profile-body{
