@@ -69,7 +69,6 @@ function ArtistProfile () {
                             ):(
                                 <>
                                     <img className='profile-pic' alt='Profile Picture' src={artistUser.profile_pic_url ? (artistUser.profile_pic_url):('https://m.media-amazon.com/images/I/81fd1B3HUWL.jpg')}/>
-                                    <div className="pic-overlay"></div>
                                     <button className="edit-pic-button" onClick={handleEditClick}>Edit</button>
                                 </>
                             )}

@@ -5,11 +5,12 @@ import { useUser } from "../../UserContext";
 function EditPicForm({ setShowEditForm }){
 
     const {artistUser}= useUser()
+    const {businessUser} = useUser()
 
     const [file, setFile] = useState('')
     
+    const id = artistUser ? artistUser.id : businessUser.id;
 
-    const artist_id = artistUser.id;
 
     function cancelEditPic(e) {
         e.preventDefault();
@@ -35,7 +36,9 @@ function EditPicForm({ setShowEditForm }){
             profile_pic_url: file
         }
 
-        fetch(`/api/artists/${artist_id}`, {
+        const endpoint = artistUser ? `/api/artists/${id}` : `/api/businesses/${id}`;
+
+        fetch(endpoint, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -77,7 +80,6 @@ function EditPicForm({ setShowEditForm }){
             </form>
         </div>
     )
-
 }
 
 export default EditPicForm;

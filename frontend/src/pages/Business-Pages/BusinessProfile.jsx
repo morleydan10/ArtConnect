@@ -9,11 +9,13 @@ import YourRequestsTable from "../../components/Business Comps/YourRequestsTable
 
 import Header from "../../components/Header";
 import NewRequest from "../../components/Artist Comps/NewRequest";
+import EditPicForm from "../../components/Artist Comps/EditPicForm";
 
 function BusinessProfile () {
 
     const {businessUser, requests, setRequests} = useUser()
     const [showForm, setShowForm] = useState(false)
+    const [showEditForm, setShowEditForm] = useState(false)
 
     // Post request for generate request
     function postNewRequest(newRequest) {
@@ -34,10 +36,14 @@ function BusinessProfile () {
         }
         
         function handleShowForm (e){
-
             e.preventDefault();
             setShowForm(!showForm)
         };
+
+        const handleEditClick = e => {
+            console.log("I've been clicked")
+            setShowEditForm(true)
+        }
 
 
     return (
@@ -48,7 +54,14 @@ function BusinessProfile () {
                 <div className="profile-body">
                     <div className='profile-name-image-div'>
                         <div className="profile-pic-div">
-                            <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url ? businessUser.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
+                        {showEditForm? (
+                                <EditPicForm setShowEditForm={setShowEditForm}/>
+                            ):(
+                                <>
+                                    <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url ? businessUser.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
+                                    <button className="edit-pic-button" onClick={handleEditClick}>Edit</button>
+                                </>
+                            )}
                         </div>
                         <h2 className='profile-name'>{businessUser.name}</h2>
                         <h3>Date Joined: {businessUser.date_joined}</h3>
