@@ -7,11 +7,13 @@ import CWList from "../../components/Artist Comps/CWList";
 import AddCWForm from "../../components/Artist Comps/AddCWForm";
 import BioInput from "../../components/Artist Comps/BioInput";
 import ArtistRequestsTable from "../../components/Artist Comps/ArtistRequestsTable";
+import EditPicForm from "../../components/Artist Comps/EditPicForm";
 
 function ArtistProfile () {
 
     const {artistUser, setArtistUser} = useUser()
     const [showBio, setShowBio] = useState(false)
+    const [showEditForm, setShowEditForm] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
     const [updatedUser, setUpdatedUser] = useState(null)
     const [works, setWorks] = useState([])
@@ -49,6 +51,11 @@ function ArtistProfile () {
         }));
     }
 
+    const handleEditClick = e => {
+        console.log("I've been clicked")
+        setShowEditForm(true)
+    }
+
     return (
         <main>
             <Header />
@@ -57,7 +64,15 @@ function ArtistProfile () {
                 <div className="profile-body">
                     <div className='profile-name-image-div'>
                         <div className="profile-pic-div">
-                            <img className='profile-pic' alt='Profile Picture' src={artistUser.profile_pic_url ? (artistUser.profile_pic_url):('https://m.media-amazon.com/images/I/81fd1B3HUWL.jpg')}/>
+                            {showEditForm? (
+                                <EditPicForm setShowEditForm={setShowEditForm}/>
+                            ):(
+                                <>
+                                    <img className='profile-pic' alt='Profile Picture' src={artistUser.profile_pic_url ? (artistUser.profile_pic_url):('https://m.media-amazon.com/images/I/81fd1B3HUWL.jpg')}/>
+                                    <button className="edit-pic-button" onClick={handleEditClick}>Edit</button>
+                                </>
+                            )}
+                            
                         </div>
                         <h2 className='profile-name'>{artistUser.name}</h2>
                         <h3>{artistUser.type}</h3>
@@ -96,7 +111,6 @@ function ArtistProfile () {
                             </div>
                             <ArtistRequestsTable />
                         </div>
-
                     </div>
                 </div>
             </div>
