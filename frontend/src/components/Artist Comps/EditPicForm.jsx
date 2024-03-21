@@ -65,7 +65,7 @@ function EditPicForm({ setShowEditForm }){
 
     
     return(
-        <div className="add-cw-form-div">
+        <div className="edit-pic-form-div">
             <form className="add-cw-form" onSubmit={handleSubmitPic}>
                 <input 
                     type="file"
