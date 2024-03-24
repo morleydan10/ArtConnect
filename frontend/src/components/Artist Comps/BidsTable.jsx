@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import emailjs from '@emailjs/browser';
 import { useUser } from "../../UserContext";
+import { NavLink } from "react-router-dom";
 
 function BidsTable ({ yourRequestId, handleUpdateAccept, setIsPopupOpen }) {
 
@@ -103,11 +104,16 @@ function BidsTable ({ yourRequestId, handleUpdateAccept, setIsPopupOpen }) {
                 <tbody>
                     {bids.map((bid) => {
                     console.log(bid.artist);
+                    console.log(bid.artist.id);
                     return (
                         <tr key={bid.id}>
                             <td>{bid.id}</td>
                             {/* Set up link to view profile */}
-                            <td>{bid.artist.name}</td>
+                            <td>
+                                <NavLink to={`/ViewArtistProfile/${bid.artist.id}`}>
+                                    {bid.artist.name}
+                                </NavLink>
+                            </td>
                             <td>{bid.artist.email}</td>
                             <td>{bid.artist.phone_number}</td>
                             <td>

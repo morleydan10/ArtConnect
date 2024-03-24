@@ -1,12 +1,13 @@
 import React, { useState, useEffect} from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUser } from "../UserContext";
 
 import Header from "../components/Header";
+import CarouselSlider from "../components/CarouselSlider";
 
 function Home() {
 
-    const {setArtistUser, setBusinessUser, signedIn} = useUser()
+    const {artistUser, setArtistUser, setBusinessUser, signedIn} = useUser()
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -45,30 +46,12 @@ function Home() {
         // ternary to if artist or if business
         <main>
             <Header />
-
             <div className="hero-section">
                 <h1 className="homepage-title">ArtConnect</h1>
-                <p>Welcome to our platform for connecting artists and businesses!</p>
-                <p>Finish setting up your profile now!</p>
-                <a to="/browse" className="get-started-button">
-                Get Started
-                </a>
             </div>
-
-            <div className="features-section">
-                <div className="feature">
-                    <h2 className="homepage-feature-header">Find Artists</h2>
-                    <p>Discover talented artists right in your neighborhood.</p>
-                </div>
-                <div className="feature">
-                    <h2 className="homepage-feature-header">Post Requests</h2>
-                    <p>Businesses can post creative work requests.</p>
-                </div>
-                <div className="feature">
-                    <h2 className="homepage-feature-header">Connect and Collaborate</h2>
-                    <p>Connect with artists and start creative collaborations.</p>
-                </div>
-            </div>
+            <CarouselSlider artistUser={artistUser}/>
+            <br></br>
+            <br/>
             <div className="testimonial-section">
                 <h2 className="homepage-feature-header">What Our Users Say</h2>
                 <p className="quote-person">Donna, Owner of ABC Cafe:</p>

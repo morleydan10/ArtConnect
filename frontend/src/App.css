@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
   font-family: 'Raleway';
   src: url('https://fonts.google.com/specimen/Raleway/download?format=woff2') format('woff2');
-}
+} */
 
 #root {
   
@@ -206,11 +206,39 @@
 .quote-person{
   color: var(--secondary-color);
   font-weight: 600;
+  font-size: 20px;
 }
 
 .testimonial-section{
   padding: 0 20px 20px;
 }
+
+.testimonial-quote{
+  font-size: 20px;
+}
+
+.slider{
+  width: 60%;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+.slider .slick-arrow{
+  filter: drop-shadow(0 0 4px #0004);
+}
+
+.homepage-feature-header{
+  font-size: 30px;
+}
+.set-up-text{
+  font-size: 25px;
+}
+.call-to-action{
+  font-size: 20px;
+}
+
+
 
 /* ***************CW LIST************ */
 
@@ -534,19 +562,10 @@
   object-fit: cover;
 }
 
- /* .pic-overlay{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.5s ease;
- }  */
-
-.profile-pic-div:hover .pic-overlay{
-  display: block;
-  background-color: rgba(0, 0, 0, 0.2);
+.profile-pic-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-body{
