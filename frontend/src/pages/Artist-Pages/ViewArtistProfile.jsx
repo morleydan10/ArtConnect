@@ -31,40 +31,42 @@ function ViewArtistProfile(){
     return(
         <main>
             <Header />
-            <div className="profile-div">
-                {/* <h1 className="profile-header">Profile</h1> */}
-                <div className="profile-body">
-                    <div className='profile-name-image-div'>
-                        <div className="profile-pic-div">
-                            <img className='profile-pic' alt='Profile Picture' src={artist.profile_pic_url ? (artist.profile_pic_url):('https://m.media-amazon.com/images/I/81fd1B3HUWL.jpg')}/>
+            <div className="profile-div-container">
+                <div className="profile-div">
+                    {/* <h1 className="profile-header">Profile</h1> */}
+                    <div className="profile-body">
+                        <div className='profile-name-image-div'>
+                            <div className="profile-pic-div">
+                                <img className='profile-pic' alt='Profile Picture' src={artist.profile_pic_url ? (artist.profile_pic_url):('https://m.media-amazon.com/images/I/81fd1B3HUWL.jpg')}/>
+                            </div>
+                            <h2 className='profile-name'>{artist.name}</h2>
+                            <h3>Date Joined: {artist.date_joined}</h3>
                         </div>
-                        <h2 className='profile-name'>{artist.name}</h2>
-                        <h3>Date Joined: {artist.date_joined}</h3>
-                    </div>
-                    <div className="contact-info-div">
-                        <h2 className="contact-info-header">Contact Information</h2>
-                        <h3>{artist.city}</h3>
-                        <h3>{artist.type}</h3>
-                        <h3>{artist.phone_number}</h3>
-                        <h3>{artist.email}</h3>
-                    </div>
-                <div className="bio-and-requests-div">
-                    <div className='bio-div'>
-                        <h2 className="contact-info-header">Bio</h2>
-                            <p>
-                                {artist.bio ? (
-                                        <p className="bio-text">{artist.bio}</p>
-                                    ) : (
-                                        <p className="bio-text">Artist has no bio at this time</p>
-                                    )}
-                            </p>
+                        <div className="contact-info-div">
+                            <h2 className="contact-info-header">Contact Information</h2>
+                            <h3>{artist.type}</h3>
+                            <h3>{artist.city}</h3>
+                            <h3>{artist.phone_number}</h3>
+                            <h3>{artist.email}</h3>
+                        </div>
+                    <div className="bio-and-requests-div">
+                        <div className='bio-div'>
+                            <h2 className="contact-info-header">Bio</h2>
+                                <p>
+                                    {artist.bio ? (
+                                            <p className="bio-text">{artist.bio}</p>
+                                        ) : (
+                                            <p className="bio-text">Artist has no bio at this time</p>
+                                        )}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="your-portfolio-div">
-                <h2 className="portfolio-header">Portfolio</h2>
-                <ViewCWList artist={artist} />
+                <div className="your-portfolio-div">
+                    <h2 className="portfolio-header">Portfolio</h2>
+                    <ViewCWList artist={artist} />
+                </div>
             </div>
         </main>
     )

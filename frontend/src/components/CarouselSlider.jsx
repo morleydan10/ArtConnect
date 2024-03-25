@@ -18,7 +18,7 @@ function CarouselSlider({ artistUser }){
     return(
         <Slider {...settings} className="slider">
 
-            <div id="slider-slide-1">
+            <div className="slider-slide">
                 <h2 className="homepage-feature-header">Welcome to our platform for connecting artists and businesses!</h2>
                 <p className="set-up-text">Finish setting up your profile now!</p>
                 {artistUser ? (
@@ -32,14 +32,14 @@ function CarouselSlider({ artistUser }){
                 )
                 }
             </div>
-            <div id="slider-slide-2">
+            <div className="slider-slide">
                 <h2 className="homepage-feature-header">Find Artists</h2>
                 <p className="set-up-text">Discover talented artists right in your neighborhood.</p>
                 <NavLink to="/BrowseUsers">
                     <button className="call-to-action">View Artists</button>
                 </NavLink>
             </div>
-            <div id="slider-slide-3">
+            <div className="slider-slide">
                 {artistUser ? (
                     <>
                         <h2 className="homepage-feature-header">Apply to Open Requests</h2>
