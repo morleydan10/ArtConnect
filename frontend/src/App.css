@@ -552,14 +552,12 @@
 }
 
 .profile-pic {
-  width: 100%; /* Set width to 100% */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 15%;
-  min-width: 350px; /* Minimum width */
-  max-width: 450px; /* Maximum width */
-  min-height: 350px; /* Minimum height */
-  max-height: 450px; /* Maximum height */
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
   object-fit: cover;
+  vertical-align: middle;
+  background-position: top center;
 }
 
 .profile-pic-div{
@@ -657,7 +655,7 @@
 }
 
 .your-portfolio-div{
-  width: 100%;
+  width:max-content;
   margin-bottom: auto;
   padding: 30px;
 }
