@@ -31,29 +31,29 @@ function ViewBusinessProfile() {
     return(
         <main>
             <Header />
-            <div className="profile-div">
-                <div className="profile-body">
-                    <div className='profile-name-image-div'>
-                        <div className="profile-pic-div">
-                            <img className='profile-pic'  alt='Profile Picture' src={business.profile_pic_url ? business.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
+            <div className="profile-div-container">
+                <div className="profile-div">
+                    <div className="profile-body">
+                        <div className='profile-name-image-div'>
+                            <div className="profile-pic-div">
+                                <img className='profile-pic'  alt='Profile Picture' src={business.profile_pic_url ? business.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
+                            </div>
+                            <h2 className='profile-name'>{business.name}</h2>
+                            <h3>Date Joined: {business.date_joined}</h3>
                         </div>
-                        <h2 className='profile-name'>{business.name}</h2>
-                        <h3>Date Joined: {business.date_joined}</h3>
-                    </div>
-                    <div className="contact-info-div">
-                        <h2 className="contact-info-header">Contact Information</h2>
-                        <h3>{business.city}</h3>
-                        <h3>{business.type}</h3>
-                        <h3>{business.phone_number}</h3>
-                        <h3>{business.email}</h3>
+                        <div className="contact-info-div">
+                            <h2 className="contact-info-header">Contact Information</h2>
+                            <h3>{business.city}</h3>
+                            <h3>{business.type}</h3>
+                            <h3>{business.phone_number}</h3>
+                            <h3>{business.email}</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="your-request-div">
-                <div className="your-requests-table-header-div">
+                <div className="your-requests-div">
                     <h2 className="portfolio-header">Requests</h2>
+                    <ViewBusRequests business={business} />
                 </div>
-                <ViewBusRequests business={business} />
             </div>
         </main>
     )

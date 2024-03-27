@@ -85,6 +85,7 @@ function BidsTable ({ yourRequestId, handleUpdateAccept, setIsPopupOpen }) {
         .then(() => {
             handleUpdateBids(updateBid);
             setIsPopupOpen(false);
+            alert("Bid accecpted, request filled.")
         })
     };
 

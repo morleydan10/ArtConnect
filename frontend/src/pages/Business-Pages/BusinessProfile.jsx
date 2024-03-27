@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../UserContext";
-import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow } from "@vis.gl/react-google-maps";
+// import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow } from "@vis.gl/react-google-maps";
 
 
 import YourRequestsTable from "../../components/Business Comps/YourRequestsTable";
@@ -49,45 +49,48 @@ function BusinessProfile () {
     return (
         <main>
             <Header />
-            <div className="profile-div">
-                <h1 className="profile-header">Your Profile</h1>
-                <div className="profile-body">
-                    <div className='profile-name-image-div'>
-                        <div className="profile-pic-div">
-                        {showEditForm? (
-                                <EditPicForm setShowEditForm={setShowEditForm}/>
-                            ):(
-                                <>
-                                    <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url ? businessUser.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
-                                    <button className="edit-pic-button" onClick={handleEditClick}>Edit</button>
-                                </>
-                            )}
+            <div className="profile-div-container">
+                <div className="profile-div">
+                    <h2 className="requests-table-header">Your Profile</h2>
+                    <div className="profile-body">
+                        <div className='profile-name-image-div'>
+                            <div className="profile-pic-div">
+                            {showEditForm? (
+                                    <EditPicForm setShowEditForm={setShowEditForm}/>
+                                ):(
+                                    <>
+                                        <img className='profile-pic'  alt='Profile Picture' src={businessUser.profile_pic_url ? businessUser.profile_pic_url : ('https://searchengineland.com/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg')}/>
+                                        <button className="edit-pic-button" onClick={handleEditClick}>Edit</button>
+                                    </>
+                                )}
+                            </div>
+                            <h2 className='profile-name'>{businessUser.name}</h2>
+                            <h3>Date Joined: {businessUser.date_joined}</h3>
                         </div>
-                        <h2 className='profile-name'>{businessUser.name}</h2>
-                        <h3>Date Joined: {businessUser.date_joined}</h3>
-                    </div>
-                    <div className="contact-info-div">
-                        <h2 className="contact-info-header">Contact Information</h2>
-                        <h3>{businessUser.city}</h3>
-                        <h3>{businessUser.type}</h3>
-                        <h3>{businessUser.phone_number}</h3>
-                        <h3>{businessUser.email}</h3>
+                        <div className="contact-info-div">
+                            <h2 className="contact-info-header">Contact Information</h2>
+                            <h3>{businessUser.city}</h3>
+                            <h3>{businessUser.type}</h3>
+                            <h3>{businessUser.phone_number}</h3>
+                            <h3>{businessUser.email}</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="your-request-div">
-                <div className="your-requests-table-header-div">
-                    <h2 className="requests-table-header">Requests</h2>
+                <div className="your-requests-div">
+                    <div className="your-requests-table-header-div">
+                        <h2 className="requests-table-header">Requests</h2>
+                    </div>
+                    { showForm ? (
+                    <NewRequest postNewRequest={postNewRequest} setShowForm={setShowForm} />
+                    ) : (
+                        <>
+                            <button className="new-request-button" onClick={handleShowForm}>Create New Request</button>
+                            <YourRequestsTable />
+                        </>
+                    )}
                 </div>
-                { showForm ? (
-                <NewRequest postNewRequest={postNewRequest} setShowForm={setShowForm} />
-                ) : (
-                    <>
-                        <button className="new-request-button" onClick={handleShowForm}>Create New Request</button>
-                        <YourRequestsTable />
-                    </>
-                )}
             </div>
+            
         </main>
     )
 };

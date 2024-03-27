@@ -110,7 +110,7 @@ function ArtistProfile () {
                 </div>
                 <div className="artist-requests-div">
                     <div className="artist-requests-body">
-                        <h2 className="profile-header">Your Requests</h2>
+                        <h2 className="profile-header">Your Accepted Bids</h2>
                     </div>
                     <ArtistRequestsTable />
                             </div>
