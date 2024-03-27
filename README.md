@@ -1,6 +1,6 @@
 # ArtConnect
 
-ArtConnect is a platform designed to facilitate connections between local businesses and artists to fulfill creative needs. This README provides an overview of the application, its features, and guidelines for installation and usage.
+ArtConnect is a platform designed to facilitate connections between local businesses and artists to fulfill creative needs.
 
 ## Table of Contents
 
@@ -76,7 +76,7 @@ To use ArtConnect, follow these general steps:
 - Node.js
 - React.js
 - Python with Flask
-- SQLite
+- SQLAlchemy
 
 ## Configuration
 
