@@ -17,21 +17,22 @@ ArtConnect is a platform designed to facilitate connections between local busine
 
 1. **Artists:**
    - Artists have a profile page where:
-              - Their basic contact information is displayed.
-              - Have a short bio about the work they do.
-              - Can view any accepted bids they have made on a request.
-              - Can build a portfolio by uploading files, showcasing their work.
-   - Artists have access the open requests page to view business-generated requests. Artists can submit bids on requests that align with their skills and interests.
+     - Their basic contact information is displayed.
+     - Have a short bio about the work they do.
+     - Can view any accepted bids they have made on a request.
+     - Can build a portfolio by uploading files, showcasing their work.
+   - Artists have access to the open requests page to view business-generated requests. Artists can submit bids on requests that align with their skills and interests.
    - Artists can browse other user profiles, including both artists and businesses.
 
 2. **Businesses:**
    - Businesses have a profile page where:
-              - Their basic contact information is displayed.
-              - A table containing all the requests they have generated.
-              - In the same table, they can view bids submitted by artists for each request.
-              - Accept bids that best meet the needs of their projects.
-   - Businesses have access the open requests page to view business-generated requests.
+     - Their basic contact information is displayed.
+     - A table containing all the requests they have generated.
+     - In the same table, they can view bids submitted by artists for each request.
+     - Accept bids that best meet the needs of their projects.
+   - Businesses have access to the open requests page to view business-generated requests.
    - Businesses can browse other user profiles, including both artists and businesses.
+
 
 ## Installation
 
