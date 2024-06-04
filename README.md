@@ -105,6 +105,7 @@ To use ArtConnect, follow these general steps:
 - Python with Flask
 - SQLAlchemy
 - SQLite
+- CSS3
 
 ## Configuration
 
