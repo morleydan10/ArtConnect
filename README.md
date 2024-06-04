@@ -8,7 +8,6 @@ ArtConnect is a platform designed to facilitate connections between local busine
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Dependencies](#dependencies)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 
@@ -105,6 +104,7 @@ To use ArtConnect, follow these general steps:
 - React.js
 - Python with Flask
 - SQLAlchemy
+- SQLite
 
 ## Configuration
 
