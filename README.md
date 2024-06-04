@@ -21,7 +21,7 @@ ArtConnect is a platform designed to facilitate connections between local busine
      - Have a short bio about the work they do.
      - Can view any accepted bids they have made on a request.
      - Can build a portfolio by uploading files, showcasing their work.
-       <img src="ArtConnect/frontend/src/assets/ArtConnect ArtProf 1.png" height="500vh" width="600vw" />
+       <img src="frontend/src/assets/ArtConnect ArtProf 1.png" height="500vh" width="600vw" />
    - Artists have access to the open requests page to view business-generated requests. Artists can submit bids on requests that align with their skills and interests.
    - Artists can browse other user profiles, including both artists and businesses.
 
