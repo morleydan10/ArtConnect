@@ -7,7 +7,7 @@ ArtConnect is a platform designed to facilitate connections between local busine
 - [Introduction](#artconnect)
 - [Features](#features)
 - [Installation](#installation)
-- [Future Plans](#futurePlans)
+- [Future Plans](#future-plans)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 
