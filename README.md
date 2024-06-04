@@ -7,7 +7,7 @@ ArtConnect is a platform designed to facilitate connections between local busine
 - [Introduction](#artconnect)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Future Plans](#futureplans)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 
@@ -68,6 +68,12 @@ Follow these steps to set up ArtConnect:
 3. Run the backend server in your terminal.
    ```bash
    python app.py
+
+## Future Plans
+
+1. Enable messaging between users to allow for a more direct form of communication.
+2. Implement a ratings and reviews system for businesses and artists who have worked with each other in the past.
+3. Allow users to like and comment on portfolio items.
 
 ## Built with:
 
