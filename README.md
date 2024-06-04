@@ -11,23 +11,27 @@ ArtConnect is a platform designed to facilitate connections between local busine
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 
-## Features
+## Features & Usage
 
 ### User Types
 
 1. **Artists:**
-   - Artists have a profile with basic contact information.
-   - They can add a short bio to showcase their background and skills.
-   - Artists can build a portfolio by uploading files, showcasing their work.
-   - Access the open requests page to view business-generated requests.
-   - Submit bids on requests that align with their skills and interests.
-   - Browse user profiles, including both artists and businesses.
+   - Artists have a profile page where:
+              - Their basic contact information is displayed.
+              - Have a short bio about the work they do.
+              - Can view any accepted bids they have made on a request.
+              - Can build a portfolio by uploading files, showcasing their work.
+   - Artists have access the open requests page to view business-generated requests. Artists can submit bids on requests that align with their skills and interests.
+   - Artists can browse other user profiles, including both artists and businesses.
 
 2. **Businesses:**
-   - Businesses maintain a profile with basic contact information and a profile picture.
-   - Access a table containing all the requests they have generated.
-   - View bids submitted by artists for each request.
-   - Accept bids that best meet the needs of their projects.
+   - Businesses have a profile page where:
+              - Their basic contact information is displayed.
+              - A table containing all the requests they have generated.
+              - In the same table, they can view bids submitted by artists for each request.
+              - Accept bids that best meet the needs of their projects.
+   - Businesses have access the open requests page to view business-generated requests.
+   - Businesses can browse other user profiles, including both artists and businesses.
 
 ## Installation
 
@@ -64,39 +68,6 @@ Follow these steps to set up ArtConnect:
 3. Run the backend server in your terminal.
    ```bash
    python app.py
-
-## Usage
-
-To use ArtConnect, follow these general steps:
-
-### Sign Up:
-
-- Artists and businesses have separate signups.
-- Provide the required information to create a profile.
-
-### Profile Creation:
-
-- Complete your profile with relevant details.
-
-### Portfolio (Artists):
-
-- Upload files to showcase your work in the portfolio.
-
-### Requests (Businesses):
-
-- Generate requests specifying your creative needs.
-
-### Bidding (Artists):
-
-- Browse open requests and submit bids.
-
-### Request Management (Businesses):
-
-- View bids for each request and accept the one that fits your requirements.
-
-### Explore:
-
-- Discover other users' profiles on the View Users Page.
 
 ## Built with:
 
