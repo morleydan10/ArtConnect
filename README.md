@@ -55,12 +55,13 @@ Follow these steps to set up ArtConnect:
 2. Start a virtual environment in your terminal.
    ```bash
    pipenv shell
-   
+   ```
    Make sure that the virtual environment is within the server directory.
    Here's an example of what it should look like:
    
    ```bash
    (server) username@hostname:~/pathto/yourproject/ArtConnect/backend/server$
+   ```
 3. Run the backend server in your terminal.
    ```bash
    python app.py
