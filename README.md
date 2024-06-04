@@ -37,6 +37,31 @@ Follow these steps to set up ArtConnect:
 1. Clone the repository to your local machine.
    ```bash
    git clone https://github.com/your-username/artconnect.git
+2. Open two terminals, one for the frontend, and one for the backend
+
+### Frontend
+1. Navigate to the frontend directory.
+   ```bash
+   cd frontend
+2. Run the frontend server in your terminal.
+   ```bash
+   npm run dev
+
+### Backend
+1. In your second terminal, navigate to the backend directory, then to the server directory.
+   ```bash
+   cd backend
+   cd server
+2. Start a virtual environment in your terminal.
+   ```
+   pipenv shell
+   Make sure that the virtual environment is within the server directory.
+   Here's an example of what it should look like:
+   ```bash
+   (server) username@hostname:~/pathto/yourproject/ArtConnect/backend/server$
+3. Run the backend server in your terminal.
+   ```bash
+   python app.py
 
 ## Usage
 
