@@ -23,10 +23,10 @@ ArtConnect is a platform designed to facilitate connections between local busine
      - Can build a portfolio by uploading files, showcasing their work.
        <p align="left">
           <div>
-           <img src="frontend/src/assets/ArtConnect ArtProf 1.png" height="100vh" width="230vw" />  
+           <img src="frontend/src/assets/ArtConnect ArtProf 1.png" height="200vh" width="460vw" />  
           </div>
           <div>
-            <img src="frontend/src/assets/ArtConnect ArtProf 2.png" height="100vh" width="230vw" /> 
+            <img src="frontend/src/assets/ArtConnect ArtProf 2.png" height="200vh" width="460vw" /> 
           </div>
       </p>
 
