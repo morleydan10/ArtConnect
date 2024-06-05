@@ -46,7 +46,7 @@ ArtConnect is a platform designed to facilitate connections between local busine
 <table>
   <tr>
     <td><img src="frontend/src/assets/ArtConnect BusProf.png" height="200vh" width="433vw" /></td>
-    <td><img src="frontend/src/assets/ArtConnect RequestsTable.png" height="200vh" width="433vw" /></td>
+    <td><img src="frontend/src/assets/ArtConnect RequestTable.png" height="200vh" width="433vw" /></td>
   </tr>
 </table>
 
