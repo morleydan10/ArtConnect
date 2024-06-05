@@ -23,18 +23,15 @@ ArtConnect is a platform designed to facilitate connections between local busine
      - Can build a portfolio by uploading files, showcasing their work.
    - Artists have access to the open requests page to view business-generated requests. Artists can submit bids on requests that align with their skills and interests.
    - Artists can browse other user profiles, including both artists and businesses.
-![Artist Profile 1](frontend/src/assets/ArtConnect Prof 1.png) ![Artist Profile 2](frontend/src/assets/ArtConnect ArtProf 2.png)
-
-![Open Requests](frontend/src/assets/ArtConnect OpenRequests.png) ![View Users](frontend/src/assets/ArtConnect ViewUsers.png)
 
 <table>
   <tr>
-    <td><img src="frontend/src/assets/ArtConnect Prof 1.png" height="300vh" width="650vw" /></td>
-    <td><img src="frontend/src/assets/ArtConnect ArtProf 2.png" height="300vh" width="650vw" /></td>
+    <td><img src="frontend/src/assets/ArtConnect Prof 1.png" height="200vh" width="433vw" /></td>
+    <td><img src="frontend/src/assets/ArtConnect ArtProf 2.png" height="200vh" width="433vw" /></td>
   </tr>
    <tr>
-    <td><img src="frontend/src/assets/ArtConnect OpenRequests.png" height="300vh" width="650vw" /></td>
-    <td><img src="frontend/src/assets/ArtConnect ViewUsers.png" height="300vh" width="650vw" /></td>
+    <td><img src="frontend/src/assets/ArtConnect OpenRequests.png" height="200vh" width="433vw" /></td>
+    <td><img src="frontend/src/assets/ArtConnect ViewUsers.png" height="200vh" width="433vw" /></td>
   </tr>
 </table>
 
