@@ -43,7 +43,12 @@ ArtConnect is a platform designed to facilitate connections between local busine
      - Accept bids that best meet the needs of their projects.
    - Businesses have access to the open requests page to view business-generated requests.
    - Businesses can browse other user profiles, including both artists and businesses.
-
+<table>
+  <tr>
+    <td><img src="frontend/src/assets/ArtConnect BusProf.png" height="200vh" width="433vw" /></td>
+    <td><img src="frontend/src/assets/ArtConnect RequestsTable.png" height="200vh" width="433vw" /></td>
+  </tr>
+</table>
 
 ## Installation
 
